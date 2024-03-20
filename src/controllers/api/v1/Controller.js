@@ -33,7 +33,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    MaterialTextureTypeController: RestController(`${prefix}material_texture_types`, 'name', MaterialTextureService, {
+    MaterialTextureController: RestController(`${prefix}material_textures`, 'name', MaterialTextureService, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['texture_uuid', 'material_uuid'], middleware: [] },

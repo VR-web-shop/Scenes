@@ -1,12 +1,14 @@
 import 'dotenv/config'
 import './src/config/BrokerConfig.js'
 import express from 'express'
+import cors from 'cors'
 import bodyParser from 'body-parser'
 import Controller from './src/controllers/api/v1/Controller.js'
 
 const app = express()
 const port = process.env.SERVER_PORT
 
+app.use(cors({origin: '*'}))
 app.use(bodyParser.json())
 
 app.use(Controller.ProductController)
@@ -23,7 +25,7 @@ app.use(Controller.SceneBasketController)
 app.use(Controller.SceneCameraController)
 app.use(Controller.SceneCheckoutController)
 app.use(Controller.MaterialController)
-app.use(Controller.MaterialTextureTypeController)
+app.use(Controller.MaterialTextureController)
 app.use(Controller.MaterialTypeController)
 app.use(Controller.MeshController)
 app.use(Controller.TextureController)

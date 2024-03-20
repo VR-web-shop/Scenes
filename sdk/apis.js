@@ -108,6 +108,14 @@ export default {
         delete: true
     }),
 
+    materialTextures: new CrudAPI('material_textures', 'uuid', {
+        find: true,
+        findAll: true,
+        create: { properties: ['texture_uuid', 'material_uuid'] },
+        update: { properties: ['texture_uuid', 'material_uuid'] },
+        delete: true
+    }),
+
     materialTypes: new CrudAPI('material_types', 'name', {
         find: true,
         findAll: true,
