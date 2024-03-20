@@ -1,11 +1,44 @@
 {
-  "name": "scenes",
+  "name": "@vr-web-shop/scenes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "main": "/dist_sdk/bundle.js",
+  "files": [
+    "/dist_sdk"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "nodemon index.js",
+    "seed": "node seed.js",
+    "bundle_sdk": "rollup --config rollup.config.mjs",
+    "deploy_sdk": "bash sdk_deploy.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vr-web-shop/Scenes.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/vr-web-shop"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "rollup": "^4.13.0"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "graphql": "^16.8.1",
+    "graphql-http": "^1.22.0",
+    "jest": "^29.7.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.9.2",
+    "ruru": "^2.0.0-beta.11",
+    "sequelize": "^6.37.1",
+    "sqlite3": "^5.1.7"
+  }
 }
