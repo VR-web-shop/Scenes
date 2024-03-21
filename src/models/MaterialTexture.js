@@ -3,7 +3,7 @@ import Database from './Database.js';
 import Texture from './Texture.js';
 import Material from './Material.js';
 
-const MaterialTexture = Database.define("Material_Texture", {
+const MaterialTexture = Database.define("MaterialTexture", {
     uuid: {
         type: DataTypes.UUID,
         primaryKey: true,

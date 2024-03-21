@@ -14,7 +14,7 @@ export default class CrudService {
                 if (!pk) {
                     throw new Error(`No ${foreignKeyName} provided.`);
                 }
-
+                
                 const result = await Model.findByPk(pk);
 
                 if (options.find.dto) {
@@ -43,8 +43,7 @@ export default class CrudService {
                 const count = await Model.count();
                 const pages = Math.ceil(count / limit);
                 const rows = await Model.findAll({ limit, offset });
-                const result = { count, pages, rows };
-
+                const result = { count, pages, rows: rows.map(r=>r.dataValues) };
                 
                 if (options.findAll.dto) {
                     return {count, pages, rows: rows.map(r=>CrudService.arrayToDto(options.findAll.dto, r))};

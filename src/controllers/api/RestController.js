@@ -25,6 +25,10 @@ function RestController(endpoint, pkName, service, options={}) {
                 }
 
                 const entity = await service.find({[pkName]: pk});
+                if (!entity) {
+                    return res.status(404).send(`No entity found with ${pkName} ${pk}.`);
+                }
+
                 res.send(entity);
             });
     }
