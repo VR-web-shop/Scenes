@@ -17,7 +17,7 @@ export default class CrudAPI {
                     throw new Error(`No ${foreignKeyName} provided.`);
                 }
 
-                const currentEndpoint = `${endpoint}/${key}`;
+                let currentEndpoint = `${endpoint}/${key}`;
                 if (methodOptions.include) {
                     currentEndpoint += `/${methodOptions.include}`;
                 }
