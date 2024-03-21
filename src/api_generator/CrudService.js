@@ -1,3 +1,5 @@
+import ApiRequestError from './ApiRequestError.js';
+
 /**
  * Options:
  * - find: {boolean}
@@ -9,13 +11,26 @@
 export default class CrudService {
     constructor(Model, foreignKeyName = '', options = {}) {
         if (options.find) {
-            this.find = async function (params) {
+            this.find = async function (params, methodOptions={}) {
                 const pk = params[foreignKeyName];
                 if (!pk) {
-                    throw new Error(`No ${foreignKeyName} provided.`);
+                    throw new ApiRequestError(`No ${foreignKeyName} provided.`, 400);
                 }
-                
-                const result = await Model.findByPk(pk);
+
+                let includeModel;
+                if (methodOptions.include) {
+                    includeModel = methodOptions.include;
+
+                    const associations = Object.values(Model.associations);
+                    if (!associations.find(a => a.as === includeModel)) {
+                        throw new ApiRequestError(`No association found with name ${includeModel}. Possible associations are: ${associations.map(a => a.as).join(', ')};`, 400);
+                    }
+                }
+
+                const result = includeModel 
+                    ? await Model.findOne({ where: { [foreignKeyName]: pk }, include: includeModel })
+                    : await Model.findByPk(pk);
+
 
                 if (options.find.dto) {
                     return CrudService.arrayToDto(options.find.dto, result);
@@ -26,7 +41,7 @@ export default class CrudService {
         }
 
         if (options.findAll) {
-            this.findAll = async function (params) {
+            this.findAll = async function (params, methodOptions={}) {
                 const q = params.q;
                 if (q) {
                     return await Model.findAll({
@@ -36,13 +51,27 @@ export default class CrudService {
                     });
                 }
 
+                let includeModel;
+                if (methodOptions.include) {
+                    includeModel = methodOptions.include;
+
+                    const associations = Object.values(Model.associations);
+                    if (!associations.find(a => a.as === includeModel)) {
+                        throw new ApiRequestError(`No association found with name ${includeModel}. Possible associations are: ${associations.map(a => a.as).join(', ')};`, 400);
+                    }
+                }
+
                 const limit = parseInt(params.limit) || options.findAll.defaultLimit || 10;
                 const page = parseInt(params.page) || options.findAll.defaultPage || 1;
                 
                 const offset = (page - 1) * limit;
                 const count = await Model.count();
                 const pages = Math.ceil(count / limit);
-                const rows = await Model.findAll({ limit, offset });
+
+                const rows = includeModel
+                    ? await Model.findAll({ include: includeModel, limit, offset })
+                    : await Model.findAll({ limit, offset })
+
                 const result = { count, pages, rows: rows.map(r=>r.dataValues) };
                 
                 if (options.findAll.dto) {
@@ -57,7 +86,7 @@ export default class CrudService {
             this.create = async function (params) {
                 for (let key of options.create.properties) {
                     if (!params[key]) {
-                        throw new Error(`No ${key} provided.`);
+                        throw new ApiRequestError(`No ${key} provided.`, 400);
                     }
                 }
 
@@ -81,19 +110,19 @@ export default class CrudService {
                 if (options.update.requiredProperties) {
                     for (let key of options.update.requiredProperties) {
                         if (!params[key]) {
-                            throw new Error(`No ${key} provided.`);
+                            throw new ApiRequestError(`No ${key} provided.`, 400);
                         }
                     }
                 }
 
                 const pk = params[foreignKeyName];
                 if (!pk) {
-                    throw new Error(`No ${foreignKeyName} provided.`);
+                    throw new ApiRequestError(`No ${foreignKeyName} provided.`, 400);
                 }
 
                 const model = await Model.findByPk(pk);
                 if (!model) {
-                    throw new Error(`No ${Model.name} found with ${foreignKeyName} ${pk}.`);
+                    throw new ApiRequestError(`No ${Model.name} found with ${foreignKeyName} ${pk}.`, 400);
                 }
 
                 const properties = {};
@@ -115,7 +144,7 @@ export default class CrudService {
             this.destroy = async function (params) {
                 const pk = params[foreignKeyName];
                 if (!pk) {
-                    throw new Error(`No ${foreignKeyName} provided.`);
+                    throw new ApiRequestError(`No ${foreignKeyName} provided.`, 400);
                 }
 
                 await Model.destroy({ where: { [foreignKeyName]: pk } });

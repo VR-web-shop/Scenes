@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "start": "nodemon index.js",
+    "start": "set DEBUG=express:* & nodemon index.js",
     "seed": "node seed.js",
     "bundle_sdk": "rollup --config rollup.config.mjs",
     "deploy_sdk": "bash sdk_deploy.sh"

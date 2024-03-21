@@ -15,14 +15,4 @@ const MaterialTexture = Database.define("MaterialTexture", {
     updatedAt: 'updated_at',
 });
 
-Texture.belongsToMany(Material, {
-    through: MaterialTexture,
-    foreignKey: 'texture_uuid'
-});
-
-Material.belongsToMany(Texture, {
-    through: MaterialTexture,
-    foreignKey: 'material_uuid'
-});
-
 export default MaterialTexture;

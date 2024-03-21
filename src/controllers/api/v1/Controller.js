@@ -1,4 +1,4 @@
-import RestController from "../RestController.js";
+import RestController from "../../../api_generator/RestController.js";
 import Service from "../../../services/Service.js";
 
 const prefix = '/api/v1/';
@@ -26,7 +26,13 @@ const {
 
 export default {
     MaterialController: RestController(`${prefix}materials`, 'uuid', MaterialService, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [],
+            includes: [
+                { endpoint: 'textures', model: 'Texture' },
+                { endpoint: 'material_types', model: 'MaterialType' }
+            ]
+        },
         findAll: { middleware: [] },
         create: { properties: ['name', 'description', 'material_type_name'], middleware: [] },
         update: { properties: ['name', 'description', 'material_type_name'], middleware: [] },
@@ -157,7 +163,13 @@ export default {
     }),
 
     TextureController: RestController(`${prefix}textures`, 'uuid', TextureService, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [],
+            includes: [
+                { endpoint: 'materials', model: 'Material' },
+                { endpoint: 'texture_types', model: 'TextureType' }
+            ]
+        },
         findAll: { middleware: [] },
         create: { properties: ['name', 'source', 'texture_type_name'], middleware: [] },
         update: { properties: ['name', 'source', 'texture_type_name'], middleware: [] },

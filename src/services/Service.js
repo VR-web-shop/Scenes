@@ -1,4 +1,4 @@
-import CrudService from "./CrudService.js";
+import CrudService from "../api_generator/CrudService.js";
 
 import Material from "../models/Material.js";
 import MaterialTexture from "../models/MaterialTexture.js";

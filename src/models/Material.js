@@ -1,6 +1,8 @@
 import { DataTypes } from 'sequelize';
 import Database from './Database.js';
 import MaterialType from './MaterialType.js';
+import MaterialTexture from './MaterialTexture.js';
+import Texture from './Texture.js';
 
 const Material = Database.define("Material", {
     uuid: {
@@ -20,7 +22,12 @@ const Material = Database.define("Material", {
 });
 
 Material.belongsTo(MaterialType, { foreignKey: 'material_type_name', targetKey: 'name' });
-
 MaterialType.hasMany(Material);
+
+Material.belongsToMany(Texture, { through: MaterialTexture, foreignKey: 'material_uuid', as: 'Texture' });
+MaterialTexture.belongsTo(Material, { foreignKey: 'material_uuid' });
+
+Texture.belongsToMany(Material, { through: MaterialTexture, foreignKey: 'texture_uuid', as: 'Material' });
+MaterialTexture.belongsTo(Texture, { foreignKey: 'texture_uuid' });
 
 export default Material;
