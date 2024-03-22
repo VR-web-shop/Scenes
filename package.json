@@ -11,7 +11,7 @@
     "test": "jest",
     "start": "set DEBUG=express:* & nodemon index.js",
     "seed": "node seed.js",
-    "bundle_api": "node buildSDKAPI.js",
+    "bundle_api": "node meteor.config.mjs",
     "bundle_sdk": "rollup --config rollup.config.mjs",
     "deploy_sdk": "bash sdk_deploy.sh"
   },
@@ -30,8 +30,7 @@
     "rollup": "^4.13.0"
   },
   "dependencies": {
-    "@rollup/plugin-json": "^6.1.0",
-    "@vr-web-shop/meteor": "1.0.13",
+    "@vr-web-shop/meteor": "1.0.17",
     "amqplib": "^0.10.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
