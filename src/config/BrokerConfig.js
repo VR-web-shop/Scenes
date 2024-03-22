@@ -1,7 +1,8 @@
 import pkg from 'amqplib';
-import Service from '../services/Service.js';
+import Controller from '../controllers/api/v1/Controller.js';
 
-const { ProductService, ProductEntityService } = Service;
+const ProductEntityService = Controller.ProductEntityController.service;
+const ProductService = Controller.ProductController.service;
 
 (async () => {
     const url = process.env.MESSAGE_BROKER_URL;

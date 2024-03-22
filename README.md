@@ -17,6 +17,12 @@ $ cp .env.example .env
 $ npm run seed
 ```
 
+4. Setup NPM Registry
+Replace `YOUR_PERSONAL_TOKEN` with a classic personal token with `package:read` access.
+```
+$ cp .npmrc.example .npmrc
+```
+
 ## Usage
 ```
 npm start

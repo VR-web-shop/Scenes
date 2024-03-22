@@ -1,31 +1,31 @@
-import RestController from "../../../api_generator/RestController.js";
-import Service from "../../../services/Service.js";
+import meteor from "@vr-web-shop/meteor";
+
+import Material from "../../../models/Material.js";
+import MaterialTexture from "../../../models/MaterialTexture.js";
+import MaterialType from "../../../models/MaterialType.js";
+import Mesh from "../../../models/Mesh.js";
+import MeshMaterial from "../../../models/MeshMaterial.js";
+import Product from "../../../models/Product.js";
+import ProductEntity from "../../../models/ProductEntity.js";
+import ProductEntityState from "../../../models/ProductEntityState.js";
+import Scene from "../../../models/Scene.js";
+import SceneBackground from "../../../models/SceneBackground.js";
+import SceneBasket from "../../../models/SceneBasket.js";
+import SceneCamera from "../../../models/SceneCamera.js";
+import SceneCheckout from "../../../models/SceneCheckout.js";
+import SceneFloor from "../../../models/SceneFloor.js";
+import SceneLight from "../../../models/SceneLight.js";
+import SceneLightType from "../../../models/SceneLightType.js";
+import SceneStaticObject from "../../../models/SceneStaticObject.js";
+import Texture from "../../../models/Texture.js";
+import TextureType from "../../../models/TextureType.js";
+import Vector3D from "../../../models/Vector3D.js";
 
 const prefix = '/api/v1/';
-const {
-    MaterialService,
-    MaterialTextureService,
-    MaterialTypeService,
-    MeshService,
-    SceneBackgroundService,
-    SceneBasketService,
-    SceneCameraService,
-    SceneCheckoutService,
-    SceneService,
-    SceneFloorService,
-    SceneLightService,
-    SceneLightTypeService,
-    SceneStaticObjectService,
-    ProductService,
-    ProductEntityService,
-    ProductEntityStateService,
-    TextureService,
-    TextureTypeService,
-    Vector3DService
-} = Service;
+const RestController = meteor.RestController;
 
 export default {
-    MaterialController: RestController(`${prefix}materials`, 'uuid', MaterialService, {
+    MaterialController: RestController(`${prefix}materials`, 'uuid', Material, {
         find: { 
             middleware: [],
             includes: [
@@ -39,7 +39,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    MaterialTextureController: RestController(`${prefix}material_textures`, 'name', MaterialTextureService, {
+    MaterialTextureController: RestController(`${prefix}material_textures`, 'name', MaterialTexture, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['texture_uuid', 'material_uuid'], middleware: [] },
@@ -47,12 +47,12 @@ export default {
         delete: { middleware: [] }
     }),
 
-    MaterialTypeController: RestController(`${prefix}material_types`, 'name', MaterialTypeService, {
+    MaterialTypeController: RestController(`${prefix}material_types`, 'name', MaterialType, {
         find: { middleware: [] },
         findAll: { middleware: [] },
     }),
 
-    MeshController: RestController(`${prefix}meshes`, 'uuid', MeshService, {
+    MeshController: RestController(`${prefix}meshes`, 'uuid', Mesh, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['name', 'source'], middleware: [] },
@@ -60,7 +60,15 @@ export default {
         delete: { middleware: [] }
     }),
 
-    SceneBackgroundController: RestController(`${prefix}scene_backgrounds`, 'uuid', SceneBackgroundService, {
+    MeshMaterialController: RestController(`${prefix}mesh_materials`, 'uuid', MeshMaterial, {
+        find: { middleware: [] },
+        findAll: { middleware: [] },
+        create: { properties: ['mesh_uuid', 'material_uuid'], middleware: [] },
+        update: { properties: ['mesh_uuid', 'material_uuid'], middleware: [] },
+        delete: { middleware: [] }
+    }),
+
+    SceneBackgroundController: RestController(`${prefix}scene_backgrounds`, 'uuid', SceneBackground, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['red', 'green', 'blue', 'scene_uuid'], middleware: [] },
@@ -68,7 +76,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    SceneBasketController: RestController(`${prefix}scene_baskets`, 'uuid', SceneBasketService, {
+    SceneBasketController: RestController(`${prefix}scene_baskets`, 'uuid', SceneBasket, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
@@ -76,7 +84,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    SceneCameraController: RestController(`${prefix}scene_cameras`, 'uuid', SceneCameraService, {
+    SceneCameraController: RestController(`${prefix}scene_cameras`, 'uuid', SceneCamera, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], middleware: [] },
@@ -84,7 +92,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    SceneCheckoutController: RestController(`${prefix}scene_checkouts`, 'uuid', SceneCheckoutService, {
+    SceneCheckoutController: RestController(`${prefix}scene_checkouts`, 'uuid', SceneCheckout, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: [
@@ -98,7 +106,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    SceneController: RestController(`${prefix}scenes`, 'uuid', SceneService, {
+    SceneController: RestController(`${prefix}scenes`, 'uuid', Scene, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['name', 'description'], middleware: [] },
@@ -106,7 +114,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    SceneFloorController: RestController(`${prefix}scene_floors`, 'uuid', SceneFloorService, {
+    SceneFloorController: RestController(`${prefix}scene_floors`, 'uuid', SceneFloor, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
@@ -114,7 +122,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    SceneLightController: RestController(`${prefix}scene_lights`, 'uuid', SceneLightService, {
+    SceneLightController: RestController(`${prefix}scene_lights`, 'uuid', SceneLight, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
@@ -122,12 +130,12 @@ export default {
         delete: { middleware: [] }
     }),
 
-    SceneLightTypeController: RestController(`${prefix}scene_light_types`, 'name', SceneLightTypeService, {
+    SceneLightTypeController: RestController(`${prefix}scene_light_types`, 'name', SceneLightType, {
         find: { middleware: [] },
         findAll: { middleware: [] },
     }),
 
-    SceneStaticObjectController: RestController(`${prefix}scene_static_objects`, 'uuid', SceneStaticObjectService, {
+    SceneStaticObjectController: RestController(`${prefix}scene_static_objects`, 'uuid', SceneStaticObject, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
@@ -135,26 +143,31 @@ export default {
         delete: { middleware: [] }
     }),
 
-    ProductController: RestController(`${prefix}products`, 'uuid', ProductService, {
+    ProductController: RestController(`${prefix}products`, 'uuid', Product, {
         find: { middleware: [] },
         findAll: { middleware: [] },
+        create: { properties: ['name', 'description'], middleware: [], serviceOnly: true  },
         update: {
             properties: ['name', 'description', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'], 
             middleware: []
         },
+        delete: { middleware: [], serviceOnly: true }
     }),
 
-    ProductEntityController: RestController(`${prefix}product_entities`, 'uuid', ProductEntityService, {
+    ProductEntityController: RestController(`${prefix}product_entities`, 'uuid', ProductEntity, {
+        find: { middleware: [] },
+        findAll: { middleware: [] },
+        create: { properties: ['product_uuid', 'product_entity_state_name'], middleware: [], serviceOnly: true },
+        update: { properties: ['product_uuid', 'product_entity_state_name'], middleware: [], serviceOnly: true },
+        delete: { middleware: [], serviceOnly: true }
+    }),
+
+    ProductEntityStateController: RestController(`${prefix}product_entity_states`, 'uuid', ProductEntityState, {
         find: { middleware: [] },
         findAll: { middleware: [] },
     }),
 
-    ProductEntityStateController: RestController(`${prefix}product_entity_states`, 'uuid', ProductEntityStateService, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
-    }),
-
-    Vector3DController: RestController(`${prefix}vector3ds`, 'uuid', Vector3DService, {
+    Vector3DController: RestController(`${prefix}vector3ds`, 'uuid', Vector3D, {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: ['x', 'y', 'z'], middleware: [] },
@@ -162,7 +175,7 @@ export default {
         delete: { middleware: [] }
     }),
 
-    TextureController: RestController(`${prefix}textures`, 'uuid', TextureService, {
+    TextureController: RestController(`${prefix}textures`, 'uuid', Texture, {
         find: { 
             middleware: [],
             includes: [
@@ -170,13 +183,16 @@ export default {
                 { endpoint: 'texture_types', model: 'TextureType' }
             ]
         },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            includes: ['Material', 'TextureType']
+        },
         create: { properties: ['name', 'source', 'texture_type_name'], middleware: [] },
         update: { properties: ['name', 'source', 'texture_type_name'], middleware: [] },
         delete: { middleware: [] }
     }),
 
-    TextureTypeController: RestController(`${prefix}texture_types`, 'name', TextureTypeService, {
+    TextureTypeController: RestController(`${prefix}texture_types`, 'name', TextureType, {
         find: { middleware: [] },
         findAll: { middleware: [] },
     }),
