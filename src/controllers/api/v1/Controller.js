@@ -119,7 +119,12 @@ export default {
                 { endpoint: 'scene_static_objects', model: 'SceneStaticObjects' }
             ] 
         },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            includes: [
+                'SceneBackground', 'SceneBasket', 'SceneCamera', 'SceneCheckout', 'SceneFloor', 'SceneLight', 'SceneStaticObject'
+            ]
+        },
         create: { properties: ['name', 'description'], middleware: [] },
         update: { properties: ['name', 'description'], middleware: [] },
         delete: { middleware: [] }
