@@ -102,7 +102,7 @@
                     currentEndpoint += `/${methodOptions.include}`;
                 }
 
-                const requestOptions = buildRequestOptions({ method: 'GET' }, options.find.auth);
+                const requestOptions = await buildRequestOptions({ method: 'GET' }, options.find.auth);
                 const response = await fetch(currentEndpoint, requestOptions);
                 const data = await response.json();
                 return data;
@@ -127,7 +127,7 @@
                 if (q) _endpoint += `&q=${q}`;
                 if (include) _endpoint += `&include=${include}`;
 
-                const requestOptions = buildRequestOptions({ method: 'GET' }, options.findAll.auth);
+                const requestOptions = await buildRequestOptions({ method: 'GET' }, options.findAll.auth);
                 const response = await fetch(_endpoint, requestOptions);
                 const data = await response.json();
                 return data;
@@ -149,7 +149,7 @@
                     }
                 }
 
-                const requestOptions = buildRequestOptions({
+                const requestOptions = await buildRequestOptions({
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -157,7 +157,7 @@
                     body: params
                 }, options.create.auth);
                 const response = await fetch(getUrl(), requestOptions);
-                console.log(response, requestOptions);
+                
                 const data = await response.json();
                 return data;
             };
@@ -185,7 +185,7 @@
                     throw new Error(`No ${foreignKeyName} provided.`);
                 }
 
-                const requestOptions = buildRequestOptions({
+                const requestOptions = await buildRequestOptions({
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -212,7 +212,7 @@
                     throw new Error(`No ${foreignKeyName} provided.`);
                 }
 
-                const requestOptions = buildRequestOptions({
+                const requestOptions = await buildRequestOptions({
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'

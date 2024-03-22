@@ -21,7 +21,7 @@ git add .
 git commit -m "Bump version"
 git push origin main
 
-npm ci
+npm install
 npm run bundle_sdk
 npm publish
 
