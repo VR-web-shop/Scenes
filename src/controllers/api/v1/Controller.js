@@ -107,7 +107,18 @@ export default {
     }),
 
     SceneController: RestController(`${prefix}scenes`, 'uuid', Scene, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [],
+            includes: [
+                { endpoint: 'scene_backgrounds', model: 'SceneBackground' },
+                { endpoint: 'scene_baskets', model: 'SceneBasket' },
+                { endpoint: 'scene_cameras', model: 'SceneCamera' },
+                { endpoint: 'scene_checkouts', model: 'SceneCheckout' },
+                { endpoint: 'scene_floors', model: 'SceneFloor' },
+                { endpoint: 'scene_lights', model: 'SceneLight' },
+                { endpoint: 'scene_static_objects', model: 'SceneStaticObject' }
+            ] 
+        },
         findAll: { middleware: [] },
         create: { properties: ['name', 'description'], middleware: [] },
         update: { properties: ['name', 'description'], middleware: [] },
