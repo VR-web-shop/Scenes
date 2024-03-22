@@ -27,5 +27,4 @@ npm publish
 
 echo ""
 echo -e "\e[32mDeployment completed successfully 🚀🚀🚀\e[0m"
-echo "Find the triggered workflow at: https://github.com/VR-web-shop/Scenes/actions"
 exit 0

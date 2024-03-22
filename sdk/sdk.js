@@ -1,5 +1,5 @@
 
-    const CrudAPI = class CrudAPI {
+    class CrudAPI {
     constructor(serverURL, endpoint, foreignKeyName = '', options = {}) {
         let _serverURL = serverURL;
         let _endpoint = endpoint;        
@@ -32,7 +32,6 @@
          * @example const requestOptions = buildRequestOptions({ method: 'GET' }, true);
          */
         const buildRequestOptions = async function (requestOptions, useAuth = false) {
-
             if (useAuth) {
                 if (authorizationOptions.storage === 'localStorage') {
                     const token = localStorage.getItem(authorizationOptions.key);
@@ -158,6 +157,7 @@
                     body: params
                 }, options.create.auth);
                 const response = await fetch(getUrl(), requestOptions);
+                console.log(response, requestOptions);
                 const data = await response.json();
                 return data;
             };
@@ -323,8 +323,6 @@
         }
         
         const api = {};
-        const controllers = apis.apis;
-        
         for (let object of apis.apis) {
             const key = Object.keys(object)[0];
             const apiInstance = CrudAPI.fromJson(object[key]);

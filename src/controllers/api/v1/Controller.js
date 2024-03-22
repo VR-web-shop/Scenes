@@ -33,7 +33,7 @@ export default {
                 { endpoint: 'material_types', model: 'MaterialType' }
             ]
         },
-        findAll: { middleware: [] },
+        findAll: { middleware: [], includes: ['Texture', 'MaterialType']},
         create: { properties: ['name', 'description', 'material_type_name'], middleware: [] },
         update: { properties: ['name', 'description', 'material_type_name'], middleware: [] },
         delete: { middleware: [] }
