@@ -16,9 +16,10 @@ const SceneStaticObject = Database.define("SceneStaticObject", {
     updatedAt: 'updated_at',
 });
 
-SceneStaticObject.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid' });
-SceneStaticObject.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid' });
-SceneStaticObject.belongsTo(Vector3D, { foreignKey: 'scale_uuid', targetKey: 'uuid' });
+SceneStaticObject.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid', as: 'Position' });
+SceneStaticObject.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid', as: 'Rotation' });
+SceneStaticObject.belongsTo(Vector3D, { foreignKey: 'scale_uuid', targetKey: 'uuid', as: 'Scale' });
+SceneStaticObject.belongsTo(Mesh, { foreignKey: 'mesh_uuid', targetKey: 'uuid', as: 'Mesh' });
 
 Vector3D.hasMany(SceneStaticObject);
 Mesh.hasMany(SceneStaticObject);

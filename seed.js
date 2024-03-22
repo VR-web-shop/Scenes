@@ -83,10 +83,8 @@ async function createDemoScene() {
     }
 
     const createBackgrounds = async () => {
-        const red = 0;
-        const green = 0;
-        const blue = 0;
-        await idempotenceCreate(SceneBackground, { red, green, blue, scene_uuid: scene.uuid });
+        const hex = '#CCCDDD';
+        await idempotenceCreate(SceneBackground, { hex, scene_uuid: scene.uuid });
     }
 
     const createLights = async () => {
@@ -208,8 +206,8 @@ async function createDemoScene() {
     }
 
     const createStaticObjects = async () => {
-        const staticChairPosition = await idempotenceCreate(Vector3D, { x: 0.0000015, y: 0, z: 0 });
-        const staticChairRotation = await idempotenceCreate(Vector3D, { x: 0.0000016, y: 0, z: 0 });
+        const staticChairPosition = await idempotenceCreate(Vector3D, { x: 0.00000215, y: 0, z: 0 });
+        const staticChairRotation = await idempotenceCreate(Vector3D, { x: 0.00000416, y: 0, z: 0 });
         const staticChairScale = await idempotenceCreate(Vector3D, { x: 1.000006, y: 1, z: 1 });
         await idempotenceCreate(MeshMaterial, {
             submesh_name: 'Demo Static Chair',
@@ -218,8 +216,8 @@ async function createDemoScene() {
         });
         await idempotenceCreate(SceneStaticObject, {
             mesh_uuid: chairMesh.uuid,
-            position_Uuid: staticChairPosition.uuid, 
-            rotation_Uuid: staticChairRotation.uuid,
+            position_uuid: staticChairPosition.uuid, 
+            rotation_uuid: staticChairRotation.uuid,
             scale_uuid: staticChairScale.uuid,
             scene_uuid: scene.uuid
         });

@@ -8,20 +8,9 @@ const SceneBackground = Database.define("SceneBackground", {
         allowNull: false,
         primaryKey: true
     },
-    red: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-        defaultValue: 0
-    },
-    green: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-        defaultValue: 0
-    },
-    blue: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-        defaultValue: 0
+    hex: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
 }, {
     underscored: true,

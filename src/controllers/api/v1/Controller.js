@@ -71,8 +71,8 @@ export default {
     SceneBackgroundController: RestController(`${prefix}scene_backgrounds`, 'uuid', SceneBackground, {
         find: { middleware: [] },
         findAll: { middleware: [] },
-        create: { properties: ['red', 'green', 'blue', 'scene_uuid'], middleware: [] },
-        update: { properties: ['red', 'green', 'blue', 'scene_uuid'], middleware: [] },
+        create: { properties: ['hex', 'scene_uuid'], middleware: [] },
+        update: { properties: ['hex', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
     }),
 
@@ -113,10 +113,10 @@ export default {
                 { endpoint: 'scene_backgrounds', model: 'SceneBackground' },
                 { endpoint: 'scene_baskets', model: 'SceneBasket' },
                 { endpoint: 'scene_cameras', model: 'SceneCamera' },
-                { endpoint: 'scene_checkouts', model: 'SceneCheckout' },
-                { endpoint: 'scene_floors', model: 'SceneFloor' },
-                { endpoint: 'scene_lights', model: 'SceneLight' },
-                { endpoint: 'scene_static_objects', model: 'SceneStaticObject' }
+                { endpoint: 'scene_checkouts', model: 'SceneCheckouts' },
+                { endpoint: 'scene_floors', model: 'SceneFloors' },
+                { endpoint: 'scene_lights', model: 'SceneLights' },
+                { endpoint: 'scene_static_objects', model: 'SceneStaticObjects' }
             ] 
         },
         findAll: { middleware: [] },
@@ -148,7 +148,11 @@ export default {
 
     SceneStaticObjectController: RestController(`${prefix}scene_static_objects`, 'uuid', SceneStaticObject, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['scene_uuid'],
+            includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Scene']
+        },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
