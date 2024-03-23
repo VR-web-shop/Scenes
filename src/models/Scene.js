@@ -4,7 +4,7 @@ import Database from './Database.js';
 import SceneBasket from './SceneBasket.js';
 import SceneCheckout from './SceneCheckout.js';
 import SceneFloor from './SceneFloor.js';
-import SceneProduct from './ProductEntity.js';
+import SceneProduct from './SceneProduct.js';
 import SceneStaticObject from './SceneStaticObject.js';
 import SceneLight from './SceneLight.js';
 import SceneCamera from './SceneCamera.js';

@@ -15,8 +15,8 @@ const SceneCamera = Database.define("SceneCamera", {
     updatedAt: 'updated_at',
 });
 
-SceneCamera.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid' });
-SceneCamera.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid' });
+SceneCamera.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid', as: 'Position' });
+SceneCamera.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid', as: 'Rotation' });
 
 Vector3D.hasMany(SceneCamera);
 

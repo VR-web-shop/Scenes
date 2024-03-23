@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize';
 import Database from './Database.js';
 import MeshMaterial from './MeshMaterial.js';
+import Material from './Material.js';
 
 const Mesh = Database.define("Mesh", {
     uuid: {
@@ -23,8 +24,12 @@ const Mesh = Database.define("Mesh", {
     updatedAt: 'updated_at',
 });
 
-Mesh.hasMany(MeshMaterial);
+Material.belongsToMany(Mesh, { through: MeshMaterial, foreignKey: 'material_uuid', as: 'Mesh' });
+MeshMaterial.belongsTo(Material, { foreignKey: 'material_uuid' });
 
-MeshMaterial.belongsTo(Mesh, { foreignKey: 'mesh_uuid', targetKey: 'uuid' });
+Mesh.belongsToMany(Material, { through: MeshMaterial, foreignKey: 'mesh_uuid', as: 'Material' });
+MeshMaterial.belongsTo(Mesh, { foreignKey: 'mesh_uuid' });
+
+Mesh.hasMany(MeshMaterial);
 
 export default Mesh;

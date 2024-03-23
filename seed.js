@@ -20,16 +20,17 @@ import SceneStaticObject from './src/models/SceneStaticObject.js';
 import SceneBasket from './src/models/SceneBasket.js';
 import SceneCheckout from './src/models/SceneCheckout.js';
 import SceneFloor from './src/models/SceneFloor.js';
-import SceneProduct from './src/models/ProductEntity.js';
+import SceneProduct from './src/models/SceneProduct.js';
 
 import SceneCamera from './src/models/SceneCamera.js';
 import SceneBackground from './src/models/SceneBackground.js';
 
 import ProductEntityState, { PRODUCT_ENTITY_STATES } from './src/models/ProductEntityState.js';
+import ProductEntity from './src/models/ProductEntity.js';
 import Product from './src/models/Product.js';
 
 async function createDefaults() {
-    await Database.sync();
+    await Database.sync({ force: true });
 
     // Create Default types and states
     for (const name of Object.values(MATERIAL_TYPE)) {
@@ -107,17 +108,19 @@ async function createDemoScene() {
             name: 'Demo Floor', 
             source: '/meshes/floor.glb' 
         });
-        await idempotenceCreate(MeshMaterial, {
-            submesh_name: 'Demo Floor',
-            material_uuid: blackFabricMaterial.uuid,
-            mesh_uuid: floorMesh.uuid
-        });
+        
         await idempotenceCreate(SceneFloor, {
             mesh_uuid: floorMesh.uuid,
             position_uuid: floorPosition.uuid, 
             rotation_uuid: floorRotation.uuid,
             scale_uuid: floorScale.uuid,
             scene_uuid: scene.uuid
+        });
+
+        await idempotenceCreate(MeshMaterial, {
+            submesh_name: 'Demo Floor',
+            material_uuid: blackFabricMaterial.uuid,
+            mesh_uuid: floorMesh.uuid
         });
     }
 
@@ -183,26 +186,33 @@ async function createDemoScene() {
     }
 
     const createProducts = async () => {
-        const chairPosition = await idempotenceCreate(Vector3D, { x: 0.0000013, y: 0, z: 0 });
-        const chairRotation = await idempotenceCreate(Vector3D, { x: 0.0000014, y: 0, z: 0 });
-        const chairChairScale = await idempotenceCreate(Vector3D, { x: 1.000005, y: 1, z: 1 });
-        await idempotenceCreate(MeshMaterial, { 
-            submesh_name: 'Demo Chair', 
-            material_uuid: blackFabricMaterial.uuid, 
-            mesh_uuid: chairMesh.uuid 
+        const productWithoutSceneProduct = await idempotenceCreate(Product, { 
+            uuid: '00000000-0000-0000-0000-000000000003',
+            name: 'Demo Chair 2',
+            description: 'A simple chair 2',
         });
-        /*
-        await idempotenceCreate(SceneProduct, {
+        const product = await idempotenceCreate(Product, { 
+            uuid: '00000000-0000-0000-0000-000000000001',
             name: 'Demo Chair',
             description: 'A simple chair',
-            thumbnail: '/images/chair.png',
+        });
+        await idempotenceCreate(ProductEntity, {
+            uuid: '00000000-0000-0000-0000-000000000002',
+            product_uuid: product.uuid,
+            product_entity_state_name: PRODUCT_ENTITY_STATES.AVAILABLE_FOR_PURCHASE
+        });
+
+        const chairPosition = await idempotenceCreate(Vector3D, { x: 0.000000613, y: 0, z: 0 });
+        const chairRotation = await idempotenceCreate(Vector3D, { x: 0.000000614, y: 0, z: 0 });
+        const chairChairScale = await idempotenceCreate(Vector3D, { x: 1.0000705, y: 1, z: 1 });
+        await idempotenceCreate(SceneProduct, {
+            product_uuid: product.uuid,
             mesh_uuid: chairMesh.uuid,
-            scene_product_state_name: PRODUCT_STATE.Available,
             position_uuid: chairPosition.uuid, 
             rotation_uuid: chairRotation.uuid,
             scale_uuid: chairChairScale.uuid,
             scene_uuid: scene.uuid
-        });*/
+        });
     }
 
     const createStaticObjects = async () => {

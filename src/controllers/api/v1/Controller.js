@@ -17,6 +17,7 @@ import SceneFloor from "../../../models/SceneFloor.js";
 import SceneLight from "../../../models/SceneLight.js";
 import SceneLightType from "../../../models/SceneLightType.js";
 import SceneStaticObject from "../../../models/SceneStaticObject.js";
+import SceneProduct from "../../../models/SceneProduct.js";
 import Texture from "../../../models/Texture.js";
 import TextureType from "../../../models/TextureType.js";
 import Vector3D from "../../../models/Vector3D.js";
@@ -33,7 +34,11 @@ export default {
                 { endpoint: 'material_types', model: 'MaterialType' }
             ]
         },
-        findAll: { middleware: [], includes: ['Texture', 'MaterialType']},
+        findAll: { 
+            middleware: [], 
+            findProperties: ['name'],
+            whereProperties: ['name'],
+            includes: ['Texture', 'MaterialType']},
         create: { properties: ['name', 'description', 'material_type_name'], middleware: [] },
         update: { properties: ['name', 'description', 'material_type_name'], middleware: [] },
         delete: { middleware: [] }
@@ -106,6 +111,14 @@ export default {
         delete: { middleware: [] }
     }),
 
+    SceneProductController: RestController(`${prefix}scene_products`, 'uuid', SceneProduct, {
+        find: { middleware: [] },
+        findAll: { middleware: [] },
+        create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
+        update: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
+        delete: { middleware: [] }
+    }),
+
     SceneController: RestController(`${prefix}scenes`, 'uuid', Scene, {
         find: { 
             middleware: [],
@@ -116,13 +129,17 @@ export default {
                 { endpoint: 'scene_checkouts', model: 'SceneCheckouts' },
                 { endpoint: 'scene_floors', model: 'SceneFloors' },
                 { endpoint: 'scene_lights', model: 'SceneLights' },
-                { endpoint: 'scene_static_objects', model: 'SceneStaticObjects' }
+                { endpoint: 'scene_static_objects', model: 'SceneStaticObjects' },
+                { endpoint: 'scene_products', model: 'SceneProducts'}
             ] 
         },
         findAll: { 
             middleware: [],
+            whereProperties: ['uuid'],
             includes: [
-                'SceneBackground', 'SceneBasket', 'SceneCamera', 'SceneCheckout', 'SceneFloor', 'SceneLight', 'SceneStaticObject'
+                'SceneBackground', 'SceneBasket', 'SceneCamera', 
+                'SceneCheckout', 'SceneFloor', 'SceneLight', 
+                'SceneStaticObject', 'SceneProduct'
             ]
         },
         create: { properties: ['name', 'description'], middleware: [] },
@@ -131,8 +148,15 @@ export default {
     }),
 
     SceneFloorController: RestController(`${prefix}scene_floors`, 'uuid', SceneFloor, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
+        find: { 
+            middleware: []
+        },
+        findAll: { 
+            middleware: [],
+            searchProperties: ['scene_uuid'],
+            whereProperties: ['scene_uuid'],
+            includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Scene']  
+        },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }

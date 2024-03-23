@@ -1,7 +1,5 @@
 import { DataTypes } from 'sequelize';
 import Database from './Database.js';
-import Mesh from './Mesh.js';
-import Vector3D from './Vector3D.js';
 import ProductEntity from './ProductEntity.js';
 
 const Product = Database.define("Product", {
@@ -25,14 +23,7 @@ const Product = Database.define("Product", {
     updatedAt: 'updated_at',
 });
 
-ProductEntity.belongsTo(Product, { foreignKey: 'product_uuid', targetKey: 'uuid' });
-Product.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid' });
-Product.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid' });
-Product.belongsTo(Vector3D, { foreignKey: 'scale_uuid', targetKey: 'uuid' });
-Product.belongsTo(Mesh, { foreignKey: 'mesh_uuid', targetKey: 'uuid' });
-
+ProductEntity.belongsTo(Product, { foreignKey: 'product_uuid', targetKey: 'uuid', as: 'ProductEntity' });
 Product.hasMany(ProductEntity);
-Mesh.hasMany(Product);
-Vector3D.hasMany(Product);
 
 export default Product;

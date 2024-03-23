@@ -16,10 +16,10 @@ const SceneFloor = Database.define("SceneFloor", {
     updatedAt: 'updated_at',
 });
 
-SceneFloor.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid' });
-SceneFloor.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid' });
-SceneFloor.belongsTo(Vector3D, { foreignKey: 'scale_uuid', targetKey: 'uuid' });
-SceneFloor.belongsTo(Mesh, { foreignKey: 'mesh_uuid', targetKey: 'uuid' });
+SceneFloor.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid', as: 'Position' });
+SceneFloor.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid', as: 'Rotation' });
+SceneFloor.belongsTo(Vector3D, { foreignKey: 'scale_uuid', targetKey: 'uuid', as: 'Scale' });
+SceneFloor.belongsTo(Mesh, { foreignKey: 'mesh_uuid', targetKey: 'uuid', as: 'Mesh' });
 
 Mesh.hasMany(SceneFloor);
 Vector3D.hasMany(SceneFloor);

@@ -291,6 +291,9 @@
             "SceneCheckoutController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_checkouts\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"position_uuid\",\"rotation_uuid\",\"scale_uuid\",\"surface_offset_uuid\",\"surface_size_uuid\",\"ui_offset_uuid\",\"ui_rotation_uuid\",\"mesh_uuid\",\"scene_uuid\"]},\"update\":{\"auth\":false,\"properties\":[\"position_uuid\",\"rotation_uuid\",\"scale_uuid\",\"surface_offset_uuid\",\"surface_size_uuid\",\"ui_offset_uuid\",\"ui_rotation_uuid\",\"mesh_uuid\",\"scene_uuid\"]},\"delete\":{\"auth\":false}}}"
         },
         {
+            "SceneProductController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_products\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"position_uuid\",\"rotation_uuid\",\"scale_uuid\",\"mesh_uuid\",\"product_uuid\",\"scene_uuid\"]},\"update\":{\"auth\":false,\"properties\":[\"position_uuid\",\"rotation_uuid\",\"scale_uuid\",\"mesh_uuid\",\"product_uuid\",\"scene_uuid\"]},\"delete\":{\"auth\":false}}}"
+        },
+        {
             "SceneController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scenes\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"name\",\"description\"]},\"update\":{\"auth\":false,\"properties\":[\"name\",\"description\"]},\"delete\":{\"auth\":false}}}"
         },
         {

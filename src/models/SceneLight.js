@@ -20,9 +20,9 @@ const SceneLight = Database.define("SceneLight", {
     updatedAt: 'updated_at',
 });
 
-SceneLight.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid' });
-SceneLight.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid' });
-SceneLight.belongsTo(SceneLightType, { foreignKey: 'scene_light_type_name', targetKey: 'name' });
+SceneLight.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid', as: 'Position' });
+SceneLight.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid', as: 'Rotation' });
+SceneLight.belongsTo(SceneLightType, { foreignKey: 'scene_light_type_name', targetKey: 'name', as: 'Type' });
 
 Vector3D.hasMany(SceneLight);
 SceneLightType.hasMany(SceneLight);
