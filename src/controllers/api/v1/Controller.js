@@ -39,8 +39,8 @@ export default {
             findProperties: ['name'],
             whereProperties: ['name'],
             includes: ['Texture', 'MaterialType']},
-        create: { properties: ['name', 'description', 'material_type_name'], middleware: [] },
-        update: { properties: ['name', 'description', 'material_type_name'], middleware: [] },
+        create: { properties: ['name', 'material_type_name'], middleware: [] },
+        update: { properties: ['name', 'material_type_name'], middleware: [] },
         delete: { middleware: [] }
     }),
 

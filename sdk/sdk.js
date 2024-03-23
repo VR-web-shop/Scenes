@@ -333,7 +333,7 @@
     const apis = {
     "apis": [
         {
-            "MaterialController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/materials\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"name\",\"description\",\"material_type_name\"]},\"update\":{\"auth\":false,\"properties\":[\"name\",\"description\",\"material_type_name\"]},\"delete\":{\"auth\":false}}}"
+            "MaterialController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/materials\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"name\",\"material_type_name\"]},\"update\":{\"auth\":false,\"properties\":[\"name\",\"material_type_name\"]},\"delete\":{\"auth\":false}}}"
         },
         {
             "MaterialTextureController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/material_textures\",\"foreignKeyName\":\"name\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"texture_uuid\",\"material_uuid\"]},\"update\":{\"auth\":false,\"properties\":[\"texture_uuid\",\"material_uuid\"]},\"delete\":{\"auth\":false}}}"
