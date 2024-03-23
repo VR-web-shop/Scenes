@@ -113,7 +113,11 @@ export default {
 
     SceneProductController: RestController(`${prefix}scene_products`, 'uuid', SceneProduct, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['scene_uuid', 'product_uuid', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'],
+            includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Product', 'Scene']
+        },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
@@ -189,7 +193,11 @@ export default {
 
     ProductController: RestController(`${prefix}products`, 'uuid', Product, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['name'],
+            includes: ['ProductEntity', 'SceneProduct']
+        },
         create: { properties: ['name', 'description'], middleware: [], serviceOnly: true  },
         update: {
             properties: ['name', 'description', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'], 

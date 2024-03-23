@@ -186,11 +186,6 @@ async function createDemoScene() {
     }
 
     const createProducts = async () => {
-        const productWithoutSceneProduct = await idempotenceCreate(Product, { 
-            uuid: '00000000-0000-0000-0000-000000000003',
-            name: 'Demo Chair 2',
-            description: 'A simple chair 2',
-        });
         const product = await idempotenceCreate(Product, { 
             uuid: '00000000-0000-0000-0000-000000000001',
             name: 'Demo Chair',
@@ -207,7 +202,6 @@ async function createDemoScene() {
         const chairChairScale = await idempotenceCreate(Vector3D, { x: 1.0000705, y: 1, z: 1 });
         await idempotenceCreate(SceneProduct, {
             product_uuid: product.uuid,
-            mesh_uuid: chairMesh.uuid,
             position_uuid: chairPosition.uuid, 
             rotation_uuid: chairRotation.uuid,
             scale_uuid: chairChairScale.uuid,
