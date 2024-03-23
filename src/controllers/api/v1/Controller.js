@@ -68,8 +68,8 @@ export default {
     MeshMaterialController: RestController(`${prefix}mesh_materials`, 'uuid', MeshMaterial, {
         find: { middleware: [] },
         findAll: { middleware: [] },
-        create: { properties: ['mesh_uuid', 'material_uuid'], middleware: [] },
-        update: { properties: ['mesh_uuid', 'material_uuid'], middleware: [] },
+        create: { properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], middleware: [] },
+        update: { properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], middleware: [] },
         delete: { middleware: [] }
     }),
 
@@ -84,8 +84,8 @@ export default {
     SceneBasketController: RestController(`${prefix}scene_baskets`, 'uuid', SceneBasket, {
         find: { middleware: [] },
         findAll: { middleware: [] },
-        create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
+        create: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
+        update: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
     }),
 
@@ -101,11 +101,11 @@ export default {
         find: { middleware: [] },
         findAll: { middleware: [] },
         create: { properties: [
-            'position_uuid', 'rotation_uuid', 'scale_uuid', 'surface_offset_uuid', 'surface_size_uuid', 
+            'name', 'surface_offset_uuid', 'surface_size_uuid', 
             'ui_offset_uuid', 'ui_rotation_uuid', 'mesh_uuid', 'scene_uuid'
         ], middleware: [] },
         update: { properties: [
-            'position_uuid', 'rotation_uuid', 'scale_uuid', 'surface_offset_uuid', 'surface_size_uuid', 
+            'name', 'surface_offset_uuid', 'surface_size_uuid', 
             'ui_offset_uuid', 'ui_rotation_uuid', 'mesh_uuid', 'scene_uuid'
         ], middleware: [] },
         delete: { middleware: [] }
@@ -118,8 +118,8 @@ export default {
             whereProperties: ['scene_uuid', 'product_uuid', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Product', 'Scene']
         },
-        create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
+        create: { properties: ['mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
+        update: { properties: ['mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
     }),
 
@@ -161,16 +161,16 @@ export default {
             whereProperties: ['scene_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Scene']  
         },
-        create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
+        create: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
+        update: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
     }),
 
     SceneLightController: RestController(`${prefix}scene_lights`, 'uuid', SceneLight, {
         find: { middleware: [] },
         findAll: { middleware: [] },
-        create: { properties: ['position_uuid', 'rotation_uuid', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
-        update: { properties: ['position_uuid', 'rotation_uuid', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
+        create: { properties: ['name', 'intensity', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
+        update: { properties: ['name', 'intensity', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
     }),
 
@@ -186,8 +186,8 @@ export default {
             whereProperties: ['scene_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Scene']
         },
-        create: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid', 'scene_uuid'], middleware: [] },
+        create: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
+        update: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
     }),
 

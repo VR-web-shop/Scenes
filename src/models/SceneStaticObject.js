@@ -10,7 +10,26 @@ const SceneStaticObject = Database.define("SceneStaticObject", {
         allowNull: false,
         primaryKey: true
     },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
+    hooks: {
+        beforeCreate: (sceneStaticObject) => {
+            if (!sceneStaticObject.position_uuid) {
+                sceneStaticObject.position_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneStaticObject.rotation_uuid) {
+                sceneStaticObject.rotation_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneStaticObject.scale_uuid) {
+                sceneStaticObject.scale_uuid = Vector3D.create().uuid;
+            }
+        }
+    },
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',

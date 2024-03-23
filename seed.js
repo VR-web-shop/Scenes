@@ -93,6 +93,7 @@ async function createDemoScene() {
         const lightRotation = await idempotenceCreate(Vector3D, { x: 0.000002, y: 0, z: 0 });
         await idempotenceCreate(SceneLight, {
             name: 'Demo Light',
+            intensity: 1,
             position_uuid: lightPosition.uuid,
             rotation_uuid: lightRotation.uuid,
             scene_light_type_name: LIGHT_TYPE.DirectionalLight,
@@ -110,6 +111,7 @@ async function createDemoScene() {
         });
         
         await idempotenceCreate(SceneFloor, {
+            name: 'Demo Floor',
             mesh_uuid: floorMesh.uuid,
             position_uuid: floorPosition.uuid, 
             rotation_uuid: floorRotation.uuid,
@@ -173,6 +175,7 @@ async function createDemoScene() {
             mesh_uuid: checkoutMesh.uuid
         });
         await idempotenceCreate(SceneCheckout, {
+            name: 'Demo Checkout',
             mesh_uuid: checkoutMesh.uuid,
             surface_offset_uuid: checkoutSurfaceOffset.uuid,
             surface_size_uuid: checkoutSurfaceSize.uuid,
@@ -201,6 +204,7 @@ async function createDemoScene() {
         const chairRotation = await idempotenceCreate(Vector3D, { x: 0.000000614, y: 0, z: 0 });
         const chairChairScale = await idempotenceCreate(Vector3D, { x: 1.0000705, y: 1, z: 1 });
         await idempotenceCreate(SceneProduct, {
+            name: 'Demo Product',
             product_uuid: product.uuid,
             position_uuid: chairPosition.uuid, 
             rotation_uuid: chairRotation.uuid,
@@ -219,6 +223,7 @@ async function createDemoScene() {
             mesh_uuid: chairMesh.uuid
         });
         await idempotenceCreate(SceneStaticObject, {
+            name: 'Demo Static Object',
             mesh_uuid: chairMesh.uuid,
             position_uuid: staticChairPosition.uuid, 
             rotation_uuid: staticChairRotation.uuid,

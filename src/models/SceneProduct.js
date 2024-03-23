@@ -12,6 +12,21 @@ const SceneProduct = Database.define("SceneProduct", {
         primaryKey: true
     },
 }, {
+    hooks: {
+        beforeCreate: (sceneProduct) => {
+            if (!sceneProduct.position_uuid) {
+                sceneProduct.position_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneProduct.rotation_uuid) {
+                sceneProduct.rotation_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneProduct.scale_uuid) {
+                sceneProduct.scale_uuid = Vector3D.create().uuid;
+            }
+        }
+    },
     paranoid: true,
     underscored: true,
     createdAt: 'created_at',

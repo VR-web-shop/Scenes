@@ -11,6 +11,29 @@ const SceneBasket = Database.define("SceneBasket", {
         primaryKey: true
     },
 }, {
+    hooks: {
+        beforeCreate: (sceneBasket) => {
+            if (!sceneBasket.position_uuid) {
+                sceneBasket.position_uuid = Vector3D.create().uuid;
+            }
+            
+            if (!sceneBasket.rotation_uuid) {
+                sceneBasket.rotation_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneBasket.scale_uuid) {
+                sceneBasket.scale_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneBasket.object_offset_uuid) {
+                sceneBasket.object_offset_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneBasket.placeholder_offset_uuid) {
+                sceneBasket.placeholder_offset_uuid = Vector3D.create().uuid;
+            }
+        }
+    },
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',

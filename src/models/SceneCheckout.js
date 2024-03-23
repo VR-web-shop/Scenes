@@ -10,7 +10,26 @@ const SceneCheckout = Database.define("SceneCheckout", {
         allowNull: false,
         primaryKey: true
     },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
+    hooks: {
+        beforeCreate: (sceneCheckout) => {
+            if (!sceneCheckout.position_uuid) {
+                sceneCheckout.position_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneCheckout.rotation_uuid) {
+                sceneCheckout.rotation_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneCheckout.scale_uuid) {
+                sceneCheckout.scale_uuid = Vector3D.create().uuid;
+            }
+        }
+    },
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',

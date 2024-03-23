@@ -10,7 +10,26 @@ const SceneFloor = Database.define("SceneFloor", {
         allowNull: false,
         primaryKey: true
     },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
+    hooks: {
+        beforeCreate: (sceneFloor) => {
+            if (!sceneFloor.position_uuid) {
+                sceneFloor.position_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneFloor.rotation_uuid) {
+                sceneFloor.rotation_uuid = Vector3D.create().uuid;
+            }
+
+            if (!sceneFloor.scale_uuid) {
+                sceneFloor.scale_uuid = Vector3D.create().uuid;
+            }
+        }
+    },
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
