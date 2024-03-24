@@ -15,15 +15,15 @@ const SceneProduct = Database.define("SceneProduct", {
     hooks: {
         beforeCreate: (sceneProduct) => {
             if (!sceneProduct.position_uuid) {
-                sceneProduct.position_uuid = Vector3D.create().uuid;
+                sceneProduct.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneProduct.rotation_uuid) {
-                sceneProduct.rotation_uuid = Vector3D.create().uuid;
+                sceneProduct.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneProduct.scale_uuid) {
-                sceneProduct.scale_uuid = Vector3D.create().uuid;
+                sceneProduct.scale_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
         }
     },

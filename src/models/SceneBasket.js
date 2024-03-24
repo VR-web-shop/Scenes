@@ -14,23 +14,23 @@ const SceneBasket = Database.define("SceneBasket", {
     hooks: {
         beforeCreate: (sceneBasket) => {
             if (!sceneBasket.position_uuid) {
-                sceneBasket.position_uuid = Vector3D.create().uuid;
+                sceneBasket.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
-            
+
             if (!sceneBasket.rotation_uuid) {
-                sceneBasket.rotation_uuid = Vector3D.create().uuid;
+                sceneBasket.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneBasket.scale_uuid) {
-                sceneBasket.scale_uuid = Vector3D.create().uuid;
+                sceneBasket.scale_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneBasket.object_offset_uuid) {
-                sceneBasket.object_offset_uuid = Vector3D.create().uuid;
+                sceneBasket.object_offset_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneBasket.placeholder_offset_uuid) {
-                sceneBasket.placeholder_offset_uuid = Vector3D.create().uuid;
+                sceneBasket.placeholder_offset_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
         }
     },

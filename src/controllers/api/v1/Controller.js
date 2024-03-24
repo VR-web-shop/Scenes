@@ -44,9 +44,12 @@ export default {
         delete: { middleware: [] }
     }),
 
-    MaterialTextureController: RestController(`${prefix}material_textures`, 'name', MaterialTexture, {
+    MaterialTextureController: RestController(`${prefix}material_textures`, 'uuid', MaterialTexture, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['texture_uuid', 'material_uuid'],
+        },
         create: { properties: ['texture_uuid', 'material_uuid'], middleware: [] },
         update: { properties: ['texture_uuid', 'material_uuid'], middleware: [] },
         delete: { middleware: [] }
@@ -169,8 +172,8 @@ export default {
     SceneLightController: RestController(`${prefix}scene_lights`, 'uuid', SceneLight, {
         find: { middleware: [] },
         findAll: { middleware: [] },
-        create: { properties: ['name', 'intensity', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
-        update: { properties: ['name', 'intensity', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
+        create: { properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
+        update: { properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
     }),
 

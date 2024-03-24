@@ -18,15 +18,20 @@ const SceneLight = Database.define("SceneLight", {
         type: DataTypes.FLOAT,
         allowNull: false
     },
+    hexColor: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: '#ffffff'
+    },
 }, {
     hooks: {
         beforeCreate: (sceneLight) => {
             if (!sceneLight.position_uuid) {
-                sceneLight.position_uuid = Vector3D.create().uuid;
+                sceneLight.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneLight.rotation_uuid) {
-                sceneLight.rotation_uuid = Vector3D.create().uuid;
+                sceneLight.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
         }
     },

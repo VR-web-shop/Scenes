@@ -18,15 +18,15 @@ const SceneFloor = Database.define("SceneFloor", {
     hooks: {
         beforeCreate: (sceneFloor) => {
             if (!sceneFloor.position_uuid) {
-                sceneFloor.position_uuid = Vector3D.create().uuid;
+                sceneFloor.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneFloor.rotation_uuid) {
-                sceneFloor.rotation_uuid = Vector3D.create().uuid;
+                sceneFloor.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneFloor.scale_uuid) {
-                sceneFloor.scale_uuid = Vector3D.create().uuid;
+                sceneFloor.scale_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
         }
     },

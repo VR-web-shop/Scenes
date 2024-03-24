@@ -18,15 +18,15 @@ const SceneCheckout = Database.define("SceneCheckout", {
     hooks: {
         beforeCreate: (sceneCheckout) => {
             if (!sceneCheckout.position_uuid) {
-                sceneCheckout.position_uuid = Vector3D.create().uuid;
+                sceneCheckout.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneCheckout.rotation_uuid) {
-                sceneCheckout.rotation_uuid = Vector3D.create().uuid;
+                sceneCheckout.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
 
             if (!sceneCheckout.scale_uuid) {
-                sceneCheckout.scale_uuid = Vector3D.create().uuid;
+                sceneCheckout.scale_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
             }
         }
     },

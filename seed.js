@@ -89,7 +89,7 @@ async function createDemoScene() {
     }
 
     const createLights = async () => {
-        const lightPosition = await idempotenceCreate(Vector3D, { x: 0.000001, y: 0, z: 0 });
+        const lightPosition = await idempotenceCreate(Vector3D, { x: 0.000001, y: 10, z: 1 });
         const lightRotation = await idempotenceCreate(Vector3D, { x: 0.000002, y: 0, z: 0 });
         await idempotenceCreate(SceneLight, {
             name: 'Demo Light',
@@ -204,7 +204,6 @@ async function createDemoScene() {
         const chairRotation = await idempotenceCreate(Vector3D, { x: 0.000000614, y: 0, z: 0 });
         const chairChairScale = await idempotenceCreate(Vector3D, { x: 1.0000705, y: 1, z: 1 });
         await idempotenceCreate(SceneProduct, {
-            name: 'Demo Product',
             product_uuid: product.uuid,
             position_uuid: chairPosition.uuid, 
             rotation_uuid: chairRotation.uuid,

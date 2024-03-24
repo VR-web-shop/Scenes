@@ -336,7 +336,7 @@
             "MaterialController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/materials\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"name\",\"material_type_name\"]},\"update\":{\"auth\":false,\"properties\":[\"name\",\"material_type_name\"]},\"delete\":{\"auth\":false}}}"
         },
         {
-            "MaterialTextureController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/material_textures\",\"foreignKeyName\":\"name\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"texture_uuid\",\"material_uuid\"]},\"update\":{\"auth\":false,\"properties\":[\"texture_uuid\",\"material_uuid\"]},\"delete\":{\"auth\":false}}}"
+            "MaterialTextureController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/material_textures\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"texture_uuid\",\"material_uuid\"]},\"update\":{\"auth\":false,\"properties\":[\"texture_uuid\",\"material_uuid\"]},\"delete\":{\"auth\":false}}}"
         },
         {
             "MaterialTypeController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/material_types\",\"foreignKeyName\":\"name\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false}}}"
@@ -369,7 +369,7 @@
             "SceneFloorController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_floors\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"name\",\"mesh_uuid\",\"scene_uuid\"]},\"update\":{\"auth\":false,\"properties\":[\"name\",\"mesh_uuid\",\"scene_uuid\"]},\"delete\":{\"auth\":false}}}"
         },
         {
-            "SceneLightController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_lights\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"name\",\"intensity\",\"scene_light_type_name\",\"scene_uuid\"]},\"update\":{\"auth\":false,\"properties\":[\"name\",\"intensity\",\"scene_light_type_name\",\"scene_uuid\"]},\"delete\":{\"auth\":false}}}"
+            "SceneLightController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_lights\",\"foreignKeyName\":\"uuid\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false},\"create\":{\"auth\":false,\"properties\":[\"name\",\"intensity\",\"hexColor\",\"scene_light_type_name\",\"scene_uuid\"]},\"update\":{\"auth\":false,\"properties\":[\"name\",\"intensity\",\"hexColor\",\"scene_light_type_name\",\"scene_uuid\"]},\"delete\":{\"auth\":false}}}"
         },
         {
             "SceneLightTypeController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_light_types\",\"foreignKeyName\":\"name\",\"options\":{\"find\":{\"auth\":false},\"findAll\":{\"auth\":false}}}"
