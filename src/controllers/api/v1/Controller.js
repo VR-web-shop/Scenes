@@ -70,7 +70,10 @@ export default {
 
     MeshMaterialController: RestController(`${prefix}mesh_materials`, 'uuid', MeshMaterial, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['mesh_uuid', 'material_uuid', 'submesh_name'], 
+        },
         create: { properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], middleware: [] },
         update: { properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], middleware: [] },
         delete: { middleware: [] }
@@ -78,7 +81,10 @@ export default {
 
     SceneBackgroundController: RestController(`${prefix}scene_backgrounds`, 'uuid', SceneBackground, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['uuid', 'scene_uuid'],
+        },
         create: { properties: ['hex', 'scene_uuid'], middleware: [] },
         update: { properties: ['hex', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
@@ -86,7 +92,10 @@ export default {
 
     SceneBasketController: RestController(`${prefix}scene_baskets`, 'uuid', SceneBasket, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['uuid', 'scene_uuid'],
+        },
         create: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
@@ -94,7 +103,10 @@ export default {
 
     SceneCameraController: RestController(`${prefix}scene_cameras`, 'uuid', SceneCamera, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['uuid', 'scene_uuid'],
+        },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
@@ -102,7 +114,10 @@ export default {
 
     SceneCheckoutController: RestController(`${prefix}scene_checkouts`, 'uuid', SceneCheckout, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['uuid', 'scene_uuid'],
+        },
         create: { properties: [
             'name', 'surface_offset_uuid', 'surface_size_uuid', 
             'ui_offset_uuid', 'ui_rotation_uuid', 'mesh_uuid', 'scene_uuid'
@@ -118,11 +133,11 @@ export default {
         find: { middleware: [] },
         findAll: { 
             middleware: [],
-            whereProperties: ['scene_uuid', 'product_uuid', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'],
+            whereProperties: ['uuid', 'state_name', 'scene_uuid', 'product_uuid', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Product', 'Scene']
         },
-        create: { properties: ['mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
+        create: { properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
+        update: { properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
     }),
 
@@ -161,7 +176,7 @@ export default {
         findAll: { 
             middleware: [],
             searchProperties: ['scene_uuid'],
-            whereProperties: ['scene_uuid'],
+            whereProperties: ['uuid', 'scene_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Scene']  
         },
         create: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
@@ -171,7 +186,10 @@ export default {
 
     SceneLightController: RestController(`${prefix}scene_lights`, 'uuid', SceneLight, {
         find: { middleware: [] },
-        findAll: { middleware: [] },
+        findAll: { 
+            middleware: [],
+            whereProperties: ['uuid', 'scene_uuid'],
+        },
         create: { properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
         update: { properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
         delete: { middleware: [] }
@@ -186,7 +204,7 @@ export default {
         find: { middleware: [] },
         findAll: { 
             middleware: [],
-            whereProperties: ['scene_uuid'],
+            whereProperties: ['uuid', 'scene_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Scene']
         },
         create: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },

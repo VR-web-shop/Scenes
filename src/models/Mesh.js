@@ -24,11 +24,11 @@ const Mesh = Database.define("Mesh", {
     updatedAt: 'updated_at',
 });
 
-Material.belongsToMany(Mesh, { through: MeshMaterial, foreignKey: 'material_uuid', as: 'Mesh' });
 MeshMaterial.belongsTo(Material, { foreignKey: 'material_uuid' });
-
-Mesh.belongsToMany(Material, { through: MeshMaterial, foreignKey: 'mesh_uuid', as: 'Material' });
 MeshMaterial.belongsTo(Mesh, { foreignKey: 'mesh_uuid' });
+
+Material.belongsToMany(Mesh, { through: MeshMaterial, foreignKey: 'material_uuid', as: 'Mesh' });
+Mesh.belongsToMany(Material, { through: MeshMaterial, foreignKey: 'mesh_uuid', as: 'Material' });
 
 Mesh.hasMany(MeshMaterial);
 

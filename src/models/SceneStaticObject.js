@@ -16,18 +16,10 @@ const SceneStaticObject = Database.define("SceneStaticObject", {
     },
 }, {
     hooks: {
-        beforeCreate: (sceneStaticObject) => {
-            if (!sceneStaticObject.position_uuid) {
-                sceneStaticObject.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
-            }
-
-            if (!sceneStaticObject.rotation_uuid) {
-                sceneStaticObject.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
-            }
-
-            if (!sceneStaticObject.scale_uuid) {
-                sceneStaticObject.scale_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
-            }
+        beforeCreate: async (sceneStaticObject) => {
+            sceneStaticObject.position_uuid = await Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+            sceneStaticObject.rotation_uuid = await Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+            sceneStaticObject.scale_uuid = await Vector3D.create({x: 0, y: 0, z: 0}).uuid;
         }
     },
     underscored: true,

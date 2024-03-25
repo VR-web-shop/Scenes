@@ -12,7 +12,7 @@ import Texture from './src/models/Texture.js';
 import TextureType, { TEXTURE_TYPE } from './src/models/TextureType.js';
 
 import Mesh from './src/models/Mesh.js';
-import MeshMaterial from './src/models/MeshMaterial.js';
+import MeshMaterial, { removeConstraints } from './src/models/MeshMaterial.js';
 
 import SceneLight from './src/models/SceneLight.js';
 import SceneLightType, { LIGHT_TYPE } from './src/models/SceneLightType.js';
@@ -21,6 +21,7 @@ import SceneBasket from './src/models/SceneBasket.js';
 import SceneCheckout from './src/models/SceneCheckout.js';
 import SceneFloor from './src/models/SceneFloor.js';
 import SceneProduct from './src/models/SceneProduct.js';
+import SceneProductState, { SCENE_PRODUCT_STATE } from './src/models/SceneProductState.js';
 
 import SceneCamera from './src/models/SceneCamera.js';
 import SceneBackground from './src/models/SceneBackground.js';
@@ -31,6 +32,7 @@ import Product from './src/models/Product.js';
 
 async function createDefaults() {
     await Database.sync({ force: true });
+    await removeConstraints();
 
     // Create Default types and states
     for (const name of Object.values(MATERIAL_TYPE)) {
@@ -44,6 +46,9 @@ async function createDefaults() {
     }
     for (const name of Object.values(PRODUCT_ENTITY_STATES)) {
         await ProductEntityState.findOrCreate({ where: { name } });
+    }
+    for (const name of Object.values(SCENE_PRODUCT_STATE)) {
+        await SceneProductState.findOrCreate({ where: { name } });
     }
 }
 
@@ -208,7 +213,17 @@ async function createDemoScene() {
             position_uuid: chairPosition.uuid, 
             rotation_uuid: chairRotation.uuid,
             scale_uuid: chairChairScale.uuid,
-            scene_uuid: scene.uuid
+            scene_uuid: scene.uuid,
+            state_name: SCENE_PRODUCT_STATE.MESH_REQUIRED
+        });
+
+        await idempotenceCreate(SceneProduct, {
+            product_uuid: product.uuid,
+            position_uuid: chairPosition.uuid, 
+            rotation_uuid: chairRotation.uuid,
+            scale_uuid: chairChairScale.uuid,
+            scene_uuid: scene.uuid,
+            state_name: SCENE_PRODUCT_STATE.MESH_REQUIRED
         });
     }
 
