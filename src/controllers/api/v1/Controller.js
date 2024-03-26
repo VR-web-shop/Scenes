@@ -93,7 +93,8 @@ export default {
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         findAll: { 
-            middleware: [MiddlewareJWT.AuthorizeJWT],
+            middleware: [],
+            whereProperties: ['uuid', 'name'],
         },
         create: { 
             properties: ['name', 'source'], 
@@ -264,7 +265,7 @@ export default {
         },
         findAll: { 
             middleware: [],
-            whereProperties: ['uuid'],
+            whereProperties: ['uuid', 'active'],
             includes: [
                 'SceneBackground', 'SceneBasket', 'SceneCamera', 
                 'SceneCheckout', 'SceneFloor', 'SceneLight', 
@@ -272,11 +273,11 @@ export default {
             ]
         },
         create: { 
-            properties: ['name', 'description'], 
+            properties: ['name', 'description', 'active'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         update: { 
-            properties: ['name', 'description'], 
+            properties: ['name', 'description', 'active'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         delete: { 
