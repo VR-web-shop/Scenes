@@ -1,8 +1,38 @@
 
+
+    /**
+     * AUTO GENERATED SDK BY METEOR (Model Express Toolkit for Efficient ORM REST-APIs)
+     * GitHub: https://github.com/VR-web-shop/METEOR
+     * Method: BuildAPISDK
+     * 
+     * Example Usage:
+     * import SDK from './sdk.js'
+     * 
+     * const sdk = SDK('http://localhost:3000')
+     * 
+     * sdk.api.ControllerName.find({ uuid: '00000000-0000-0000-0000-000000000000' })
+     * sdk.api.ControllerName.findAll({ limit: 1, page: 1 })
+     * sdk.api.ControllerName.create({ name: 'Material' })
+     * sdk.api.ControllerName.update({ uuid: '00000000-0000-0000-0000-000000000000', name: 'Material' })
+     * sdk.api.ControllerName.destroy({ uuid: '00000000-0000-0000-0000-000000000000' })
+     */
+
+    /**
+     * @class CrudAPI
+     * @classdesc A class that creates a CRUD API for a given endpoint.
+     * @example new CrudAPI('http://localhost:3000', '/api/users', 'id', {
+     *    authorization: { storage: 'localStorage', key: 'auth' }, or { storage: 'memory', token: 'YOUR_TOKEN' }
+     *    find: { auth: true },
+     *    findAll: { auth: true },
+     *    create: { auth: true, properties: ['name', 'email'] },
+     *    update: { auth: true, properties: ['name', 'email'] },
+     *    delete: { auth: true }
+     * });
+     */
     class CrudAPI {
     constructor(serverURL, endpoint, foreignKeyName = '', options = {}) {
         let _serverURL = serverURL;
-        let _endpoint = endpoint;        
+        let _endpoint = endpoint;
         let authorizationOptions = options.authorization || {};
 
         /**
@@ -68,7 +98,7 @@
          * @description Gets the constructor options for the API.
          * @returns {object} The constructor options.
          */
-        this.getConstructorOptions = function() {
+        this.getConstructorOptions = function () {
             return {
                 serverURL,
                 endpoint,
@@ -128,10 +158,10 @@
                 const { page, limit, q, include, where } = params;
                 if (!limit) {
                     throw new Error('No limit parameter provided.');
-                }                
+                }
 
                 let _endpoint = `${getUrl()}?limit=${limit}`;
-                
+
                 if (where) {
                     _endpoint += CrudAPIUtils.getWhereString(where, '&where=');
                 }
@@ -139,7 +169,7 @@
                 if (include) {
                     _endpoint += CrudAPIUtils.getIncludeString(include, '&include=');
                 }
-                
+
                 if (page) _endpoint += `&page=${page}`;
                 if (q) _endpoint += `&q=${q}`;
 
@@ -178,7 +208,7 @@
                     body
                 }, options.create.auth);
                 const response = await fetch(getUrl(), requestOptions);
-                
+
                 const data = await response.json();
                 return data;
             };
@@ -252,21 +282,23 @@
         }
     }
 
-    static buildOptions(options={}, auth=false) {
+    static buildOptions(options = {}, auth = false) {
         const apiOptions = {};
 
         if (options.authorization) apiOptions.authorization = options.authorization;
         if (options.find) apiOptions.find = { auth };
         if (options.findAll) apiOptions.findAll = { auth };
-        if (options.create) apiOptions.create = { auth, 
-            properties: options.create.properties 
+        if (options.create) apiOptions.create = {
+            auth,
+            properties: options.create.properties
         };
-        if (options.update) apiOptions.update = { auth, 
-            properties: options.update.properties, 
-            requiredProperties: options.update.requiredProperties 
+        if (options.update) apiOptions.update = {
+            auth,
+            properties: options.update.properties,
+            requiredProperties: options.update.requiredProperties
         };
         if (options.delete) apiOptions.delete = { auth };
-        
+
         return apiOptions;
     }
 
@@ -280,6 +312,12 @@
         return new CrudAPI(parsed.serverURL, parsed.endpoint, parsed.foreignKeyName, parsed.options);
     }
 }
+
+    /**
+     * @constant apis
+     * @description JSON representation of the controllers
+     * that will be used to create instances of the CrudAPI class.
+     */
     const apis = {
     "apis": [
         {
@@ -347,19 +385,32 @@
         }
     ]
 }
+
+    /**
+     * @function SDK
+     * @description Create an SDK from the server URL.
+     * @param {string} serverURL - The server URL
+     * @returns {Object} The SDK object
+     * @example SDK('http://localhost:3000')
+     */
     const SDK = function(serverURL) {    
         if (!serverURL) {
             throw new Error('serverURL is required');
         }
         
         const api = {};
+        // Convert the JSON representation of the controllers
+        // back to a CrudAPI instance
         for (let object of apis.apis) {
             const key = Object.keys(object)[0];
             const apiInstance = CrudAPI.fromJson(object[key]);
+            
+            // Use the latest server URL
             apiInstance.setServerURL(serverURL);
             api[key] = apiInstance;
         }
 
+        // Return an object with the APIs.
         return { api }
     }
 
