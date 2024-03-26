@@ -57,114 +57,200 @@ export default {
     }),
 
     MaterialTextureController: RestController(`${prefix}material_textures`, 'uuid', MaterialTexture, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['texture_uuid', 'material_uuid'],
         },
-        create: { properties: ['texture_uuid', 'material_uuid'], middleware: [] },
-        update: { properties: ['texture_uuid', 'material_uuid'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['texture_uuid', 'material_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['texture_uuid', 'material_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     MaterialTypeController: RestController(`${prefix}material_types`, 'name', MaterialType, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        findAll: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     MeshController: RestController(`${prefix}meshes`, 'uuid', Mesh, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
-        create: { properties: ['name', 'source'], middleware: [] },
-        update: { properties: ['name', 'source'], middleware: [] },
-        delete: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        findAll: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        create: { 
+            properties: ['name', 'source'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['name', 'source'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     MeshMaterialController: RestController(`${prefix}mesh_materials`, 'uuid', MeshMaterial, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['mesh_uuid', 'material_uuid', 'submesh_name'], 
         },
-        create: { properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], middleware: [] },
-        update: { properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneBackgroundController: RestController(`${prefix}scene_backgrounds`, 'uuid', SceneBackground, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['uuid', 'scene_uuid'],
         },
-        create: { properties: ['hex', 'scene_uuid'], middleware: [] },
-        update: { properties: ['hex', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['hex', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['hex', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneBasketController: RestController(`${prefix}scene_baskets`, 'uuid', SceneBasket, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['uuid', 'scene_uuid', 'state_name'],
         },
-        create: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneCameraController: RestController(`${prefix}scene_cameras`, 'uuid', SceneCamera, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['uuid', 'scene_uuid'],
         },
-        create: { properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT], 
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneCheckoutController: RestController(`${prefix}scene_checkouts`, 'uuid', SceneCheckout, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['uuid', 'scene_uuid'],
         },
-        create: { properties: [
+        create: { 
+            properties: [
             'name', 'surface_offset_uuid', 'surface_size_uuid', 
             'ui_offset_uuid', 'ui_rotation_uuid', 'mesh_uuid', 'scene_uuid'
-        ], middleware: [] },
-        update: { properties: [
+            ], 
+            middleware: [MiddlewareJWT.AuthorizeJWT], 
+        },
+        update: { 
+            properties: [
             'name', 'surface_offset_uuid', 'surface_size_uuid', 
             'ui_offset_uuid', 'ui_rotation_uuid', 'mesh_uuid', 'scene_uuid'
-        ], middleware: [] },
-        delete: { middleware: [] },
+            ], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneProductController: RestController(`${prefix}scene_products`, 'uuid', SceneProduct, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['uuid', 'state_name', 'scene_uuid', 'product_uuid', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Product', 'Scene']
         },
-        create: { properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneController: RestController(`${prefix}scenes`, 'uuid', Scene, {
         find: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             includes: [
                 { endpoint: 'scene_backgrounds', model: 'SceneBackground' },
                 { endpoint: 'scene_baskets', model: 'SceneBasket' },
@@ -185,119 +271,211 @@ export default {
                 'SceneStaticObject', 'SceneProduct'
             ]
         },
-        create: { properties: ['name', 'description'], middleware: [] },
-        update: { properties: ['name', 'description'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['name', 'description'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['name', 'description'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneFloorController: RestController(`${prefix}scene_floors`, 'uuid', SceneFloor, {
         find: { 
-            middleware: []
+            middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             searchProperties: ['scene_uuid'],
             whereProperties: ['uuid', 'scene_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Scene']  
         },
-        create: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['name', 'mesh_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['name', 'mesh_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneLightController: RestController(`${prefix}scene_lights`, 'uuid', SceneLight, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['uuid', 'scene_uuid'],
         },
-        create: { properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
-        update: { properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneLightTypeController: RestController(`${prefix}scene_light_types`, 'name', SceneLightType, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT], 
+        },
+        findAll: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     SceneStaticObjectController: RestController(`${prefix}scene_static_objects`, 'uuid', SceneStaticObject, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['uuid', 'scene_uuid'],
             includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Scene']
         },
-        create: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
-        update: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['name', 'mesh_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['name', 'mesh_uuid', 'scene_uuid'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     ProductController: RestController(`${prefix}products`, 'uuid', Product, {
-        find: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             whereProperties: ['name'],
             includes: ['ProductEntity', 'SceneProduct']
         },
-        create: { properties: ['name', 'description'], middleware: [], serviceOnly: true  },
+        create: { 
+            properties: ['name', 'description'], 
+            middleware: [],
+            serviceOnly: true  
+        },
         update: {
             properties: ['name', 'description', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'], 
-            middleware: []
+            middleware: [MiddlewareJWT.AuthorizeJWT],
         },
-        delete: { middleware: [], serviceOnly: true },
+        delete: { 
+            middleware: [],
+            serviceOnly: true 
+        },
         debug
     }),
 
     ProductEntityController: RestController(`${prefix}product_entities`, 'uuid', ProductEntity, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
-        create: { properties: ['product_uuid', 'product_entity_state_name'], middleware: [], serviceOnly: true },
-        update: { properties: ['product_uuid', 'product_entity_state_name'], middleware: [], serviceOnly: true },
-        delete: { middleware: [], serviceOnly: true }
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        findAll: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        create: { 
+            properties: ['product_uuid', 'product_entity_state_name'], 
+            middleware: [],
+            serviceOnly: true 
+        },
+        update: { 
+            properties: ['product_uuid', 'product_entity_state_name'], 
+            middleware: [],
+            serviceOnly: true 
+        },
+        delete: { 
+            middleware: [], 
+            serviceOnly: true 
+        }
     }),
 
     ProductEntityStateController: RestController(`${prefix}product_entity_states`, 'uuid', ProductEntityState, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        findAll: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     Vector3DController: RestController(`${prefix}vector3ds`, 'uuid', Vector3D, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
-        create: { properties: ['x', 'y', 'z'], middleware: [] },
-        update: { properties: ['x', 'y', 'z'], middleware: [] },
-        delete: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        findAll: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        create: { 
+            properties: ['x', 'y', 'z'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: {
+            properties: ['x', 'y', 'z'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     TextureController: RestController(`${prefix}textures`, 'uuid', Texture, {
         find: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             includes: [
                 { endpoint: 'materials', model: 'Material' },
                 { endpoint: 'texture_types', model: 'TextureType' }
             ]
         },
         findAll: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             includes: ['Material', 'TextureType']
         },
-        create: { properties: ['name', 'source', 'texture_type_name'], middleware: [] },
-        update: { properties: ['name', 'source', 'texture_type_name'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['name', 'source', 'texture_type_name'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        update: { 
+            properties: ['name', 'source', 'texture_type_name'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 
     TextureTypeController: RestController(`${prefix}texture_types`, 'name', TextureType, {
-        find: { middleware: [] },
-        findAll: { middleware: [] },
+        find: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        findAll: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
         debug
     }),
 }
