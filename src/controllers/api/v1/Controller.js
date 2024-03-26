@@ -24,6 +24,7 @@ import Vector3D from "../../../models/Vector3D.js";
 
 const prefix = '/api/v1/';
 const RestController = meteor.RestController;
+const debug = true;
 
 export default {
     MaterialController: RestController(`${prefix}materials`, 'uuid', Material, {
@@ -41,7 +42,8 @@ export default {
             includes: ['Texture', 'MaterialType']},
         create: { properties: ['name', 'material_type_name'], middleware: [] },
         update: { properties: ['name', 'material_type_name'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     MaterialTextureController: RestController(`${prefix}material_textures`, 'uuid', MaterialTexture, {
@@ -52,12 +54,14 @@ export default {
         },
         create: { properties: ['texture_uuid', 'material_uuid'], middleware: [] },
         update: { properties: ['texture_uuid', 'material_uuid'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     MaterialTypeController: RestController(`${prefix}material_types`, 'name', MaterialType, {
         find: { middleware: [] },
         findAll: { middleware: [] },
+        debug
     }),
 
     MeshController: RestController(`${prefix}meshes`, 'uuid', Mesh, {
@@ -65,7 +69,8 @@ export default {
         findAll: { middleware: [] },
         create: { properties: ['name', 'source'], middleware: [] },
         update: { properties: ['name', 'source'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     MeshMaterialController: RestController(`${prefix}mesh_materials`, 'uuid', MeshMaterial, {
@@ -76,7 +81,8 @@ export default {
         },
         create: { properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], middleware: [] },
         update: { properties: ['mesh_uuid', 'material_uuid', 'submesh_name'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneBackgroundController: RestController(`${prefix}scene_backgrounds`, 'uuid', SceneBackground, {
@@ -87,7 +93,8 @@ export default {
         },
         create: { properties: ['hex', 'scene_uuid'], middleware: [] },
         update: { properties: ['hex', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneBasketController: RestController(`${prefix}scene_baskets`, 'uuid', SceneBasket, {
@@ -98,7 +105,8 @@ export default {
         },
         create: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneCameraController: RestController(`${prefix}scene_cameras`, 'uuid', SceneCamera, {
@@ -109,7 +117,8 @@ export default {
         },
         create: { properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['position_uuid', 'rotation_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneCheckoutController: RestController(`${prefix}scene_checkouts`, 'uuid', SceneCheckout, {
@@ -126,7 +135,8 @@ export default {
             'name', 'surface_offset_uuid', 'surface_size_uuid', 
             'ui_offset_uuid', 'ui_rotation_uuid', 'mesh_uuid', 'scene_uuid'
         ], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneProductController: RestController(`${prefix}scene_products`, 'uuid', SceneProduct, {
@@ -138,7 +148,8 @@ export default {
         },
         create: { properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneController: RestController(`${prefix}scenes`, 'uuid', Scene, {
@@ -166,7 +177,8 @@ export default {
         },
         create: { properties: ['name', 'description'], middleware: [] },
         update: { properties: ['name', 'description'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneFloorController: RestController(`${prefix}scene_floors`, 'uuid', SceneFloor, {
@@ -181,7 +193,8 @@ export default {
         },
         create: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneLightController: RestController(`${prefix}scene_lights`, 'uuid', SceneLight, {
@@ -192,12 +205,14 @@ export default {
         },
         create: { properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
         update: { properties: ['name', 'intensity', 'hexColor', 'scene_light_type_name', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     SceneLightTypeController: RestController(`${prefix}scene_light_types`, 'name', SceneLightType, {
         find: { middleware: [] },
         findAll: { middleware: [] },
+        debug
     }),
 
     SceneStaticObjectController: RestController(`${prefix}scene_static_objects`, 'uuid', SceneStaticObject, {
@@ -209,7 +224,8 @@ export default {
         },
         create: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['name', 'mesh_uuid', 'scene_uuid'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     ProductController: RestController(`${prefix}products`, 'uuid', Product, {
@@ -224,7 +240,8 @@ export default {
             properties: ['name', 'description', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'], 
             middleware: []
         },
-        delete: { middleware: [], serviceOnly: true }
+        delete: { middleware: [], serviceOnly: true },
+        debug
     }),
 
     ProductEntityController: RestController(`${prefix}product_entities`, 'uuid', ProductEntity, {
@@ -238,6 +255,7 @@ export default {
     ProductEntityStateController: RestController(`${prefix}product_entity_states`, 'uuid', ProductEntityState, {
         find: { middleware: [] },
         findAll: { middleware: [] },
+        debug
     }),
 
     Vector3DController: RestController(`${prefix}vector3ds`, 'uuid', Vector3D, {
@@ -245,7 +263,8 @@ export default {
         findAll: { middleware: [] },
         create: { properties: ['x', 'y', 'z'], middleware: [] },
         update: { properties: ['x', 'y', 'z'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     TextureController: RestController(`${prefix}textures`, 'uuid', Texture, {
@@ -262,11 +281,13 @@ export default {
         },
         create: { properties: ['name', 'source', 'texture_type_name'], middleware: [] },
         update: { properties: ['name', 'source', 'texture_type_name'], middleware: [] },
-        delete: { middleware: [] }
+        delete: { middleware: [] },
+        debug
     }),
 
     TextureTypeController: RestController(`${prefix}texture_types`, 'name', TextureType, {
         find: { middleware: [] },
         findAll: { middleware: [] },
+        debug
     }),
 }

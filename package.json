@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "start": "set DEBUG=express:* & nodemon index.js",
+    "start": "nodemon index.js",
     "seed": "node seed.js",
     "bundle_api": "node meteor.config.mjs",
     "bundle_sdk": "rollup --config rollup.config.mjs",
@@ -26,7 +26,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vr-web-shop/meteor": "1.0.35",
+    "@vr-web-shop/meteor": "1.0.48",
     "nodemon": "^3.1.0",
     "rollup": "^4.13.0"
   },
