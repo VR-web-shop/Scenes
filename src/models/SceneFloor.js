@@ -26,7 +26,7 @@ const SceneFloor = Database.define("SceneFloor", {
                 sceneFloor.rotation_uuid = rotation.dataValues.uuid;
             }
             if (!sceneFloor.scale_uuid) {
-                const scale = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                const scale = await Vector3D.create({ x: 1, y: 1, z: 1 });
                 sceneFloor.scale_uuid = scale.dataValues.uuid;
             }
         }

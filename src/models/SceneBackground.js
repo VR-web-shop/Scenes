@@ -10,6 +10,7 @@ const SceneBackground = Database.define("SceneBackground", {
     },
     hex: {
         type: DataTypes.STRING,
+        defaultValue: '#ffffff',
         allowNull: false
     },
 }, {

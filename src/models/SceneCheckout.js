@@ -26,7 +26,7 @@ const SceneCheckout = Database.define("SceneCheckout", {
                 sceneCheckout.rotation_uuid = rotation.dataValues.uuid;
             }
             if (!sceneCheckout.scale_uuid) {
-                const scale = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                const scale = await Vector3D.create({ x: 1, y: 1, z: 1 });
                 sceneCheckout.scale_uuid = scale.dataValues.uuid;
             }
             if (!sceneCheckout.surface_offset_uuid) {
@@ -34,7 +34,7 @@ const SceneCheckout = Database.define("SceneCheckout", {
                 sceneCheckout.surface_offset_uuid = surfaceOffset.dataValues.uuid;
             }
             if (!sceneCheckout.surface_size_uuid) {
-                const surfaceSize = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                const surfaceSize = await Vector3D.create({ x: 1, y: 1, z: 1 });
                 sceneCheckout.surface_size_uuid = surfaceSize.dataValues.uuid;
             }
             if (!sceneCheckout.ui_offset_uuid) {

@@ -1,4 +1,5 @@
 import meteor from "@vr-web-shop/meteor";
+import MiddlewareJWT from "../../../jwt/MiddlewareJWT.js";
 
 import Material from "../../../models/Material.js";
 import MaterialTexture from "../../../models/MaterialTexture.js";
@@ -29,21 +30,29 @@ const debug = false;
 export default {
     MaterialController: RestController(`${prefix}materials`, 'uuid', Material, {
         find: { 
-            middleware: [],
+            middleware: [MiddlewareJWT.AuthorizeJWT],
             includes: [
                 { endpoint: 'textures', model: 'Texture' },
                 { endpoint: 'material_types', model: 'MaterialType' }
             ]
         },
         findAll: { 
-            middleware: [], 
+            middleware: [MiddlewareJWT.AuthorizeJWT], 
             findProperties: ['name'],
             whereProperties: ['name'],
             includes: ['Texture', 'MaterialType']
         },
-        create: { properties: ['name', 'material_type_name'], middleware: [] },
-        update: { properties: ['name', 'material_type_name'], middleware: [] },
-        delete: { middleware: [] },
+        create: { 
+            properties: ['name', 'material_type_name'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT]
+        },
+        update: { 
+            properties: ['name', 'material_type_name'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT]
+        },
+        delete: { 
+            middleware: [MiddlewareJWT.AuthorizeJWT]
+        },
         debug
     }),
 
@@ -102,7 +111,7 @@ export default {
         find: { middleware: [] },
         findAll: { 
             middleware: [],
-            whereProperties: ['uuid', 'scene_uuid'],
+            whereProperties: ['uuid', 'scene_uuid', 'state_name'],
         },
         create: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },
         update: { properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], middleware: [] },

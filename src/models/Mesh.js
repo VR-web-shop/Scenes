@@ -19,6 +19,11 @@ const Mesh = Database.define("Mesh", {
         allowNull: false
     },
 }, {
+    hooks: {
+        beforeDestroy: async (mesh) => {
+            await MeshMaterial.destroy({ where: { mesh_uuid: mesh.uuid } });
+        }
+    },
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',

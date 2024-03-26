@@ -16,6 +16,11 @@ const Material = Database.define("Material", {
         allowNull: false
     },
 }, {
+    hooks: {
+        beforeDestroy: async (material) => {
+            await MaterialTexture.destroy({ where: { material_uuid: material.uuid } });
+        }
+    },
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',

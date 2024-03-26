@@ -18,6 +18,7 @@ import SceneLight from './src/models/SceneLight.js';
 import SceneLightType, { LIGHT_TYPE } from './src/models/SceneLightType.js';
 import SceneStaticObject from './src/models/SceneStaticObject.js';
 import SceneBasket from './src/models/SceneBasket.js';
+import SceneBasketState, { SCENE_BASKET_STATE } from './src/models/SceneBasketState.js';
 import SceneCheckout from './src/models/SceneCheckout.js';
 import SceneFloor from './src/models/SceneFloor.js';
 import SceneProduct from './src/models/SceneProduct.js';
@@ -50,16 +51,18 @@ async function createDefaults() {
     for (const name of Object.values(SCENE_PRODUCT_STATE)) {
         await SceneProductState.findOrCreate({ where: { name } });
     }
+    for (const name of Object.values(SCENE_BASKET_STATE)) {
+        await SceneBasketState.findOrCreate({ where: { name } });
+    }
 }
 
 async function idempotenceCreate (model, data) {
-    const dataValues = (await model.findOrCreate({ where: data }))[0].dataValues;
+    const dataValues = (await model.create(data)).dataValues;
     return dataValues;
 }
 
 async function createDemoScene() {
     const scene = await idempotenceCreate(Scene, { name: 'Demo Scene' })
-    const sceneCamera = await idempotenceCreate(SceneCamera, { SceneUuid: scene.uuid });
     const blackFabricTextureMap = await idempotenceCreate(Texture, { 
         name: 'Demo Black Fabric Map', 
         source: '/textures/black_fabric_basecolor.png', 
@@ -77,17 +80,15 @@ async function createDemoScene() {
         name: 'Demo Chair', 
         source: '/meshes/chair.glb' 
     });
+    const basketMesh = await idempotenceCreate(Mesh, { 
+        name: 'Demo Basket', 
+        source: '/meshes/basket.glb' 
+    });
+    const placeholderMesh = await idempotenceCreate(Mesh, { 
+        name: 'Demo Basket Placeholder', 
+        source: '/meshes/placeholder.glb' 
+    });
 
-    const createCameras = async () => {
-        const sceneCamera = await idempotenceCreate(SceneCamera, {
-            scene_uuid: scene.uuid
-        });
-    }
-
-    const createBackgrounds = async () => {
-        const hex = '#CCCDDD';
-        await idempotenceCreate(SceneBackground, { hex, scene_uuid: scene.uuid });
-    }
 
     const createLights = async () => {
         await idempotenceCreate(SceneLight, {
@@ -114,27 +115,6 @@ async function createDemoScene() {
             submesh_name: 'Demo Floor',
             material_uuid: blackFabricMaterial.uuid,
             mesh_uuid: floorMesh.uuid
-        });
-    }
-
-    const createBaskets = async () => {
-        const basketMesh = await idempotenceCreate(Mesh, { 
-            name: 'Demo Basket', 
-            source: '/meshes/basket.glb' 
-        });
-        const placeholderMesh = await idempotenceCreate(Mesh, { 
-            name: 'Demo Basket Placeholder', 
-            source: '/meshes/placeholder.glb' 
-        });
-        await idempotenceCreate(MeshMaterial, {
-            submesh_name: 'Demo Basket',
-            material_uuid: blackFabricMaterial.uuid,
-            mesh_uuid: basketMesh.uuid 
-        });
-        await idempotenceCreate(SceneBasket, {
-            object_uuid: basketMesh.uuid, 
-            placeholder_uuid: placeholderMesh.uuid, 
-            scene_uuid: scene.uuid
         });
     }
 
@@ -193,11 +173,8 @@ async function createDemoScene() {
         });
     }
 
-    await createCameras();
-    await createBackgrounds();
     await createLights();
     await createFloors();
-    await createBaskets();
     await createCheckouts();
     await createProducts();
     await createStaticObjects();

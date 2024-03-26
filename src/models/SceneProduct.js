@@ -24,16 +24,18 @@ const SceneProduct = Database.define("SceneProduct", {
                 sceneProduct.rotation_uuid = rotation.dataValues.uuid;
             }
             if (!sceneProduct.scale_uuid) {
-                const scale = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                const scale = await Vector3D.create({ x: 1, y: 1, z: 1 });
                 sceneProduct.scale_uuid = scale.dataValues.uuid;
             }
-
             if (!sceneProduct.mesh_uuid) {
                 sceneProduct.state_name = SCENE_PRODUCT_STATE.MESH_REQUIRED;
             }
         },
         beforeUpdate: (sceneProduct) => {
-            if (sceneProduct.mesh_uuid && sceneProduct.state_name !== SCENE_PRODUCT_STATE.READY_FOR_SALE) {
+            if (!sceneProduct.mesh_uuid) {
+                sceneProduct.state_name = SCENE_PRODUCT_STATE.MESH_REQUIRED;
+            } 
+            else if (sceneProduct.state_name !== SCENE_PRODUCT_STATE.READY_FOR_SALE) {
                 sceneProduct.state_name = SCENE_PRODUCT_STATE.READY_FOR_SALE;
             }
         }

@@ -21,6 +21,13 @@ const Scene = Database.define("Scene", {
         allowNull: false,
     },
 }, {
+    hooks: {
+        afterCreate: async (scene) => {
+            await SceneBasket.create({ scene_uuid: scene.uuid });
+            await SceneCamera.create({ scene_uuid: scene.uuid });
+            await SceneBackground.create({ scene_uuid: scene.uuid });
+        }
+    },
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
