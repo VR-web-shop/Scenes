@@ -16,17 +16,34 @@ const SceneCheckout = Database.define("SceneCheckout", {
     },
 }, {
     hooks: {
-        beforeCreate: (sceneCheckout) => {
+        beforeCreate: async (sceneCheckout) => {
             if (!sceneCheckout.position_uuid) {
-                sceneCheckout.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const position = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneCheckout.position_uuid = position.dataValues.uuid;
             }
-
             if (!sceneCheckout.rotation_uuid) {
-                sceneCheckout.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const rotation = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneCheckout.rotation_uuid = rotation.dataValues.uuid;
             }
-
             if (!sceneCheckout.scale_uuid) {
-                sceneCheckout.scale_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const scale = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneCheckout.scale_uuid = scale.dataValues.uuid;
+            }
+            if (!sceneCheckout.surface_offset_uuid) {
+                const surfaceOffset = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneCheckout.surface_offset_uuid = surfaceOffset.dataValues.uuid;
+            }
+            if (!sceneCheckout.surface_size_uuid) {
+                const surfaceSize = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneCheckout.surface_size_uuid = surfaceSize.dataValues.uuid;
+            }
+            if (!sceneCheckout.ui_offset_uuid) {
+                const uiOffset = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneCheckout.ui_offset_uuid = uiOffset.dataValues.uuid;
+            }
+            if (!sceneCheckout.ui_rotation_uuid) {
+                const uiRotation = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneCheckout.ui_rotation_uuid = uiRotation.dataValues.uuid;
             }
         }
     },

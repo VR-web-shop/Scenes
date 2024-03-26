@@ -24,7 +24,7 @@ import Vector3D from "../../../models/Vector3D.js";
 
 const prefix = '/api/v1/';
 const RestController = meteor.RestController;
-const debug = true;
+const debug = false;
 
 export default {
     MaterialController: RestController(`${prefix}materials`, 'uuid', Material, {
@@ -39,7 +39,8 @@ export default {
             middleware: [], 
             findProperties: ['name'],
             whereProperties: ['name'],
-            includes: ['Texture', 'MaterialType']},
+            includes: ['Texture', 'MaterialType']
+        },
         create: { properties: ['name', 'material_type_name'], middleware: [] },
         update: { properties: ['name', 'material_type_name'], middleware: [] },
         delete: { middleware: [] },

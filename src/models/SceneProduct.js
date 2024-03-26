@@ -14,17 +14,18 @@ const SceneProduct = Database.define("SceneProduct", {
     },
 }, {
     hooks: {
-        beforeCreate: (sceneProduct) => {
+        beforeCreate: async (sceneProduct) => {
             if (!sceneProduct.position_uuid) {
-                sceneProduct.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const position = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneProduct.position_uuid = position.dataValues.uuid;
             }
-
             if (!sceneProduct.rotation_uuid) {
-                sceneProduct.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const rotation = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneProduct.rotation_uuid = rotation.dataValues.uuid;
             }
-
             if (!sceneProduct.scale_uuid) {
-                sceneProduct.scale_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const scale = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneProduct.scale_uuid = scale.dataValues.uuid;
             }
 
             if (!sceneProduct.mesh_uuid) {

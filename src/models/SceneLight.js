@@ -25,13 +25,14 @@ const SceneLight = Database.define("SceneLight", {
     },
 }, {
     hooks: {
-        beforeCreate: (sceneLight) => {
+        beforeCreate: async (sceneLight) => {
             if (!sceneLight.position_uuid) {
-                sceneLight.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const position = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneLight.position_uuid = position.dataValues.uuid;
             }
-
             if (!sceneLight.rotation_uuid) {
-                sceneLight.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const rotation = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneLight.rotation_uuid = rotation.dataValues.uuid;
             }
         }
     },

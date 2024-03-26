@@ -12,25 +12,26 @@ const SceneBasket = Database.define("SceneBasket", {
     },
 }, {
     hooks: {
-        beforeCreate: (sceneBasket) => {
+        beforeCreate: async (sceneBasket) => {
             if (!sceneBasket.position_uuid) {
-                sceneBasket.position_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const position = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneBasket.position_uuid = position.dataValues.uuid;
             }
-
             if (!sceneBasket.rotation_uuid) {
-                sceneBasket.rotation_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const rotation = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneBasket.rotation_uuid = rotation.dataValues.uuid;
             }
-
             if (!sceneBasket.scale_uuid) {
-                sceneBasket.scale_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const scale = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneBasket.scale_uuid = scale.dataValues.uuid;
             }
-
             if (!sceneBasket.object_offset_uuid) {
-                sceneBasket.object_offset_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const objectOffset = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneBasket.object_offset_uuid = objectOffset.dataValues.uuid;
             }
-
             if (!sceneBasket.placeholder_offset_uuid) {
-                sceneBasket.placeholder_offset_uuid = Vector3D.create({x: 0, y: 0, z: 0}).uuid;
+                const placeholderOffset = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneBasket.placeholder_offset_uuid = placeholderOffset.dataValues.uuid;
             }
         }
     },
