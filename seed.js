@@ -23,6 +23,7 @@ import SceneCheckout from './src/models/SceneCheckout.js';
 import SceneFloor from './src/models/SceneFloor.js';
 import SceneProduct from './src/models/SceneProduct.js';
 import SceneProductState, { SCENE_PRODUCT_STATE } from './src/models/SceneProductState.js';
+import SceneCharacter from './src/models/SceneCharacter.js';
 
 import SceneCamera from './src/models/SceneCamera.js';
 import SceneBackground from './src/models/SceneBackground.js';
@@ -132,31 +133,6 @@ async function createDemoScene() {
             name: 'Demo Checkout',
             mesh_uuid: checkoutMesh.uuid,
             scene_uuid: scene.uuid
-        });
-    }
-
-    const createProducts = async () => {
-        const product = await idempotenceCreate(Product, { 
-            uuid: '00000000-0000-0000-0000-000000000001',
-            name: 'Demo Chair',
-            description: 'A simple chair',
-        });
-        await idempotenceCreate(ProductEntity, {
-            uuid: '00000000-0000-0000-0000-000000000002',
-            product_uuid: product.uuid,
-            product_entity_state_name: PRODUCT_ENTITY_STATES.AVAILABLE_FOR_PURCHASE
-        });
-
-        await idempotenceCreate(SceneProduct, {
-            product_uuid: product.uuid,
-            scene_uuid: scene.uuid,
-            state_name: SCENE_PRODUCT_STATE.MESH_REQUIRED
-        });
-
-        await idempotenceCreate(SceneProduct, {
-            product_uuid: product.uuid,
-            scene_uuid: scene.uuid,
-            state_name: SCENE_PRODUCT_STATE.MESH_REQUIRED
         });
     }
 

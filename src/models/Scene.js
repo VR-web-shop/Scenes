@@ -9,6 +9,7 @@ import SceneStaticObject from './SceneStaticObject.js';
 import SceneLight from './SceneLight.js';
 import SceneCamera from './SceneCamera.js';
 import SceneBackground from './SceneBackground.js';
+import SceneCharacter from './SceneCharacter.js';
 
 const Scene = Database.define("Scene", {
     uuid: {
@@ -31,6 +32,7 @@ const Scene = Database.define("Scene", {
             await SceneBasket.create({ scene_uuid: scene.uuid });
             await SceneCamera.create({ scene_uuid: scene.uuid });
             await SceneBackground.create({ scene_uuid: scene.uuid });
+            await SceneCharacter.create({ scene_uuid: scene.uuid });
         },
         afterUpdate: async (scene) => {
             if (scene.active) {
@@ -48,6 +50,7 @@ const Scene = Database.define("Scene", {
     updatedAt: 'updated_at',
 });
 
+Scene.hasOne(SceneCharacter);
 Scene.hasOne(SceneBasket);
 Scene.hasOne(SceneCamera);
 Scene.hasOne(SceneBackground);
@@ -65,5 +68,6 @@ SceneStaticObject.belongsTo(Scene, { foreignKey: 'scene_uuid', targetKey: 'uuid'
 SceneLight.belongsTo(Scene, { foreignKey: 'scene_uuid', targetKey: 'uuid' });
 SceneCamera.belongsTo(Scene, { foreignKey: 'scene_uuid', targetKey: 'uuid' });
 SceneBackground.belongsTo(Scene, { foreignKey: 'scene_uuid', targetKey: 'uuid' });
+SceneCharacter.belongsTo(Scene, { foreignKey: 'scene_uuid', targetKey: 'uuid' });
 
 export default Scene;

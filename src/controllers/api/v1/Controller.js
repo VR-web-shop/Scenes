@@ -19,6 +19,7 @@ import SceneLight from "../../../models/SceneLight.js";
 import SceneLightType from "../../../models/SceneLightType.js";
 import SceneStaticObject from "../../../models/SceneStaticObject.js";
 import SceneProduct from "../../../models/SceneProduct.js";
+import SceneCharacter from "../../../models/SceneCharacter.js";
 import Texture from "../../../models/Texture.js";
 import TextureType from "../../../models/TextureType.js";
 import Vector3D from "../../../models/Vector3D.js";
@@ -154,6 +155,17 @@ export default {
         debug
     }),
 
+    SceneCharacterController: RestController(`${prefix}scene_characters`, 'uuid', SceneCharacter, {
+        find: {
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        findAll: {
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+            whereProperties: ['uuid', 'scene_uuid'],
+        },
+        debug
+    }),
+
     SceneBasketController: RestController(`${prefix}scene_baskets`, 'uuid', SceneBasket, {
         find: { 
             middleware: [MiddlewareJWT.AuthorizeJWT],
@@ -163,11 +175,11 @@ export default {
             whereProperties: ['uuid', 'scene_uuid', 'state_name'],
         },
         create: { 
-            properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], 
+            properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid', 'insert_area_offset_uuid', 'insert_area_size_uuid'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         update: { 
-            properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid'], 
+            properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid', 'insert_area_offset_uuid', 'insert_area_size_uuid'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         delete: { 
@@ -395,7 +407,9 @@ export default {
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         findAll: { 
-            middleware: [MiddlewareJWT.AuthorizeJWT],
+            middleware: [],
+            whereProperties: ['uuid', 'product_uuid', 'product_entity_state_name'],
+            includes: ['Product', 'ProductEntityState']
         },
         create: { 
             properties: ['product_uuid', 'product_entity_state_name'], 
