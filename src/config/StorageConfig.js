@@ -32,7 +32,8 @@ async function uploadFile(buffer, keyName) {
   const params = {
     Bucket: S3_BUCKET_NAME,
     Key: keyName,
-    Body: buffer
+    Body: buffer,
+    ACL: 'public-read'
   };
 
   const command = new PutObjectCommand(params);
