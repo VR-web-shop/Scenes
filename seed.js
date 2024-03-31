@@ -62,6 +62,8 @@ async function idempotenceCreate (model, data) {
     return dataValues;
 }
 
+const { S3_CDN_URL } = process.env;
+
 async function createDemoScene() {
     const scene = await idempotenceCreate(Scene, { 
         name: 'Demo Scene',
@@ -69,8 +71,7 @@ async function createDemoScene() {
     })
     const blackFabricTextureMap = await idempotenceCreate(Texture, { 
         name: 'Demo Black Fabric Map', 
-        source: 'textures/black_fabric_basecolor.png',
-        s3_key: '/assets/textures/black_fabric_basecolor.png', 
+        source: S3_CDN_URL + '/assets/textures/black_fabric_basecolor.png', 
         texture_type_name: TEXTURE_TYPE.Map 
     });
     const blackFabricMaterial = await idempotenceCreate(Material, {
@@ -83,15 +84,15 @@ async function createDemoScene() {
     });
     const chairMesh = await idempotenceCreate(Mesh, { 
         name: 'Demo Chair', 
-        source: '/meshes/chair.glb' 
+        source: S3_CDN_URL + '/assets/meshes/chair.glb' 
     });
     const basketMesh = await idempotenceCreate(Mesh, { 
         name: 'Demo Basket', 
-        source: '/meshes/basket.glb' 
+        source: S3_CDN_URL + '/assets/meshes/basket.glb' 
     });
     const placeholderMesh = await idempotenceCreate(Mesh, { 
         name: 'Demo Basket Placeholder', 
-        source: '/meshes/placeholder.glb' 
+        source: S3_CDN_URL + '/assets/meshes/placeholder.glb' 
     });
 
 
@@ -107,7 +108,7 @@ async function createDemoScene() {
     const createFloors = async () => {
         const floorMesh = await idempotenceCreate(Mesh, { 
             name: 'Demo Floor', 
-            source: '/meshes/floor.glb' 
+            source: S3_CDN_URL + '/assets/meshes/floor.glb' 
         });
         
         await idempotenceCreate(SceneFloor, {
@@ -126,7 +127,7 @@ async function createDemoScene() {
     const createCheckouts = async () => {
         const checkoutMesh = await idempotenceCreate(Mesh, {
             name: 'Demo Checkout', 
-            source: '/meshes/checkout.glb'
+            source: S3_CDN_URL + '/assets/meshes/checkout.glb'
         });
         await idempotenceCreate(MeshMaterial, {
             submesh_name: 'Demo Checkout',

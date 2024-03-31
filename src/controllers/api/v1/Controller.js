@@ -27,9 +27,10 @@ import TextureType from "../../../models/TextureType.js";
 import Vector3D from "../../../models/Vector3D.js";
 
 const prefix = '/api/v1/';
-const upload = multer({ dest: 'uploads/' })
+
+const upload = multer({ storage: multer.memoryStorage() })
 const RestController = meteor.RestController;
-const debug = false;
+const debug = true;
 
 export default {
     MaterialController: RestController(`${prefix}materials`, 'uuid', Material, {
@@ -475,40 +476,25 @@ export default {
         },
         create: { 
             properties: ['name', 'texture_type_name'],
-            middleware: [MiddlewareJWT.AuthorizeJWT, upload.single('file')],
-            /**
-             * Meteor doesn't support file uploads, so we need to implement
-             * a custom method to handle file uploads.
-             */
-            customMethod: async (req, res, params) => {
-                const file = req.file;
-                const { name, texture_type_name } = params;
-                const key = `textures/${file.originalname}`;
-                const filePath = file.path;
-                const result = await StorageConfig.uploadFile(filePath, key);
-                const texture = await Texture.create({ name, texture_type_name, source: result.Location, s3_key: key });
-                return texture;
-            }
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+            upload: {
+                fields: ['source'],
+                storageService: async (file, req) => {
+                    const key = `assets/textures/${file.originalname}`;
+                    return await StorageConfig.uploadFile(file.buffer, key);
+                }
+            },
         },
         update: { 
             properties: ['name', 'texture_type_name'], 
-            middleware: [MiddlewareJWT.AuthorizeJWT, upload.single('file')],
-            /**
-             * Meteor doesn't support file uploads, so we need to implement
-             * a custom method to handle file uploads.
-             */
-            customMethod: async (req, res, params) => {
-                const file = req.file;
-                const { uuid, name, texture_type_name } = params;
-                const texture = await Texture.findByPk(uuid);
-                if (!texture) {
-                    res.status(404).send({ message: `Texture with uuid ${uuid} not found` });
+            middleware: [MiddlewareJWT.AuthorizeJWT],
+            upload: {
+                fields: ['source'],
+                storageService: async (file, req) => {
+                    const key = `assets/textures/${file.originalname}`;
+                    return await StorageConfig.uploadFile(file.buffer, key);
                 }
-                const key = `textures/${file.originalname}`;
-                const filePath = file.path;
-
-                return texture;
-            }
+            },
         },
         delete: { 
             middleware: [MiddlewareJWT.AuthorizeJWT],

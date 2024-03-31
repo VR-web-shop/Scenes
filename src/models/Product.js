@@ -16,6 +16,10 @@ const Product = Database.define("Product", {
         type: DataTypes.STRING,
         allowNull: false
     },
+    thumbnail: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
     paranoid: true,
     underscored: true,
