@@ -1,5 +1,7 @@
 import meteor from "@vr-web-shop/meteor";
+import multer from "multer";
 import MiddlewareJWT from "../../../jwt/MiddlewareJWT.js";
+import StorageConfig from "../../../config/StorageConfig.js";
 
 import Material from "../../../models/Material.js";
 import MaterialTexture from "../../../models/MaterialTexture.js";
@@ -25,6 +27,7 @@ import TextureType from "../../../models/TextureType.js";
 import Vector3D from "../../../models/Vector3D.js";
 
 const prefix = '/api/v1/';
+const upload = multer({ dest: 'uploads/' })
 const RestController = meteor.RestController;
 const debug = false;
 
@@ -175,11 +178,11 @@ export default {
             whereProperties: ['uuid', 'scene_uuid', 'state_name'],
         },
         create: { 
-            properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid', 'insert_area_offset_uuid', 'insert_area_size_uuid'], 
+            properties: ['object_offset_uuid', 'pocket_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid', 'insert_area_offset_uuid', 'insert_area_size_uuid'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         update: { 
-            properties: ['object_offset_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid', 'insert_area_offset_uuid', 'insert_area_size_uuid'], 
+            properties: ['object_offset_uuid', 'pocket_uuid', 'object_uuid', 'placeholder_uuid', 'scene_uuid', 'insert_area_offset_uuid', 'insert_area_size_uuid'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         delete: { 
@@ -471,12 +474,41 @@ export default {
             includes: ['Material', 'TextureType']
         },
         create: { 
-            properties: ['name', 'source', 'texture_type_name'], 
-            middleware: [MiddlewareJWT.AuthorizeJWT],
+            properties: ['name', 'texture_type_name'],
+            middleware: [MiddlewareJWT.AuthorizeJWT, upload.single('file')],
+            /**
+             * Meteor doesn't support file uploads, so we need to implement
+             * a custom method to handle file uploads.
+             */
+            customMethod: async (req, res, params) => {
+                const file = req.file;
+                const { name, texture_type_name } = params;
+                const key = `textures/${file.originalname}`;
+                const filePath = file.path;
+                const result = await StorageConfig.uploadFile(filePath, key);
+                const texture = await Texture.create({ name, texture_type_name, source: result.Location, s3_key: key });
+                return texture;
+            }
         },
         update: { 
-            properties: ['name', 'source', 'texture_type_name'], 
-            middleware: [MiddlewareJWT.AuthorizeJWT],
+            properties: ['name', 'texture_type_name'], 
+            middleware: [MiddlewareJWT.AuthorizeJWT, upload.single('file')],
+            /**
+             * Meteor doesn't support file uploads, so we need to implement
+             * a custom method to handle file uploads.
+             */
+            customMethod: async (req, res, params) => {
+                const file = req.file;
+                const { uuid, name, texture_type_name } = params;
+                const texture = await Texture.findByPk(uuid);
+                if (!texture) {
+                    res.status(404).send({ message: `Texture with uuid ${uuid} not found` });
+                }
+                const key = `textures/${file.originalname}`;
+                const filePath = file.path;
+
+                return texture;
+            }
         },
         delete: { 
             middleware: [MiddlewareJWT.AuthorizeJWT],

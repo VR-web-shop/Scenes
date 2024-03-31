@@ -63,10 +63,14 @@ async function idempotenceCreate (model, data) {
 }
 
 async function createDemoScene() {
-    const scene = await idempotenceCreate(Scene, { name: 'Demo Scene' })
+    const scene = await idempotenceCreate(Scene, { 
+        name: 'Demo Scene',
+        active: true 
+    })
     const blackFabricTextureMap = await idempotenceCreate(Texture, { 
         name: 'Demo Black Fabric Map', 
-        source: '/textures/black_fabric_basecolor.png', 
+        source: 'textures/black_fabric_basecolor.png',
+        s3_key: '/assets/textures/black_fabric_basecolor.png', 
         texture_type_name: TEXTURE_TYPE.Map 
     });
     const blackFabricMaterial = await idempotenceCreate(Material, {
@@ -152,7 +156,6 @@ async function createDemoScene() {
     await createLights();
     await createFloors();
     await createCheckouts();
-    await createProducts();
     await createStaticObjects();
 }
 

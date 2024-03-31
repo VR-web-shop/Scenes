@@ -34,6 +34,10 @@ const SceneBasket = Database.define("SceneBasket", {
                 const placeholderOffset = await Vector3D.create({ x: 0, y: 0, z: 0 });
                 sceneBasket.placeholder_offset_uuid = placeholderOffset.dataValues.uuid;
             }
+            if (!sceneBasket.pocket_offset_uuid) {
+                const pocketOffset = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneBasket.pocket_offset_uuid = pocketOffset.dataValues.uuid;
+            }
             if (!sceneBasket.insert_area_offset_uuid) {
                 const insertAreaOffset = await Vector3D.create({ x: 0, y: 0, z: 0 });
                 sceneBasket.insert_area_offset_uuid = insertAreaOffset.dataValues.uuid;
@@ -42,12 +46,12 @@ const SceneBasket = Database.define("SceneBasket", {
                 const insertAreaSize = await Vector3D.create({ x: 1, y: 1, z: 1 });
                 sceneBasket.insert_area_size_uuid = insertAreaSize.dataValues.uuid;
             }
-            if (!sceneBasket.object_uuid && !sceneBasket.placeholder_uuid) {
+            if (!sceneBasket.object_uuid || !sceneBasket.placeholder_uuid || !sceneBasket.pocket_uuid) {
                 sceneBasket.state_name = SCENE_BASKET_STATE.MESH_REQUIRED;
             }
         },
         beforeUpdate: (sceneBasket) => {
-            if (!sceneBasket.object_uuid && !sceneBasket.placeholder_uuid) {
+            if (!sceneBasket.object_uuid || !sceneBasket.placeholder_uuid || !sceneBasket.pocket_uuid) {
                 sceneBasket.state_name = SCENE_BASKET_STATE.MESH_REQUIRED;
             } 
             else if (sceneBasket.state_name !== SCENE_BASKET_STATE.READY_FOR_PRODUCTS) {
@@ -65,10 +69,12 @@ SceneBasket.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid'
 SceneBasket.belongsTo(Vector3D, { foreignKey: 'scale_uuid', targetKey: 'uuid', as: 'Scale' });
 SceneBasket.belongsTo(Vector3D, { foreignKey: 'object_offset_uuid', targetKey: 'uuid', as: 'ObjectOffset' });
 SceneBasket.belongsTo(Vector3D, { foreignKey: 'placeholder_offset_uuid', targetKey: 'uuid', as: 'PlaceholderOffset' }); 
+SceneBasket.belongsTo(Vector3D, { foreignKey: 'pocket_offset_uuid', targetKey: 'uuid', as: 'PocketOffset' });
 SceneBasket.belongsTo(Vector3D, { foreignKey: 'insert_area_offset_uuid', targetKey: 'uuid', as: 'InsertAreaOffset' }); 
 SceneBasket.belongsTo(Vector3D, { foreignKey: 'insert_area_size_uuid', targetKey: 'uuid', as: 'InsertAreaSize' }); 
 SceneBasket.belongsTo(Mesh, { foreignKey: 'object_uuid', targetKey: 'uuid', as: 'Object' });
 SceneBasket.belongsTo(Mesh, { foreignKey: 'placeholder_uuid', targetKey: 'uuid', as: 'Placeholder' });
+SceneBasket.belongsTo(Mesh, { foreignKey: 'pocket_uuid', targetKey: 'uuid', as: 'Pocket' });
 SceneBasket.belongsTo(SceneBasketState, { foreignKey: 'state_name', targetKey: 'name', as: 'State' });
 
 Vector3D.hasMany(SceneBasket);

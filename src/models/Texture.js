@@ -17,6 +17,10 @@ const Texture = Database.define("Texture", {
         type: DataTypes.STRING,
         allowNull: false
     },
+    s3_key: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 }, {
     underscored: true,
     createdAt: 'created_at',

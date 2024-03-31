@@ -61,7 +61,7 @@
          * @returns {object} The built request options.
          * @example const requestOptions = buildRequestOptions({ method: 'GET' }, true);
          */
-        const buildRequestOptions = async function (requestOptions, useAuth = false) {
+        const buildRequestOptions = async function (requestOptions, useAuth = false, additionalParams={}) {
             if (useAuth) {
                 if (authorizationOptions.storage === 'localStorage') {
                     const token = localStorage.getItem(authorizationOptions.key);
@@ -120,6 +120,7 @@
              * @returns {object} The found record.
              * @example const record = await find({ id: 1 });
              * @example const record = await find({ id: 1 }, { include: 'profile' });
+             * @example const record = await find({ id: 1 }, { include: 'profile', customParams: { key1: 'value1', key2: 'value2' } });
              */
             this.find = async function (params, methodOptions = {}) {
                 const key = params[foreignKeyName];
@@ -130,6 +131,10 @@
                 let currentEndpoint = `${getUrl()}/${key}`;
                 if (methodOptions.include) {
                     currentEndpoint += `/${methodOptions.include}`;
+                }
+
+                if (methodOptions.customParams) {
+                    currentEndpoint += CrudAPIUtils.getCustomParamsString(methodOptions.customParams, '?');
                 }
 
                 const requestOptions = await buildRequestOptions({ method: 'GET' }, options.find.auth);
@@ -153,9 +158,10 @@
              *   { model: 'posts' }
              * ]
              * @example const records = await findAll({ limit: 10, page: 1, where: { name: 'John Doe', age: 30 } });
+             * @example const records = await findAll({ limit: 10, page: 1, customParams: { key1: 'value1', key2: 'value2' } });
              */
             this.findAll = async function (params) {
-                const { page, limit, q, include, where } = params;
+                const { page, limit, q, include, where, customParams } = params;
                 if (!limit) {
                     throw new Error('No limit parameter provided.');
                 }
@@ -173,6 +179,10 @@
                 if (page) _endpoint += `&page=${page}`;
                 if (q) _endpoint += `&q=${q}`;
 
+                if (customParams) {
+                    _endpoint += CrudAPIUtils.getCustomParamsString(customParams, '&');
+                }
+
                 const requestOptions = await buildRequestOptions({ method: 'GET' }, options.findAll.auth);
                 const response = await fetch(_endpoint, requestOptions);
                 const data = await response.json();
@@ -187,8 +197,9 @@
              * @param {object} params - The parameters to use for the create operation.
              * @returns {object} The created record.
              * @example const record = await create({ name: 'John Doe', email: 'test@example.com' });
+             * @example const record = await create({ name: 'John Doe', email: 'test@example.com', responseInclude: ['profile'] });
              */
-            this.create = async function (params) {
+            this.create = async function (params, additionalParams = {}) {
                 for (let key of options.create.properties) {
                     if (!params[key]) {
                         throw new Error(`No ${key} provided.`);
@@ -199,14 +210,25 @@
                     params.responseInclude = CrudAPIUtils.getIncludeString(params.responseInclude);
                 }
 
-                const body = JSON.stringify(params);
+                const body = new FormData();
+                for (let key of Object.keys(params)) {
+                    body.append(key, params[key]);
+                }
+
+                if (additionalParams.file) {
+                    body.append('file', additionalParams.file);
+                }
+
                 const requestOptions = await buildRequestOptions({
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body
-                }, options.create.auth);
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        body
+                    }, 
+                    options.create.auth,
+                    additionalParams
+                );
                 const response = await fetch(getUrl(), requestOptions);
 
                 const data = await response.json();
@@ -221,6 +243,7 @@
              * @param {object} params - The parameters to use for the update operation.
              * @returns {object} The updated record.
              * @example const record = await update({ id: 1, name: 'Jane Doe', email: 'test2@example.com' });
+             * @example const record = await update({ id: 1, name: 'Jane Doe', email: 'test2@example.com', responseInclude: ['profile'] });
              */
             this.update = async function (params) {
                 if (options.update.requiredProperties) {
@@ -413,6 +436,23 @@
 
         return includeString;
     }
+
+    /**
+     * @function getCustomParamsString
+     * @description Get the custom parameters string for the query
+     * @param {Object} customParams - The custom parameters
+     * @param {String} customParamsString - The custom parameters string
+     * @returns {String} The custom parameters string
+     * @example getCustomeParamsString({ key1: 'value1', key2: 'value2' })
+     * @static
+     */
+    static getCustomParamsString(customParams, customParamsString = '') {
+        for (let key of Object.keys(customParams)) {
+            customParamsString += `${key}=${customParams[key]}&`;
+        }
+        customParamsString = customParamsString.slice(0, -1);
+        return customParamsString;
+    }
 }
 
     /**
@@ -444,7 +484,7 @@
             "SceneCharacterController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_characters\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true}}}"
         },
         {
-            "SceneBasketController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_baskets\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true},\"create\":{\"auth\":true,\"properties\":[\"object_offset_uuid\",\"object_uuid\",\"placeholder_uuid\",\"scene_uuid\",\"insert_area_offset_uuid\",\"insert_area_size_uuid\"]},\"update\":{\"auth\":true,\"properties\":[\"object_offset_uuid\",\"object_uuid\",\"placeholder_uuid\",\"scene_uuid\",\"insert_area_offset_uuid\",\"insert_area_size_uuid\"]},\"delete\":{\"auth\":true}}}"
+            "SceneBasketController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_baskets\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true},\"create\":{\"auth\":true,\"properties\":[\"object_offset_uuid\",\"pocket_uuid\",\"object_uuid\",\"placeholder_uuid\",\"scene_uuid\",\"insert_area_offset_uuid\",\"insert_area_size_uuid\"]},\"update\":{\"auth\":true,\"properties\":[\"object_offset_uuid\",\"pocket_uuid\",\"object_uuid\",\"placeholder_uuid\",\"scene_uuid\",\"insert_area_offset_uuid\",\"insert_area_size_uuid\"]},\"delete\":{\"auth\":true}}}"
         },
         {
             "SceneCameraController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/scene_cameras\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true},\"create\":{\"auth\":true,\"properties\":[\"position_uuid\",\"rotation_uuid\",\"scene_uuid\"]},\"update\":{\"auth\":true,\"properties\":[\"position_uuid\",\"rotation_uuid\",\"scene_uuid\"]},\"delete\":{\"auth\":true}}}"
@@ -483,7 +523,7 @@
             "Vector3DController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/vector3ds\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true},\"create\":{\"auth\":true,\"properties\":[\"x\",\"y\",\"z\"]},\"update\":{\"auth\":true,\"properties\":[\"x\",\"y\",\"z\"]},\"delete\":{\"auth\":true}}}"
         },
         {
-            "TextureController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/textures\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true},\"create\":{\"auth\":true,\"properties\":[\"name\",\"source\",\"texture_type_name\"]},\"update\":{\"auth\":true,\"properties\":[\"name\",\"source\",\"texture_type_name\"]},\"delete\":{\"auth\":true}}}"
+            "TextureController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/textures\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true},\"create\":{\"auth\":true,\"properties\":[\"name\",\"texture_type_name\"]},\"update\":{\"auth\":true,\"properties\":[\"name\",\"texture_type_name\"]},\"delete\":{\"auth\":true}}}"
         },
         {
             "TextureTypeController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/texture_types\",\"foreignKeyName\":\"name\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true}}}"
