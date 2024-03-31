@@ -26,7 +26,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@vr-web-shop/meteor": "1.0.61",
+    "@vr-web-shop/meteor": "1.0.62",
     "nodemon": "^3.1.0",
     "rollup": "^4.13.0"
   },
