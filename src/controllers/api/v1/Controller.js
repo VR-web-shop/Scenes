@@ -1,5 +1,4 @@
 import meteor from "@vr-web-shop/meteor";
-import multer from "multer";
 import MiddlewareJWT from "../../../jwt/MiddlewareJWT.js";
 import StorageConfig from "../../../config/StorageConfig.js";
 
@@ -27,8 +26,6 @@ import TextureType from "../../../models/TextureType.js";
 import Vector3D from "../../../models/Vector3D.js";
 
 const prefix = '/api/v1/';
-
-const upload = multer({ storage: multer.memoryStorage() })
 const RestController = meteor.RestController;
 const debug = true;
 
@@ -102,15 +99,19 @@ export default {
             whereProperties: ['uuid', 'name'],
         },
         create: { 
-            properties: ['name', 'source'], 
+            properties: ['name'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         update: { 
-            properties: ['name', 'source'], 
+            properties: ['name'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         delete: { 
             middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        upload: {
+            fields: ['source'],
+            s3: { prefix: 'assets/meshes/', ...StorageConfig }
         },
         debug
     }),
@@ -477,27 +478,17 @@ export default {
         create: { 
             properties: ['name', 'texture_type_name'],
             middleware: [MiddlewareJWT.AuthorizeJWT],
-            upload: {
-                fields: ['source'],
-                storageService: async (file, req) => {
-                    const key = `assets/textures/${file.originalname}`;
-                    return await StorageConfig.uploadFile(file.buffer, key);
-                }
-            },
         },
         update: { 
             properties: ['name', 'texture_type_name'], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
-            upload: {
-                fields: ['source'],
-                storageService: async (file, req) => {
-                    const key = `assets/textures/${file.originalname}`;
-                    return await StorageConfig.uploadFile(file.buffer, key);
-                }
-            },
         },
         delete: { 
             middleware: [MiddlewareJWT.AuthorizeJWT],
+        },
+        upload: {
+            fields: ['source'],
+            s3: { prefix: 'assets/textures/', ...StorageConfig }
         },
         debug
     }),

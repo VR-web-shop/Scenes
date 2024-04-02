@@ -15,7 +15,7 @@ const Texture = Database.define("Texture", {
     },
     source: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
 }, {
     underscored: true,

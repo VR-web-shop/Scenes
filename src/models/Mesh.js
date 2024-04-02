@@ -16,7 +16,7 @@ const Mesh = Database.define("Mesh", {
     },
     source: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
 }, {
     hooks: {

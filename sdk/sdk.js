@@ -480,7 +480,7 @@
             "MaterialTypeController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/material_types\",\"foreignKeyName\":\"name\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true}}}"
         },
         {
-            "MeshController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/meshes\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":false},\"create\":{\"auth\":true,\"properties\":[\"name\",\"source\"]},\"update\":{\"auth\":true,\"properties\":[\"name\",\"source\"]},\"delete\":{\"auth\":true}}}"
+            "MeshController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/meshes\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":false},\"create\":{\"auth\":true,\"properties\":[\"name\"]},\"update\":{\"auth\":true,\"properties\":[\"name\"]},\"delete\":{\"auth\":true}}}"
         },
         {
             "MeshMaterialController": "{\"serverURL\":\"http://http://localhost:3003\",\"endpoint\":\"/api/v1/mesh_materials\",\"foreignKeyName\":\"uuid\",\"options\":{\"authorization\":{\"storage\":\"localStorage\",\"key\":\"auth\"},\"find\":{\"auth\":true},\"findAll\":{\"auth\":true},\"create\":{\"auth\":true,\"properties\":[\"mesh_uuid\",\"material_uuid\",\"submesh_name\"]},\"update\":{\"auth\":true,\"properties\":[\"mesh_uuid\",\"material_uuid\",\"submesh_name\"]},\"delete\":{\"auth\":true}}}"

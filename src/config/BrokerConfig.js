@@ -1,6 +1,6 @@
 import pkg from 'amqplib';
-import Product from '../../../products/src/models/Product.js';
-import ProductEntity from '../../../products/src/models/ProductEntity.js';
+import Product from '../..//src/models/Product.js';
+import ProductEntity from '../../src/models/ProductEntity.js';
 import SceneProduct from '../models/SceneProduct.js';
 import Scene from '../models/Scene.js';
 
@@ -47,12 +47,20 @@ import Scene from '../models/Scene.js';
         await ProductEntity.create(msg);
     })
     addListener('scenes_reserve_product_entity_to_cart', async (msg) => {
-        await ProductEntity.update(msg);
+        const uuid = msg.uuid;
+        const entity = await ProductEntity.findOne({ where: { uuid } });
+        await entity.update({
+            product_entity_state_name: msg.product_entity_state_name
+        });
     })
     addListener('scenes_release_product_entity_from_cart', async (msg) => {
-        await ProductEntity.update(msg);
+        const uuid = msg.uuid;
+        const entity = await ProductEntity.findOne({ where: { uuid } });
+        await entity.update({
+            product_entity_state_name: msg.product_entity_state_name
+        });
     })
-    
+
     //addListener('reserve_product_entity_to_cart', ProductEntityService.update.bind(ProductEntityService))
     //addListener('release_product_entity_from_cart', ProductEntityService.update.bind(ProductEntityService))
     //addListener('discard_product_entity', ProductEntityService.destroy.bind(ProductEntityService))

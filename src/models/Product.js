@@ -16,8 +16,12 @@ const Product = Database.define("Product", {
         type: DataTypes.STRING,
         allowNull: false
     },
-    thumbnail: {
+    thumbnail_source: {
         type: DataTypes.STRING,
+        allowNull: true
+    },
+    price: {
+        type: DataTypes.DECIMAL,
         allowNull: false
     },
 }, {
