@@ -1,8 +1,5 @@
 import pkg from 'amqplib';
-import Product from '../..//src/models/Product.js';
-import ProductEntity from '../../src/models/ProductEntity.js';
-import SceneProduct from '../models/SceneProduct.js';
-import Scene from '../models/Scene.js';
+import BrokerService from '../services/BrokerService.js';
 
 const url = process.env.MESSAGE_BROKER_URL;
 const queues = [];
@@ -23,48 +20,19 @@ const addListener = (queueName, callback) => {
     }, { noAck: true });
 };
 
-export const removeListener = (queueName) => {
+const removeListener = (queueName) => {
     ch.cancel(queueName);
-};
-
-export const sendMessage = (queueName, msg) => {
-    ch.assertQueue(queueName, { durable: false });
-    ch.sendToQueue(queueName, Buffer.from(msg));
 };
 
 export const connect = async () => {
     conn = await pkg.connect(url);
     ch = await conn.createChannel();
 
-    /**
-     * When a new product is created, the scenes's application
-     * receives a message to create a new product entity.
-     */
-    addListener('scenes_new_product', async (msg) => {
-        const product = await Product.create(msg);
-        const scenes = await Scene.findAll();
-        for (const scene of scenes) {
-            await SceneProduct.create({ product_uuid: product.uuid, scene_uuid: scene.uuid });
-        }
-    })
+    BrokerService.config.forEach(({ type, callback }) => {
+        addListener(type, callback);
+    });
+}
 
-    /**
-     * When a new product entity is created, the scenes's application 
-     * receives a message to create a new product entity.
-     */
-    addListener('scenes_new_product_entity', async (msg) => {
-        await ProductEntity.create(msg);
-    })
-
-    /**
-     * When a customer reserves, releases, or do anything else to a product entity,
-     * the scenes's application receives a message to update the product entity's state.
-     */
-    addListener('scenes_update_product_entity', async (msg) => {
-        const uuid = msg.uuid;
-        const entity = await ProductEntity.findOne({ where: { uuid } });
-        await entity.update({
-            product_entity_state_name: msg.product_entity_state_name
-        });
-    })
+export const close = async () => {
+    await conn.close();
 }

@@ -1,4 +1,5 @@
 import 'dotenv/config'
+import './src/config/WebsocketConfig.js'
 import { connect } from './src/config/BrokerConfig.js'
 import express from 'express'
 import cors from 'cors'

@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "start": "set DEBUG=express:* & nodemon index.js",
+    "start": "nodemon index.js",
     "seed": "node seed.js",
     "bundle_api": "node meteor.config.mjs",
     "bundle_sdk": "rollup --config rollup.config.mjs",
@@ -45,6 +45,7 @@
     "mysql2": "^3.9.2",
     "ruru": "^2.0.0-beta.11",
     "sequelize": "^6.37.1",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "websocket": "^1.0.34"
   }
 }

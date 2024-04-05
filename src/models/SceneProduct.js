@@ -30,6 +30,18 @@ const SceneProduct = Database.define("SceneProduct", {
             if (!sceneProduct.mesh_uuid) {
                 sceneProduct.state_name = SCENE_PRODUCT_STATE.MESH_REQUIRED;
             }
+            if (!sceneProduct.ui_offset_position_uuid) {
+                const uiOffsetPosition = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneProduct.ui_offset_position_uuid = uiOffsetPosition.dataValues.uuid;
+            }
+            if (!sceneProduct.ui_offset_rotation_uuid) {
+                const uiOffsetRotation = await Vector3D.create({ x: 0, y: 0, z: 0 });
+                sceneProduct.ui_offset_rotation_uuid = uiOffsetRotation.dataValues.uuid;
+            }
+            if (!sceneProduct.ui_scale_uuid) {
+                const uiScale = await Vector3D.create({ x: 1, y: 1, z: 1 });
+                sceneProduct.ui_scale_uuid = uiScale.dataValues.uuid;
+            }
         },
         beforeUpdate: (sceneProduct) => {
             if (!sceneProduct.mesh_uuid) {
@@ -49,6 +61,9 @@ const SceneProduct = Database.define("SceneProduct", {
 SceneProduct.belongsTo(Vector3D, { foreignKey: 'position_uuid', targetKey: 'uuid', as: 'Position' });
 SceneProduct.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uuid', as: 'Rotation' });
 SceneProduct.belongsTo(Vector3D, { foreignKey: 'scale_uuid', targetKey: 'uuid', as: 'Scale' });
+SceneProduct.belongsTo(Vector3D, { foreignKey: 'ui_offset_position_uuid', targetKey: 'uuid', as: 'UIOffsetPosition' });
+SceneProduct.belongsTo(Vector3D, { foreignKey: 'ui_offset_rotation_uuid', targetKey: 'uuid', as: 'UIOffsetRotation' });
+SceneProduct.belongsTo(Vector3D, { foreignKey: 'ui_scale_uuid', targetKey: 'uuid', as: 'UIScale' });
 SceneProduct.belongsTo(Mesh, { foreignKey: 'mesh_uuid', targetKey: 'uuid', as: 'Mesh' });
 SceneProduct.belongsTo(Product, { foreignKey: 'product_uuid', targetKey: 'uuid', as: 'Product' });
 SceneProduct.belongsTo(SceneProductState, { foreignKey: 'state_name', targetKey: 'name', as: 'State' });

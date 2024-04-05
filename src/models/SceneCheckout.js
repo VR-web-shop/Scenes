@@ -37,13 +37,17 @@ const SceneCheckout = Database.define("SceneCheckout", {
                 const surfaceSize = await Vector3D.create({ x: 1, y: 1, z: 1 });
                 sceneCheckout.surface_size_uuid = surfaceSize.dataValues.uuid;
             }
-            if (!sceneCheckout.ui_offset_uuid) {
+            if (!sceneCheckout.ui_offset_position_uuid) {
                 const uiOffset = await Vector3D.create({ x: 0, y: 0, z: 0 });
-                sceneCheckout.ui_offset_uuid = uiOffset.dataValues.uuid;
+                sceneCheckout.ui_offset_position_uuid = uiOffset.dataValues.uuid;
             }
-            if (!sceneCheckout.ui_rotation_uuid) {
+            if (!sceneCheckout.ui_offset_rotation_uuid) {
                 const uiRotation = await Vector3D.create({ x: 0, y: 0, z: 0 });
-                sceneCheckout.ui_rotation_uuid = uiRotation.dataValues.uuid;
+                sceneCheckout.ui_offset_rotation_uuid = uiRotation.dataValues.uuid;
+            }
+            if (!sceneCheckout.ui_scale_uuid) {
+                const uiScale = await Vector3D.create({ x: 1, y: 1, z: 1 });
+                sceneCheckout.ui_scale_uuid = uiScale.dataValues.uuid;
             }
         }
     },
@@ -57,8 +61,9 @@ SceneCheckout.belongsTo(Vector3D, { foreignKey: 'rotation_uuid', targetKey: 'uui
 SceneCheckout.belongsTo(Vector3D, { foreignKey: 'scale_uuid', targetKey: 'uuid', as: 'Scale' });
 SceneCheckout.belongsTo(Vector3D, { foreignKey: 'surface_offset_uuid', targetKey: 'uuid', as: 'SurfaceOffset' });
 SceneCheckout.belongsTo(Vector3D, { foreignKey: 'surface_size_uuid', targetKey: 'uuid', as: 'SurfaceSize' });
-SceneCheckout.belongsTo(Vector3D, { foreignKey: 'ui_offset_uuid', targetKey: 'uuid', as: 'UIOffset' });
-SceneCheckout.belongsTo(Vector3D, { foreignKey: 'ui_rotation_uuid', targetKey: 'uuid', as: 'UIRotation' });
+SceneCheckout.belongsTo(Vector3D, { foreignKey: 'ui_offset_position_uuid', targetKey: 'uuid', as: 'UIOffsetPosition' });
+SceneCheckout.belongsTo(Vector3D, { foreignKey: 'ui_offset_rotation_uuid', targetKey: 'uuid', as: 'UIOffsetRotation' });
+SceneCheckout.belongsTo(Vector3D, { foreignKey: 'ui_scale_uuid', targetKey: 'uuid', as: 'UIScale' });
 SceneCheckout.belongsTo(Mesh, { foreignKey: 'mesh_uuid', targetKey: 'uuid', as: 'Mesh' });
 
 Vector3D.hasMany(SceneCheckout);

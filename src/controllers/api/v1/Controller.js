@@ -1,6 +1,7 @@
 import meteor from "@vr-web-shop/meteor";
 import MiddlewareJWT from "../../../jwt/MiddlewareJWT.js";
 import StorageConfig from "../../../config/StorageConfig.js";
+import WebsocketService from "../../../services/WebsocketService.js";
 
 import Material from "../../../models/Material.js";
 import MaterialTexture from "../../../models/MaterialTexture.js";
@@ -27,7 +28,7 @@ import Vector3D from "../../../models/Vector3D.js";
 
 const prefix = '/api/v1/';
 const RestController = meteor.RestController;
-const debug = true;
+const debug = false;
 
 export default {
     MaterialController: RestController(`${prefix}materials`, 'uuid', Material, {
@@ -226,14 +227,16 @@ export default {
         create: { 
             properties: [
             'name', 'surface_offset_uuid', 'surface_size_uuid', 
-            'ui_offset_uuid', 'ui_rotation_uuid', 'mesh_uuid', 'scene_uuid'
+            'ui_offset_position_uuid', 'ui_offset_rotation_uuid', 
+            'ui_scale_uuid', 'mesh_uuid', 'scene_uuid'
             ], 
             middleware: [MiddlewareJWT.AuthorizeJWT], 
         },
         update: { 
             properties: [
             'name', 'surface_offset_uuid', 'surface_size_uuid', 
-            'ui_offset_uuid', 'ui_rotation_uuid', 'mesh_uuid', 'scene_uuid'
+            'ui_offset_position_uuid', 'ui_offset_rotation_uuid', 
+            'ui_scale_uuid', 'mesh_uuid', 'scene_uuid'
             ], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
@@ -249,16 +252,36 @@ export default {
         },
         findAll: { 
             middleware: [MiddlewareJWT.AuthorizeJWT],
-            whereProperties: ['uuid', 'state_name', 'scene_uuid', 'product_uuid', 'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid'],
-            includes: ['Position', 'Rotation', 'Scale', 'Mesh', 'Product', 'Scene']
+            whereProperties: [
+                'uuid', 'state_name', 'scene_uuid', 'product_uuid', 
+                'position_uuid', 'rotation_uuid', 'scale_uuid', 'mesh_uuid',
+                'ui_offset_position_uuid', 'ui_offset_rotation_uuid', 'ui_scale_uuid'
+            ],
+            includes: [
+                'Position', 'Rotation', 'UIOffsetPosition', 'UIOffsetRotation', 'UIScale', 
+                'Scale', 'Mesh', 'Product', 'Scene'
+            ]
         },
         create: { 
-            properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], 
+            properties: [
+                'state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid', 
+                'ui_offset_position_uuid', 'ui_offset_rotation_uuid', 
+                'ui_scale_uuid'
+            ], 
             middleware: [MiddlewareJWT.AuthorizeJWT],
         },
         update: { 
-            properties: ['state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid'], 
+            properties: [
+                'state_name', 'mesh_uuid', 'product_uuid', 'scene_uuid', 
+                'ui_offset_position_uuid', 'ui_offset_rotation_uuid', 
+                'ui_scale_uuid'
+            ],
             middleware: [MiddlewareJWT.AuthorizeJWT],
+            hooks: {
+                after: async (req, res, params, entity) => {
+                    await WebsocketService.updateSceneProduct(entity);
+                },
+            }
         },
         delete: { 
             middleware: [MiddlewareJWT.AuthorizeJWT],
