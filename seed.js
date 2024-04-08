@@ -105,13 +105,19 @@ async function createDefaults() {
     const scene = await Scene.create({ name: demoScene.name, active: true });
     const { lights } = demoScene 
     for (const light of lights) {
-        await SceneLight.create({
+        const lightData = await SceneLight.create({
             name: light.name,
             intensity: light.intensity,
             scene_light_type_name: light.scene_light_type_name,
             hexColor: light.hexColor,
             scene_uuid: scene.dataValues.uuid
         });
+
+        const position = await lightData.getPosition();
+        const rotation = await lightData.getRotation();
+
+        await Vector3D.update({ x: light.position.x, y: light.position.y, z: light.position.z }, { where: { uuid: position.dataValues.uuid }});
+        await Vector3D.update({ x: light.rotation.x, y: light.rotation.y, z: light.rotation.z }, { where: { uuid: rotation.dataValues.uuid }});
     }
 
     const { floors } = demoScene;

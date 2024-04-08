@@ -19,767 +19,1477 @@
         }
     ],
     "meshes": [
-        { 
-            "name": "Bench", 
+        {
+            "name": "Bench",
             "source": "static/meshes/Bench.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Building signs", 
+        {
+            "name": "Building signs",
             "source": "static/meshes/BuildingSigns.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Bush 01", 
+        {
+            "name": "Bush 01",
             "source": "static/meshes/Bush_01.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Bush 02", 
+        {
+            "name": "Bush 02",
             "source": "static/meshes/Bush_02.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
         {
             "name": "Basket",
             "source": "static/meshes/basket.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
         {
             "name": "Basket Products Placeholder",
             "source": "static/meshes/basket_placeholder.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Checkout", 
+        {
+            "name": "Checkout",
             "source": "static/meshes/Checkout.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Coffee", 
+        {
+            "name": "Coffee",
             "source": "static/meshes/Coffee.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Construction", 
+        {
+            "name": "Construction",
             "source": "static/meshes/Construction.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Display 1", 
+        {
+            "name": "Display 1",
             "source": "static/meshes/Display1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Display 2", 
+        {
+            "name": "Display 2",
             "source": "static/meshes/Display2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Display curved 1", 
+        {
+            "name": "Display curved 1",
             "source": "static/meshes/DisplayCurved1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Display curved 2", 
+        {
+            "name": "Display curved 2",
             "source": "static/meshes/DisplayCurved2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Door", 
+        {
+            "name": "Door",
             "source": "static/meshes/Door.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Ground", 
+        {
+            "name": "Ground",
             "source": "static/meshes/Ground.glb",
             "meshMaterials": [
                 {
                     "submesh_name": "Plane003",
                     "material_name": "Black Fabric"
                 }
-            ] 
+            ]
         },
-        { 
-            "name": "Headset F5", 
+        {
+            "name": "Headset F5",
             "source": "static/meshes/HeadsetF5.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Headset R1", 
+        {
+            "name": "Headset F10",
+            "source": "static/meshes/HeadsetF10.glb",
+            "meshMaterials": []
+        },
+        {
+            "name": "Headset R1",
             "source": "static/meshes/HeadsetR1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Headset X2", 
-            "source": "static/meshes/HeadsetX2.glb",
-            "meshMaterials": [
-            ]
-        },
-        { 
-            "name": "Headset Z1", 
+        {
+            "name": "Headset Z1",
             "source": "static/meshes/HeadsetZ1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Indoor sign", 
+        {
+            "name": "Indoor sign",
             "source": "static/meshes/IndoorSign.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Keyboard retro C2", 
+        {
+            "name": "Keyboard retro C2",
             "source": "static/meshes/KeyboardRetroC2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Keyboard X1", 
+        {
+            "name": "Keyboard X1",
             "source": "static/meshes/KeyboardX1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Keyboard X2", 
+        {
+            "name": "Keyboard X2",
             "source": "static/meshes/KeyboardX2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Keyboard Z1", 
+        {
+            "name": "Keyboard Z1",
             "source": "static/meshes/KeyboardZ1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Laptop 1", 
+        {
+            "name": "Laptop 1",
             "source": "static/meshes/Laptop1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Laptop 2", 
+        {
+            "name": "Laptop 2",
             "source": "static/meshes/Laptop2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Loft lamp", 
+        {
+            "name": "Loft lamp",
             "source": "static/meshes/LoftLamp.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Malculator 1", 
+        {
+            "name": "Malculator 1",
             "source": "static/meshes/Malculator1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Malculator 2", 
+        {
+            "name": "Malculator 2",
             "source": "static/meshes/Malculator2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Mouse R1", 
+        {
+            "name": "Mouse R1",
             "source": "static/meshes/MouseR1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Mouse X1", 
+        {
+            "name": "Mouse X1",
             "source": "static/meshes/MouseX1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Mouse X2", 
+        {
+            "name": "Mouse X2",
             "source": "static/meshes/MouseX2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Mouse Z5", 
+        {
+            "name": "Mouse Z5",
             "source": "static/meshes/MouseZ5.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Mousepad R2", 
+        {
+            "name": "Mousepad R2",
             "source": "static/meshes/MousepadR2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Mousepad X2", 
+        {
+            "name": "Mousepad X2",
             "source": "static/meshes/MousepadX2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Mousepad X3", 
+        {
+            "name": "Mousepad X3",
             "source": "static/meshes/MousepadX3.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Mousepad Z2", 
+        {
+            "name": "Mousepad Z2",
             "source": "static/meshes/MousepadZ2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Office box", 
+        {
+            "name": "Office box",
             "source": "static/meshes/OfficeBox.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Office trashcan", 
+        {
+            "name": "Office trashcan",
             "source": "static/meshes/Trashcan.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Open sign", 
+        {
+            "name": "Open sign",
             "source": "static/meshes/OpenSign.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Office chair", 
+        {
+            "name": "Office chair",
             "source": "static/meshes/OfficeChair.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "PC 1", 
+        {
+            "name": "PC 1",
             "source": "static/meshes/Pc1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "PC 2", 
+        {
+            "name": "PC 2",
             "source": "static/meshes/Pc2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "PC 3", 
+        {
+            "name": "PC 3",
             "source": "static/meshes/Pc3.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Printer 1", 
+        {
+            "name": "Printer 1",
             "source": "static/meshes/Printer1.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Printer 2", 
+        {
+            "name": "Printer 2",
             "source": "static/meshes/Printer2.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Shelf 1", 
+        {
+            "name": "Shelf 1",
             "source": "static/meshes/Shelf01.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Shelf 2", 
+        {
+            "name": "Shelf 2",
             "source": "static/meshes/Shelf02.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Shelf 3", 
+        {
+            "name": "Shelf 3",
             "source": "static/meshes/Shelf03.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Stop sign", 
+        {
+            "name": "Stop sign",
             "source": "static/meshes/StopSign.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Street light", 
+        {
+            "name": "Street light",
             "source": "static/meshes/StreetLight.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Traffic light", 
+        {
+            "name": "Traffic light",
             "source": "static/meshes/TrafficLight.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Trashcan", 
+        {
+            "name": "Trashcan",
             "source": "static/meshes/Trashcan.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Tv", 
+        {
+            "name": "Tv",
             "source": "static/meshes/Tv.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
-        { 
-            "name": "Table", 
+        {
+            "name": "Table",
             "source": "static/meshes/Table.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
         {
             "name": "USB 64GB",
             "source": "static/meshes/USB1-64gb.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
         {
             "name": "USB 128GB",
             "source": "static/meshes/USB1-128gb.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
         {
             "name": "USB 256GB",
             "source": "static/meshes/USB1-256gb.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         },
         {
             "name": "Vent",
             "source": "static/meshes/Vent.glb",
-            "meshMaterials": [
-            ]
+            "meshMaterials": []
         }
     ],
     "lights": [
         {
             "name": "Sun",
             "scene_light_type_name": "DirectionalLight",
+            "intensity": 4,
+            "hexColor": "#fbfeec",
+            "position": {
+                "x": 6.92121,
+                "y": 8.299,
+                "z": 3.45788
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "name": "Indoor Light 1",
+            "scene_light_type_name": "PointLight",
             "intensity": 1,
-            "hexColor": "ffffff",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 }
+            "hexColor": "#fcfcfc",
+            "position": {
+                "x": -4.88169,
+                "y": 1.88951,
+                "z": 2.07667
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "name": "Indoor Light 2",
+            "scene_light_type_name": "PointLight",
+            "intensity": 3,
+            "hexColor": "#fafafa",
+            "position": {
+                "x": -3.06847,
+                "y": 1.74074,
+                "z": 5.99544
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "name": "Sign Light",
+            "scene_light_type_name": "PointLight",
+            "intensity": 7,
+            "hexColor": "#fe1616",
+            "position": {
+                "x": 1.36906,
+                "y": 2.26679,
+                "z": 5.24331
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "name": "Street Light 1",
+            "scene_light_type_name": "PointLight",
+            "intensity": 1,
+            "hexColor": "#ffffff",
+            "position": {
+                "x": -3.31768,
+                "y": 1.8786,
+                "z": -3.71423
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
+        },
+        {
+            "name": "Street Light 2",
+            "scene_light_type_name": "PointLight",
+            "intensity": 2,
+            "hexColor": "#fcfcfc",
+            "position": {
+                "x": 3.75045,
+                "y": 1.8786,
+                "z": 3.61187
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            }
         }
     ],
     "floors": [
         {
             "name": "Ground",
             "mesh_name": "Ground",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 0.622543,
+                "y": 0.0148467,
+                "z": 0.523657
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         }
     ],
     "checkouts": [
         {
             "name": "Checkout",
             "mesh_name": "Checkout",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "surface_offset": { "x": 0, "y": 0, "z": 0 },
-            "surface_size": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -4.86701,
+                "y": 0.866104,
+                "z": 6.80706
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "surface_offset": {
+                "x": 0,
+                "y": 0.3,
+                "z": -0.35
+            },
+            "surface_size": {
+                "x": 0.3,
+                "y": 0.4,
+                "z": 1.2
+            },
+            "ui_offset_position": {
+                "x": -0.9,
+                "y": 0.9,
+                "z": -0.1
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         }
     ],
     "static_objects": [
         {
             "name": "Bench 1",
             "mesh_name": "Bench",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 7.99146,
+                "y": 0.391689,
+                "z": 1.46773
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Bench 2",
             "mesh_name": "Bench",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 7.97559,
+                "y": 0.436189,
+                "z": 5.76086
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Building signs",
             "mesh_name": "Building signs",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -0.549246,
+                "y": 3.33862,
+                "z": 3.73896
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Bush 1",
             "mesh_name": "Bush 01",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 0.62049,
+                "y": 0.994464,
+                "z": -7.75466
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Bush 2",
             "mesh_name": "Bush 02",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -3.33295,
+                "y": 0.389283,
+                "z": 3.91485
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Coffee",
             "mesh_name": "Coffee",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -4.78573,
+                "y": 0.999362,
+                "z": 7.49439
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Construction",
             "mesh_name": "Construction",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -3.49166,
+                "y": 2.68495,
+                "z": 4.07926
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Door",
             "mesh_name": "Door",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -1.44651,
+                "y": 1.2466,
+                "z": 0.800798
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Indoor sign",
             "mesh_name": "Indoor sign",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -6.30086,
+                "y": 1.83783,
+                "z": 6.72281
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 1",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -1.31142,
+                "y": 2.32184,
+                "z": 6.75816
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.58333,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 2",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -3.42462,
+                "y": 4.93456,
+                "z": 4.50146
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 3",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -2.89145,
+                "y": 2.31637,
+                "z": 3.14256
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 4",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -2.99228,
+                "y": 2.26919,
+                "z": 0.944269
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 5",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -1.20117,
+                "y": 2.30198,
+                "z": 2.68965
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.61458,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 6",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -4.87254,
+                "y": 2.31455,
+                "z": 3.16085
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 7",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.15293,
+                "y": 2.27828,
+                "z": 0.93631
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 8",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -3.12174,
+                "y": 2.29894,
+                "z": 5.46123
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 9",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.05918,
+                "y": 2.30693,
+                "z": 5.46665
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Loft lamp 10",
             "mesh_name": "Loft lamp",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -1.27154,
+                "y": 2.30429,
+                "z": 4.52086
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.59063,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 1",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -6.20498,
+                "y": 0.812993,
+                "z": 7.64723
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 2",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.96432,
+                "y": 0.362377,
+                "z": 7.65947
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 3",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.96626,
+                "y": 0.595928,
+                "z": 7.63131
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 4",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.70713,
+                "y": 0.361852,
+                "z": 7.66022
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 5",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -6.21047,
+                "y": 0.589243,
+                "z": 7.65478
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 6",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.70604,
+                "y": 0.579434,
+                "z": 7.65556
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 7",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.9635,
+                "y": 0.818909,
+                "z": 7.63258
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 8",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.70846,
+                "y": 0.795079,
+                "z": 7.65873
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office box 9",
             "mesh_name": "Office box",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -6.21503,
+                "y": 0.362731,
+                "z": 7.65973
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Office trashcan",
             "mesh_name": "Office trashcan",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 7.95604,
+                "y": 0.461723,
+                "z": 6.79621
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Open sign 1",
             "mesh_name": "Open sign",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -0.536434,
+                "y": 1.34657,
+                "z": 6.7712
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.568,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Open sign 2",
             "mesh_name": "Open sign",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -0.546875,
+                "y": 1.37644,
+                "z": 2.35943
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.6048,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Open sign 3",
             "mesh_name": "Open sign",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.15048,
+                "y": 1.39214,
+                "z": 0.250645
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Open sign 4",
             "mesh_name": "Open sign",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -2.83056,
+                "y": 1.40384,
+                "z": 0.255634
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Open sign 5",
             "mesh_name": "Open sign",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -0.539861,
+                "y": 1.37949,
+                "z": 4.52441
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.5664,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Shelf 1",
             "mesh_name": "Shelf 1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -2.98057,
+                "y": 1.12666,
+                "z": 7.69345
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Shelf 2",
             "mesh_name": "Shelf 2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -6.22183,
+                "y": 1.13509,
+                "z": 3.45778
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Shelf 3",
             "mesh_name": "Shelf 3",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -4.30862,
+                "y": 1.13713,
+                "z": 3.2084
+            },
+            "rotation": {
+                "x": 0,
+                "y": -0.0196833,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Stop sign 1",
             "mesh_name": "Stop sign",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -6.45343,
+                "y": 0.887785,
+                "z": -6.62207
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.59167,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Stop sign 2",
             "mesh_name": "Stop sign",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 1.15782,
+                "y": 1.05804,
+                "z": 8.48895
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Street light 1",
             "mesh_name": "Street light",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 3.89463,
+                "y": 1.47687,
+                "z": 3.67497
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.5504,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Street light 2",
             "mesh_name": "Street light",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -3.29354,
+                "y": 1.50614,
+                "z": -3.81096
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Table 1",
             "mesh_name": "Table",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -1.05243,
+                "y": 0.458964,
+                "z": 6.65231
+            },
+            "rotation": {
+                "x": 0,
+                "y": 1.5744,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Table 2",
             "mesh_name": "Table",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -1.03608,
+                "y": 0.471251,
+                "z": 4.51257
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.5904,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Table 3",
             "mesh_name": "Table",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.06689,
+                "y": 0.469938,
+                "z": 0.884635
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Traffic light 1",
             "mesh_name": "Traffic light",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 6.66205,
+                "y": 1.41401,
+                "z": -6.48869
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Traffic light 2",
             "mesh_name": "Traffic light",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 1.12292,
+                "y": 1.29927,
+                "z": -1.14371
+            },
+            "rotation": {
+                "x": 0,
+                "y": 3.096,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Traffic light 3",
             "mesh_name": "Traffic light",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 6.60668,
+                "y": 1.40139,
+                "z": -1.04583
+            },
+            "rotation": {
+                "x": 0,
+                "y": -1.6064,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Trashcan",
             "mesh_name": "Trashcan",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": 7.98808,
+                "y": 0.389897,
+                "z": 2.44699
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Tv",
             "mesh_name": "Tv",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.13477,
+                "y": 1.82902,
+                "z": 7.79878
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Vent 1",
             "mesh_name": "Vent",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -5.63222,
+                "y": 5.25882,
+                "z": 5.55773
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "name": "Vent 2",
             "mesh_name": "Vent",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 }
+            "position": {
+                "x": -4.62847,
+                "y": 5.25479,
+                "z": 5.51121
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            }
         }
     ],
     "scene_products": [
         {
             "name": "Headset F5",
             "mesh_name": "Headset F5",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.65966,
+                "y": 1.26215,
+                "z": 3.05417
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.06,
+                "y": 0,
+                "z": -0.06
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "f5b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Headset F5",
@@ -789,14 +1499,79 @@
             }
         },
         {
+            "name": "Headset F10",
+            "mesh_name": "Headset F10",
+            "position": {
+                "x": -4.65644,
+                "y": 1.52865,
+                "z": 3.03742
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.06,
+                "y": 0,
+                "z": -0.06
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
+            "Product": {
+                "uuid": "f5b1b1b1-1b1b-1b2b-2b2b-1b1b1b1b1b1b",
+                "name": "Headset F10",
+                "description": "A headset with a microphone",
+                "price": 100,
+                "thumbnail_source": "static/thumbnails/HeadsetF10.png"
+            }
+        },
+        {
             "name": "Headset R1",
             "mesh_name": "Headset R1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.65545,
+                "y": 0.967894,
+                "z": 3.05085
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.06,
+                "y": 0,
+                "z": -0.06
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "r1b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Headset R1",
@@ -806,31 +1581,38 @@
             }
         },
         {
-            "name": "Headset X2",
-            "mesh_name": "Headset X2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
-            "Product": {
-                "uuid": "x2b1b1b1-1b1b-1b1b-2b1b-1b1b1b1b1b1b",
-                "name": "Headset X2",
-                "description": "A headset with a microphone",
-                "price": 100,
-                "thumbnail_source": "static/thumbnails/HeadsetX2.png"
-            }
-        },
-        {
             "name": "Headset Z1",
             "mesh_name": "Headset Z1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.65618,
+                "y": 0.673832,
+                "z": 3.05224
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.06,
+                "y": 0,
+                "z": -0.06
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z1b1b1b1-1b1b-1b1b-2b1b-1b1b1b1b1b1b",
                 "name": "Headset Z1",
@@ -842,12 +1624,36 @@
         {
             "name": "Keyboard retro C2",
             "mesh_name": "Keyboard retro C2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.31077,
+                "y": 0.945615,
+                "z": 3.0587
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.13,
+                "y": 0,
+                "z": -0.02
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "c2b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Keyboard retro C2",
@@ -859,12 +1665,36 @@
         {
             "name": "Keyboard X1",
             "mesh_name": "Keyboard X1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.32282,
+                "y": 1.2443,
+                "z": 3.05838
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.13,
+                "y": 0,
+                "z": -0.02
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "x1b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Keyboard X1",
@@ -876,12 +1706,36 @@
         {
             "name": "Keyboard X2",
             "mesh_name": "Keyboard X2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.32339,
+                "y": 1.52001,
+                "z": 3.06048
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.13,
+                "y": 0,
+                "z": -0.02
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "x2b1b1b1-1b1b-1b1b-1b1b-2b1b1b1b1b1b",
                 "name": "Keyboard X2",
@@ -893,12 +1747,36 @@
         {
             "name": "Keyboard Z1",
             "mesh_name": "Keyboard Z1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.2994,
+                "y": 0.664111,
+                "z": 3.05317
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.13,
+                "y": 0,
+                "z": -0.02
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z1b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Keyboard Z1",
@@ -910,12 +1788,36 @@
         {
             "name": "Mouse R1",
             "mesh_name": "Mouse R1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.01264,
+                "y": 0.927706,
+                "z": 3.05879
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.037,
+                "y": 0.07,
+                "z": -0.02
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "r1b1b1b1-1b1b-3b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Mouse R1",
@@ -927,12 +1829,36 @@
         {
             "name": "Mouse X1",
             "mesh_name": "Mouse X1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.02977,
+                "y": 1.22007,
+                "z": 3.05683
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.037,
+                "y": 0.07,
+                "z": -0.02
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "x1b1b1b1-1b1b-1b1b-1b1b-1b1b1b3b1b1b",
                 "name": "Mouse X1",
@@ -944,12 +1870,36 @@
         {
             "name": "Mouse X2",
             "mesh_name": "Mouse X2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.00657,
+                "y": 1.50115,
+                "z": 3.05594
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.037,
+                "y": 0.07,
+                "z": -0.02
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "x2b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Mouse X2",
@@ -961,12 +1911,36 @@
         {
             "name": "Mouse Z5",
             "mesh_name": "Mouse Z5",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.01026,
+                "y": 0.643117,
+                "z": 3.06829
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.037,
+                "y": 0.07,
+                "z": -0.02
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z1b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b2b1b",
                 "name": "Mouse Z5",
@@ -978,12 +1952,36 @@
         {
             "name": "Display 1",
             "mesh_name": "Display 1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.26165,
+                "y": 1.43333,
+                "z": 5.02683
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.02,
+                "y": -0.18,
+                "z": -0.2
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z2b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Display 1",
@@ -995,12 +1993,36 @@
         {
             "name": "Display 2",
             "mesh_name": "Display 2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.22838,
+                "y": 0.774595,
+                "z": 5.07723
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.02,
+                "y": -0.12,
+                "z": -0.1
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z3b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Display 2",
@@ -1012,12 +2034,36 @@
         {
             "name": "Display curved 1",
             "mesh_name": "Display curved 1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.24438,
+                "y": 0.802537,
+                "z": 3.99248
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.04,
+                "y": -0.14,
+                "z": -0.3
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.5,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z4b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Display curved 1",
@@ -1029,12 +2075,36 @@
         {
             "name": "Display curved 2",
             "mesh_name": "Display curved 2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.24463,
+                "y": 1.36612,
+                "z": 3.99645
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.02,
+                "y": -0.14,
+                "z": -0.25
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.5,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z5b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Display curved 2",
@@ -1046,12 +2116,36 @@
         {
             "name": "Laptop 1",
             "mesh_name": "Laptop 1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.20672,
+                "y": 1.2833,
+                "z": 3.06509
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.1,
+                "y": -0.08,
+                "z": 0
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z6b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Laptop 1",
@@ -1063,12 +2157,36 @@
         {
             "name": "Laptop 2",
             "mesh_name": "Laptop 2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.20461,
+                "y": 1.24473,
+                "z": 2.62764
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.07,
+                "y": -0.03,
+                "z": 0.04
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z7b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Laptop 2",
@@ -1080,12 +2198,36 @@
         {
             "name": "Malculator 1",
             "mesh_name": "Malculator 1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.20954,
+                "y": 1.2981,
+                "z": 2.11031
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.09,
+                "y": -0.08,
+                "z": 0
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z8b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Malculator 1",
@@ -1097,12 +2239,36 @@
         {
             "name": "Malculator 2",
             "mesh_name": "Malculator 2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.19702,
+                "y": 1.30267,
+                "z": 1.69757
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.09,
+                "y": -0.08,
+                "z": 0
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z9b1b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Malculator 2",
@@ -1114,12 +2280,36 @@
         {
             "name": "Mousepad R2",
             "mesh_name": "Mousepad R2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -3.89628,
+                "y": 0.968512,
+                "z": 3.06057
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.037,
+                "y": 0.07,
+                "z": -0.032
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z9b2b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Mousepad R2",
@@ -1131,12 +2321,36 @@
         {
             "name": "Mousepad X2",
             "mesh_name": "Mousepad X2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -3.88888,
+                "y": 1.26303,
+                "z": 3.07665
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.037,
+                "y": 0.07,
+                "z": -0.032
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z9b3b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Mousepad X2",
@@ -1148,12 +2362,36 @@
         {
             "name": "Mousepad X3",
             "mesh_name": "Mousepad X3",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -3.88922,
+                "y": 1.54177,
+                "z": 3.07609
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.037,
+                "y": 0.07,
+                "z": -0.032
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z9b4b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Mousepad X3",
@@ -1165,12 +2403,36 @@
         {
             "name": "Mousepad Z2",
             "mesh_name": "Mousepad Z2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -3.8858,
+                "y": 0.673853,
+                "z": 3.07649
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.037,
+                "y": 0.07,
+                "z": -0.032
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z9b5b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Mousepad Z2",
@@ -1182,12 +2444,36 @@
         {
             "name": "Office chair",
             "mesh_name": "Office chair",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -1.08382,
+                "y": 1.27967,
+                "z": 4.09208
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.1,
+                "y": -0.5,
+                "z": -0.3
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": -1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z9b6b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Office chair",
@@ -1199,12 +2485,36 @@
         {
             "name": "PC 1",
             "mesh_name": "PC 1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -3.99967,
+                "y": 1.34723,
+                "z": 7.68569
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.1,
+                "y": -0.18,
+                "z": -0.1
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z9b7b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "PC 1",
@@ -1216,12 +2526,36 @@
         {
             "name": "PC 2",
             "mesh_name": "PC 2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -2.97407,
+                "y": 1.35375,
+                "z": 7.68027
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.1,
+                "y": -0.18,
+                "z": -0.1
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z9b8b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "PC 2",
@@ -1233,12 +2567,36 @@
         {
             "name": "PC 3",
             "mesh_name": "PC 3",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -1.94139,
+                "y": 1.36418,
+                "z": 7.67844
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.1,
+                "y": -0.18,
+                "z": -0.1
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 3.12,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z9b9b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "PC 3",
@@ -1250,12 +2608,36 @@
         {
             "name": "Printer 1",
             "mesh_name": "Printer 1",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.19922,
+                "y": 0.655604,
+                "z": 1.67076
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0,
+                "y": 0,
+                "z": 0.1
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z9b9b2b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Printer 1",
@@ -1267,12 +2649,36 @@
         {
             "name": "Printer 2",
             "mesh_name": "Printer 2",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -6.18388,
+                "y": 0.683736,
+                "z": 2.15611
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0,
+                "y": 0,
+                "z": 0.1
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
             "Product": {
                 "uuid": "z9b9b3b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "Printer 2",
@@ -1284,12 +2690,36 @@
         {
             "name": "USB 64GB",
             "mesh_name": "USB 64GB",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.62712,
+                "y": 1.25987,
+                "z": 3.35063
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.08,
+                "y": -0.08,
+                "z": 0.01
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z9b9b4b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "USB 64GB",
@@ -1301,12 +2731,36 @@
         {
             "name": "USB 128GB",
             "mesh_name": "USB 128GB",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.32112,
+                "y": 1.26037,
+                "z": 3.36449
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.08,
+                "y": -0.08,
+                "z": 0.01
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z9b9b5b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "USB 128GB",
@@ -1318,12 +2772,36 @@
         {
             "name": "USB 256GB",
             "mesh_name": "USB 256GB",
-            "position": { "x": 0, "y": 0, "z": 0 },
-            "rotation": { "x": 0, "y": 0, "z": 0 },
-            "scale": { "x": 1, "y": 1, "z": 1 },
-            "ui_offset_position": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_rotation": { "x": 0, "y": 0, "z": 0 },
-            "ui_offset_scale": { "x": 1, "y": 1, "z": 1 },
+            "position": {
+                "x": -4.01529,
+                "y": 1.2552,
+                "z": 3.37213
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": 0.08,
+                "y": -0.08,
+                "z": 0.01
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.25,
+                "y": 0.25,
+                "z": 0.25
+            },
             "Product": {
                 "uuid": "z9b9b6b1-1b1b-1b1b-1b1b-1b1b1b1b1b1b",
                 "name": "USB 256GB",
@@ -1338,28 +2816,80 @@
         "basket_mesh_name": "Basket",
         "products_mesh_name": "Basket Products Placeholder",
         "pocket_mesh_name": "Basket Products Placeholder",
-        "position": { "x": 0, "y": 0, "z": 0 },
-        "rotation": { "x": 0, "y": 0, "z": 0 },
-        "scale": { "x": 1, "y": 1, "z": 1 },
-        "object_offset": { "x": 0, "y": 0, "z": 0 },
-        "placeholder_offset": { "x": 0, "y": 0, "z": 0 },
-        "pocket_offset": { "x": 0, "y": 0, "z": 0 },
-        "insert_area_offset": { "x": 0, "y": 0, "z": 0 },
-        "insert_area_size": { "x": 1, "y": 1, "z": 1 }
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "rotation": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+        },
+        "object_offset": {
+            "x": 0,
+            "y": 0.14,
+            "z": 0
+        },
+        "placeholder_offset": {
+            "x": 0,
+            "y": -0.06,
+            "z": 0
+        },
+        "pocket_offset": {
+            "x": -0.2,
+            "y": -0.3,
+            "z": -0.2
+        },
+        "insert_area_offset": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "insert_area_size": {
+            "x": 0.2,
+            "y": 0.2,
+            "z": 0.2
+        }
     },
     "camera": {
         "name": "Camera 1",
-        "position": { "x": 0, "y": 0, "z": 0 },
-        "rotation": { "x": 0, "y": 0, "z": 0 }
+        "position": {
+            "x": 8.05725,
+            "y": 2.40709,
+            "z": -0.432039
+        },
+        "rotation": {
+            "x": 0.0628787,
+            "y": 1.5824,
+            "z": -0.064444
+        }
     },
     "character": {
         "name": "Character 1",
-        "position": { "x": 0, "y": 0, "z": 0 },
-        "rotation": { "x": 0, "y": 0, "z": 0 },
-        "scale": { "x": 1, "y": 1, "z": 1 }
+        "position": {
+            "x": 5.65346,
+            "y": 0.707889,
+            "z": -1.76457
+        },
+        "rotation": {
+            "x": 0,
+            "y": 2.0544,
+            "z": 0
+        },
+        "scale": {
+            "x": 1,
+            "y": 1,
+            "z": 1
+        }
     },
     "background": {
         "name": "Background 1",
-        "hex": "000000"
+        "hex": "#000000"
     }
 }
