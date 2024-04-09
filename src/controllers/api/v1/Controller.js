@@ -407,10 +407,14 @@ export default {
 
     ProductController: RestController(`${prefix}products`, 'uuid', Product, {
         find: { 
-            middleware: [MiddlewareJWT.AuthorizeJWT],
+            middleware: [],
+            includes: [
+                { endpoint: 'product_entities', model: 'ProductEntities' },
+                { endpoint: 'scene_products', model: 'SceneProduct' }
+            ]
         },
         findAll: { 
-            middleware: [MiddlewareJWT.AuthorizeJWT],
+            middleware: [],
             whereProperties: ['name'],
             includes: ['ProductEntity', 'SceneProduct']
         },

@@ -32,3 +32,5 @@ npm start
 1. Start Server
 2. Visit [localhost:3000/api/v1/documentation](http://localhost:3000/api/v1/documentation) for Swagger UI
 
+## Shop Assets Export
+The scenes assets are designed to be served from a CDN. A backup of the original files available from the CDN can be found at [drive.google.com](https://drive.google.com/file/d/1db55vUwWH-ttMBSQsRFyxbBcSgatbLg1/view?usp=sharing). 

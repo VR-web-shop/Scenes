@@ -230,6 +230,21 @@
             "meshMaterials": []
         },
         {
+            "name": "Office chair 2",
+            "source": "static/meshes/OfficeChair2.glb",
+            "meshMaterials": []
+        },
+        {
+            "name": "Office chair 3",
+            "source": "static/meshes/OfficeChair3.glb",
+            "meshMaterials": []
+        },
+        {
+            "name": "Office chair RGB",
+            "source": "static/meshes/OfficeChairRGB.glb",
+            "meshMaterials": []
+        },
+        {
             "name": "PC 1",
             "source": "static/meshes/Pc1.glb",
             "meshMaterials": []
@@ -2480,6 +2495,129 @@
                 "description": "A simple office chair",
                 "price": 100,
                 "thumbnail_source": "static/thumbnails/OfficeChair.png"
+            }
+        },
+        {
+            "name": "Office chair 2",
+            "mesh_name": "Office chair 2",
+            "position": {
+                "x": -1.08382,
+                "y": 1.27967,
+                "z": 4.92364
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.1,
+                "y": -0.5,
+                "z": -0.3
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": -1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
+            "Product": {
+                "uuid": "z9b6b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b3b",
+                "name": "Office chair 2",
+                "description": "A simple office chair",
+                "price": 100,
+                "thumbnail_source": "static/thumbnails/OfficeChair2.png"
+            }
+        },
+        {
+            "name": "Office chair 3",
+            "mesh_name": "Office chair 3",
+            "position": {
+                "x": -1.08382,
+                "y": 1.27967,
+                "z": 6.2464
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.1,
+                "y": -0.5,
+                "z": -0.3
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": -1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
+            "Product": {
+                "uuid": "z9b6b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b4b",
+                "name": "Office chair 3",
+                "description": "A simple office chair",
+                "price": 100,
+                "thumbnail_source": "static/thumbnails/OfficeChair3.png"
+            }
+        },
+        {
+            "name": "Office chair RGB",
+            "mesh_name": "Office chair RGB",
+            "position": {
+                "x": -1.08382,
+                "y": 1.27967,
+                "z": 7.16068
+            },
+            "rotation": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "scale": {
+                "x": 1,
+                "y": 1,
+                "z": 1
+            },
+            "ui_offset_position": {
+                "x": -0.1,
+                "y": -0.5,
+                "z": -0.3
+            },
+            "ui_offset_rotation": {
+                "x": 0,
+                "y": -1.57,
+                "z": 0
+            },
+            "ui_offset_scale": {
+                "x": 0.4,
+                "y": 0.4,
+                "z": 0.4
+            },
+            "Product": {
+                "uuid": "z9b6b1b1-1b1b-1b1b-1b1b-1b1b1b1b1b5b",
+                "name": "Office chair RGB",
+                "description": "A simple office chair",
+                "price": 100,
+                "thumbnail_source": "static/thumbnails/OfficeChairRGB.png"
             }
         },
         {

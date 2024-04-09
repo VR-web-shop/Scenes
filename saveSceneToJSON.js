@@ -34,7 +34,7 @@ import Product from './src/models/Product.js';
 
 import demoScene from './demo_scene.json' assert { type: "json" };
 import fs from 'fs'
-const newFilePath = './demo_scene_test.json';
+const newFilePath = './demo_scene_out.json';
 (async () => {
     const { lights } = demoScene 
     for (const light of lights) {

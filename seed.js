@@ -222,12 +222,14 @@ async function createDefaults() {
     const basketObjectMeshData = await Mesh.findOne({ where: { name: basket.basket_mesh_name }});
     const basketPlaceholderMeshData = await Mesh.findOne({ where: { name: basket.products_mesh_name }});
     const basketPocketMeshData = await Mesh.findOne({ where: { name: basket.pocket_mesh_name }});
-    const basketData = await SceneBasket.create({
-        name: basket.name,
+    const basketData = await SceneBasket.findOne({ where: {
+        scene_uuid: scene.dataValues.uuid
+    }}); 
+    
+    basketData.update({
         object_uuid: basketObjectMeshData.dataValues.uuid,
         placeholder_uuid: basketPlaceholderMeshData.dataValues.uuid,
-        pocket_uuid: basketPocketMeshData.dataValues.uuid,
-        scene_uuid: scene.dataValues.uuid
+        pocket_uuid: basketPocketMeshData.dataValues.uuid
     });
 
     const position = await basketData.getPosition();

@@ -27,3 +27,4 @@ dist-ssr
 .npmrc
 dist_sdk
 sdk
+demo_scene_out.json
