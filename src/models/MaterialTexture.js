@@ -1,7 +1,5 @@
 import { DataTypes } from 'sequelize';
 import Database from './Database.js';
-import Texture from './Texture.js';
-import Material from './Material.js';
 
 const MaterialTexture = Database.define("MaterialTexture", {
     uuid: {

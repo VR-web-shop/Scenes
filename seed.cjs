@@ -1,42 +1,53 @@
-import 'dotenv/config'
-import Database from './src/models/Database.js';
+require('dotenv').config();
 
-import Scene from './src/models/Scene.js';
-import Vector3D from './src/models/Vector3D.js';
+const demoScene = require('./demo_scene.json');
 
-import Material from './src/models/Material.js';
-import MaterialTexture from './src/models/MaterialTexture.js';
-import MaterialType, { MATERIAL_TYPE } from './src/models/MaterialType.js';
 
-import Texture from './src/models/Texture.js';
-import TextureType, { TEXTURE_TYPE } from './src/models/TextureType.js';
 
-import Mesh from './src/models/Mesh.js';
-import MeshMaterial, { removeConstraints } from './src/models/MeshMaterial.js';
-
-import SceneLight from './src/models/SceneLight.js';
-import SceneLightType, { LIGHT_TYPE } from './src/models/SceneLightType.js';
-import SceneStaticObject from './src/models/SceneStaticObject.js';
-import SceneBasket from './src/models/SceneBasket.js';
-import SceneBasketState, { SCENE_BASKET_STATE } from './src/models/SceneBasketState.js';
-import SceneCheckout from './src/models/SceneCheckout.js';
-import SceneFloor from './src/models/SceneFloor.js';
-import SceneProduct from './src/models/SceneProduct.js';
-import SceneProductState, { SCENE_PRODUCT_STATE } from './src/models/SceneProductState.js';
-import SceneCharacter from './src/models/SceneCharacter.js';
-
-import SceneCamera from './src/models/SceneCamera.js';
-import SceneBackground from './src/models/SceneBackground.js';
-
-import ProductEntityState, { PRODUCT_ENTITY_STATES } from './src/models/ProductEntityState.js';
-import ProductEntity from './src/models/ProductEntity.js';
-import Product from './src/models/Product.js';
-
-import demoScene from './demo_scene.json' assert { type: "json" };
 
 async function createDefaults() {
-    await Database.sync({ force: true });
-    await removeConstraints();
+    const Database = (await import('./src/models/Database.js')).default;
+    
+    
+    try {
+        await Database.sync({ force: true });
+    } catch (error) {
+        console.log('Error syncing database: ', error);
+    }
+
+    const {default: Vector3D} = await import('./src/models/Vector3D.js');
+    const {default: MaterialTexture} = await import('./src/models/MaterialTexture.js');
+    const {default: Material} = await import('./src/models/Material.js');
+    const {default: MaterialType} = await import('./src/models/MaterialType.js');
+    const {default: Texture} = await import('./src/models/Texture.js');
+    const {default: TextureType} = await import('./src/models/TextureType.js');
+    const {default: Mesh} = await import('./src/models/Mesh.js');
+    const {default: MeshMaterial} = await import('./src/models/MeshMaterial.js');
+    const {default: Scene} = await import('./src/models/Scene.js');
+    const {default: SceneLight} = await import('./src/models/SceneLight.js');
+    const {default: SceneLightType} = await import('./src/models/SceneLightType.js');
+    const {default: SceneStaticObject} = await import('./src/models/SceneStaticObject.js');
+    const {default: SceneBasket} = await import('./src/models/SceneBasket.js');
+    const {default: SceneBasketState} = await import('./src/models/SceneBasketState.js');
+    const {default: SceneCheckout} = await import('./src/models/SceneCheckout.js');
+    const {default: SceneFloor} = await import('./src/models/SceneFloor.js');
+    const {default: SceneProduct} = await import('./src/models/SceneProduct.js');
+    const {default: SceneProductState} = await import('./src/models/SceneProductState.js');
+    const {default: SceneCharacter} = await import('./src/models/SceneCharacter.js');
+    const {default: SceneCamera} = await import('./src/models/SceneCamera.js');
+    const {default: SceneBackground} = await import('./src/models/SceneBackground.js');
+    const {default: ProductEntityState} = await import('./src/models/ProductEntityState.js');
+    const {default: ProductEntity} = await import('./src/models/ProductEntity.js');
+    const {default: Product} = await import('./src/models/Product.js');
+
+    const {MATERIAL_TYPE} = await import('./src/models/MaterialType.js');
+    const {TEXTURE_TYPE} = await import('./src/models/TextureType.js');
+    const {LIGHT_TYPE} = await import('./src/models/SceneLightType.js');
+    const {PRODUCT_ENTITY_STATES} = await import('./src/models/ProductEntityState.js');
+    const {SCENE_PRODUCT_STATE} = await import('./src/models/SceneProductState.js');
+    const {SCENE_BASKET_STATE} = await import('./src/models/SceneBasketState.js');
+    console.log(MaterialType);
+    //await removeConstraints();
 
     // Create Default types and states
     for (const name of Object.values(MATERIAL_TYPE)) {
@@ -285,11 +296,5 @@ async function createDefaults() {
 }
 
 (async () => {
-    try {
-        await Database.sync({ force: true });
-    } catch (error) {
-        console.log('Error syncing database: ', error);
-    }
-
     await createDefaults()
 })();
