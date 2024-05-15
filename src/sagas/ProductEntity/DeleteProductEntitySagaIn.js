@@ -1,12 +1,11 @@
 import Sagas from "@vr-web-shop/sagas";
-import Saga from "../../../../saga-v2/SagaHandler.js";
 import ProductEntity from '../../models/ProductEntity.js';
 
-const handler = new Saga.handler({
+const handler = new Sagas.SagaHandler.handler({
     eventName: "Delete_Products_Product_Entity",
     nextEventName: "Delete_Scenes_Product_Entity",
-    type: Saga.types.CHAIN
-}, Sagas.BrokerService);
+    type: Sagas.SagaHandler.types.CHAIN
+});
 
 handler.initiateEvent(async (
     distributed_transaction_transaction_uuid,

@@ -1,12 +1,11 @@
 import Sagas from "@vr-web-shop/sagas";
-import Saga from "../../../../saga-v2/SagaHandler.js";
 import Product from '../../models/Product.js';
 
-const handler = new Saga.handler({
+const handler = new Sagas.SagaHandler.handler({
     eventName: "Put_Products_Product",
     nextEventName: "Put_Scenes_Product",
-    type: Saga.types.CHAIN
-}, Sagas.BrokerService);
+    type: Sagas.SagaHandler.types.CHAIN
+});
 
 handler.initiateEvent(async (
     distributed_transaction_transaction_uuid,

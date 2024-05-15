@@ -36,7 +36,7 @@ npm start
 The scenes assets are designed to be served from a CDN. A backup of the original files available from the CDN can be found at [drive.google.com](https://drive.google.com/file/d/1db55vUwWH-ttMBSQsRFyxbBcSgatbLg1/view?usp=sharing). 
 
 ## Deploy
-
+[![VM Publish Production](https://github.com/VR-web-shop/Scenes/actions/workflows/vm-publish-production.yml/badge.svg)](https://github.com/VR-web-shop/Scenes/actions/workflows/vm-publish-production.yml)
 
 The GitHub Workflow: [vm-publish-production.yml](/.github/workflows/vm-publish-production.yml); execute a CI/CD flow on push to main.
 
