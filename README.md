@@ -34,3 +34,60 @@ npm start
 
 ## Shop Assets Export
 The scenes assets are designed to be served from a CDN. A backup of the original files available from the CDN can be found at [drive.google.com](https://drive.google.com/file/d/1db55vUwWH-ttMBSQsRFyxbBcSgatbLg1/view?usp=sharing). 
+
+## Deploy
+
+
+The GitHub Workflow: [vm-publish-production.yml](/.github/workflows/vm-publish-production.yml); execute a CI/CD flow on push to main.
+
+## Docker
+1. Setup Environment Variables
+```
+$ cp .env.example .env
+```
+
+2. Setup npmrc File
+```
+$ cp .npmrc.example .npmrc
+```
+
+3. Build Docker Image
+```
+$ docker build -t scenes:v1.0 .
+```
+
+4. Run Docker Container
+```
+$ docker run -p 3003:3003 scenes:v1.0
+```
+
+## Docker Compose
+1. Setup Environment Variables
+```
+$ cp .env.example .env
+```
+
+2. Setup npmrc File
+```
+$ cp .npmrc.example .npmrc
+```
+
+3. Build Docker Image
+```
+$ docker build -t scenes:v1.0 .
+```
+
+4. Save the image to a tar file
+```
+$ docker save -o scenes.tar scenes:v1.0
+```
+
+5. Load the image into Docker
+```
+$ docker load -i scenes.tar
+```
+
+6. Run Docker Compose
+```
+$ docker compose up
+```

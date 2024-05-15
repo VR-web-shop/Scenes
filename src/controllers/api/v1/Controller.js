@@ -436,7 +436,7 @@ export default {
 
     ProductEntityController: RestController(`${prefix}product_entities`, 'uuid', ProductEntity, {
         find: { 
-            middleware: [MiddlewareJWT.AuthorizeJWT],
+            middleware: [],
         },
         findAll: { 
             middleware: [],

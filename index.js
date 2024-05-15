@@ -1,7 +1,9 @@
 import 'dotenv/config'
 import './src/config/WebsocketConfig.js'
+import './src/sagas/SagaHandlerCtrl.js'
+
 import Sagas from "@vr-web-shop/sagas";
-import { startHandlers } from './src/sagas/SagaHandlerCtrl.js'
+
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
@@ -9,7 +11,6 @@ import Controller from './src/controllers/api/v1/Controller.js'
 
 (async () => {
     await Sagas.BrokerService.connect()
-    startHandlers()
     const app = express()
     app.use(cors({origin: '*'}))
     app.use(bodyParser.json())

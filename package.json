@@ -28,13 +28,14 @@
   "devDependencies": {
     "@vr-web-shop/meteor": "1.0.77",
     "nodemon": "^3.1.0",
-    "sequelize-cli": "^6.6.2",
-    "rollup": "^4.13.0"
+    "rollup": "^4.13.0",
+    "sequelize-cli": "^6.6.2"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.540.0",
     "@aws-sdk/lib-storage": "^3.540.0",
-    "@vr-web-shop/sagas": "1.0.3",
+    "@vr-web-shop/sagas": "1.0.9",
+    "@elastic/elasticsearch": "^8.13.1",
     "amqplib": "^0.10.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -44,10 +45,11 @@
     "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^3.9.2",
+    "mysql2": "^3.9.7",
     "ruru": "^2.0.0-beta.11",
     "sequelize": "^6.37.1",
     "sqlite3": "^5.1.7",
+    "uuid": "^9.0.1",
     "websocket": "^1.0.34"
   }
 }
