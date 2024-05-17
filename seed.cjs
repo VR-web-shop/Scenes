@@ -3,11 +3,8 @@ require('dotenv').config();
 const demoScene = require('./demo_scene.json');
 
 
-
-
 async function createDefaults() {
-    const Database = (await import('./src/models/Database.js')).default;
-    
+    const {default: Database} = (await import('./src/models/Database.js'));
     
     try {
         await Database.sync({ force: true });
@@ -46,25 +43,56 @@ async function createDefaults() {
     const {PRODUCT_ENTITY_STATES} = await import('./src/models/ProductEntityState.js');
     const {SCENE_PRODUCT_STATE} = await import('./src/models/SceneProductState.js');
     const {SCENE_BASKET_STATE} = await import('./src/models/SceneBasketState.js');
-    console.log(MaterialType);
+
+    await MaterialType.sync();
+    await TextureType.sync();
+    await SceneLightType.sync();
+    await ProductEntityState.sync();
+    await SceneProductState.sync();
+    await SceneBasketState.sync();
+    await Texture.sync();
+    await Material.sync();
+    await MaterialTexture.sync();
+    await Mesh.sync();
+    await MeshMaterial.sync();
+    await Scene.sync();
+    await SceneLight.sync();
+    await SceneFloor.sync();
+    await SceneCheckout.sync();
+    await SceneStaticObject.sync();
+    await Product.sync();
+    await SceneProduct.sync();
+  
     //await removeConstraints();
+    await Vector3D.sync();
+    await SceneBasket.sync();
+    await SceneCharacter.sync();
+    await SceneCamera.sync();
+    await SceneBackground.sync();
+    await ProductEntity.sync();
 
     // Create Default types and states
+    
     for (const name of Object.values(MATERIAL_TYPE)) {
         await MaterialType.findOrCreate({ where: { name } });
     }
+    
     for (const name of Object.values(TEXTURE_TYPE)) {
         await TextureType.findOrCreate({ where: { name } });
     }
+    
     for (const name of Object.values(LIGHT_TYPE)) {
         await SceneLightType.findOrCreate({ where: { name } });
     }
+    
     for (const name of Object.values(PRODUCT_ENTITY_STATES)) {
         await ProductEntityState.findOrCreate({ where: { name } });
     }
+    
     for (const name of Object.values(SCENE_PRODUCT_STATE)) {
         await SceneProductState.findOrCreate({ where: { name } });
     }
+    
     for (const name of Object.values(SCENE_BASKET_STATE)) {
         await SceneBasketState.findOrCreate({ where: { name } });
     }
@@ -96,6 +124,7 @@ async function createDefaults() {
     }
 
     const { meshes } = demoScene;
+    
     for (const mesh of meshes) {
         const meshData = await Mesh.create({ 
             name: mesh.name, 
@@ -113,6 +142,7 @@ async function createDefaults() {
         }
     }
 
+    
     const scene = await Scene.create({ name: demoScene.name, active: true });
     const { lights } = demoScene 
     for (const light of lights) {
@@ -131,6 +161,7 @@ async function createDefaults() {
         await Vector3D.update({ x: light.rotation.x, y: light.rotation.y, z: light.rotation.z }, { where: { uuid: rotation.dataValues.uuid }});
     }
 
+    
     const { floors } = demoScene;
     for (const floor of floors) {
         const meshData = await Mesh.findOne({ where: { name: floor.mesh_name }});
@@ -147,7 +178,7 @@ async function createDefaults() {
         await Vector3D.update({ x: floor.rotation.x, y: floor.rotation.y, z: floor.rotation.z }, { where: { uuid: rotation.dataValues.uuid }});
         await Vector3D.update({ x: floor.scale.x, y: floor.scale.y, z: floor.scale.z }, { where: { uuid: scale.dataValues.uuid }});
     }
-
+    
     const { checkouts } = demoScene;
     for (const checkout of checkouts) {
         const meshData = await Mesh.findOne({ where: { name: checkout.mesh_name }});
@@ -174,7 +205,7 @@ async function createDefaults() {
         await Vector3D.update({ x: checkout.ui_offset_rotation.x, y: checkout.ui_offset_rotation.y, z: checkout.ui_offset_rotation.z }, { where: { uuid: uiOffsetRotation.dataValues.uuid }});
         await Vector3D.update({ x: checkout.ui_offset_scale.x, y: checkout.ui_offset_scale.y, z: checkout.ui_offset_scale.z }, { where: { uuid: uiOffsetScale.dataValues.uuid }});
     }
-
+    
     const { static_objects } = demoScene;
     for (const staticObject of static_objects) {
         const meshData = await Mesh.findOne({ where: { name: staticObject.mesh_name }});
@@ -193,6 +224,7 @@ async function createDefaults() {
         await Vector3D.update({ x: staticObject.scale.x, y: staticObject.scale.y, z: staticObject.scale.z }, { where: { uuid: scale.dataValues.uuid }});
     }
 
+    
     const { scene_products } = demoScene;
     for (const sceneProduct of scene_products) {
         const productData = await Product.create({
@@ -227,7 +259,7 @@ async function createDefaults() {
         await Vector3D.update({ x: sceneProduct.ui_offset_rotation.x, y: sceneProduct.ui_offset_rotation.y, z: sceneProduct.ui_offset_rotation.z }, { where: { uuid: uiOffsetRotation.dataValues.uuid }});
         await Vector3D.update({ x: sceneProduct.ui_offset_scale.x, y: sceneProduct.ui_offset_scale.y, z: sceneProduct.ui_offset_scale.z }, { where: { uuid: uiOffsetScale.dataValues.uuid }});
     }
-
+    
     const { basket } = demoScene;
     (async () => {
     const basketObjectMeshData = await Mesh.findOne({ where: { name: basket.basket_mesh_name }});
@@ -242,6 +274,7 @@ async function createDefaults() {
         placeholder_uuid: basketPlaceholderMeshData.dataValues.uuid,
         pocket_uuid: basketPocketMeshData.dataValues.uuid
     });
+    console.log(basketData);
 
     const position = await basketData.getPosition();
     const rotation = await basketData.getRotation();
