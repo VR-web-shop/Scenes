@@ -44,6 +44,7 @@ async function createDefaults() {
     const {SCENE_PRODUCT_STATE} = await import('./src/models/SceneProductState.js');
     const {SCENE_BASKET_STATE} = await import('./src/models/SceneBasketState.js');
 
+    await Vector3D.sync();
     await MaterialType.sync();
     await TextureType.sync();
     await SceneLightType.sync();
@@ -64,7 +65,6 @@ async function createDefaults() {
     await SceneProduct.sync();
   
     //await removeConstraints();
-    await Vector3D.sync();
     await SceneBasket.sync();
     await SceneCharacter.sync();
     await SceneCamera.sync();
