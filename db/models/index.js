@@ -1,5 +1,5 @@
-'use strict';
-
+'strict mode';
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -22,7 +22,7 @@ fs
     return (
       file.indexOf('.') !== 0 &&
       file !== basename &&
-      file.slice(-3) === '.js' &&
+      file.slice(-4) === '.cjs' &&
       file.indexOf('.test.js') === -1
     );
   })

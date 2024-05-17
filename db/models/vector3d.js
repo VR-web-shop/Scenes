@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Vector3D',
+    modelName: 'Vector3d',
   });
   return Vector3D;
 };
