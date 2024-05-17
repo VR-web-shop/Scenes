@@ -9,14 +9,22 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import Controller from './src/controllers/api/v1/Controller.js'
 
+const port = process.env.SERVER_PORT
+const origin = process.env.CORS_ORIGINS.split(',')
+
 (async () => {
     await Sagas.BrokerService.connect()
     const app = express()
-    app.use(cors({origin: '*'}))
+    app.use(cors({
+        origin,
+        credentials: true
+    }));
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({ extended: true }))
     Object.values(Controller).forEach(controller => {
         app.use(controller.router)
     })
-    app.listen(process.env.SERVER_PORT, () => console.log(`Server running on port ${process.env.SERVER_PORT}`))
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`)
+    })
 })()

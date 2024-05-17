@@ -5,6 +5,3 @@ services:
       - NODE_ENV=production
     ports:
       - "3003:3003"
-    volumes:
-      - /etc/letsencrypt/live/wss-scenes-test.c7pixel.com/fullchain.pem:fullchain.pem
-      - /etc/letsencrypt/live/wss-scenes-test.c7pixel.com/privkey.pem:privkey.pem
