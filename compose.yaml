@@ -5,3 +5,13 @@ services:
       - NODE_ENV=production
     ports:
       - "3003:3003"
+    volumes:
+      - scenes-certificates:/etc/letsencrypt/live/wss-scenes-test.c7pixel.com
+
+volumes:
+  scenes-certificates:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /etc/letsencrypt/live/wss-scenes-test.c7pixel.com
