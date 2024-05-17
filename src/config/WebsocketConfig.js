@@ -1,58 +1,139 @@
 import 'dotenv/config'
 import WebSocketServer from 'websocket'
 import http from 'http'
+import https from 'https';
 
 const WS_PORT = process.env.WS_PORT
-const server = http.createServer((req, res) => {
-    res.writeHead(404)
-    res.end()
-})
-server.listen(WS_PORT, function() {
-    console.log((new Date()) + ' Server is listening on port 8080');
-});
+const WS_ALLOWED_ORIGINS = process.env.WS_ALLOWED_ORIGINS
+const WS_CERTIFICATE_PATH = process.env.WS_CERTIFICATE
+const WS_PRIVATE_KEY_PATH = process.env.WS_PRIVATE_KEY
 
+let connections = []
+let server = null;
+let wsServer = null;
 
-const wsServer = new WebSocketServer.server({
-    httpServer: server,
-    // You should not use autoAcceptConnections for production
-    // applications, as it defeats all standard cross-origin protection
-    // facilities built into the protocol and the browser.  You should
-    // *always* verify the connection's origin and decide whether or not
-    // to accept it.
-    autoAcceptConnections: false
-});
+/**
+ * @function buildServer
+ * @description Builds a server based on the environment
+ * @returns {http.Server | https.Server}
+ */
+function buildServer() {
+    /**
+     * @function requestListeners
+     * @description Handles requests
+     * @param {http.IncomingMessage}
+     * @param {http.ServerResponse}
+     * @returns {void}
+     */
+    const requestListeners = (req, res) => {
+        res.writeHead(404)
+        res.end()
+    }
 
-function originIsAllowed(origin) {
-    //if (process.env.NODE_ENV === 'development') return true
-    //else if (process.env.NODE_ENV === 'test') return true
-    //else if (process.env.WS_ALLOWED_ORIGIN === origin) return true
-    return true
+    const ENV = process.env.NODE_ENV
+    switch (ENV) {
+        case 'production':
+            return https.createServer({
+                key: fs.readFileSync(WS_PRIVATE_KEY_PATH),
+                cert: fs.readFileSync(WS_CERTIFICATE_PATH)
+            }, requestListeners)
+        default:
+            return http.createServer(requestListeners)
+    }
 }
 
-const connections = []
-
-wsServer.on('connect', function(connection) {
-    console.log((new Date()) + ' Connection accepted.');
-});
-
-wsServer.on('request', function(request) {
-    if (!originIsAllowed(request.origin)) {
-      request.reject();
-      return;
+/**
+ * @function originIsAllowed
+ * @description Checks if the origin is allowed
+ * @param {string} origin
+ * @returns {boolean}
+ */
+function originIsAllowed(origin) {
+    if (process.env.NODE_ENV === 'development') return true
+    else if (process.env.NODE_ENV === 'test') return true
+    else {
+        const origins = WS_ALLOWED_ORIGINS.split(',')
+        return origins.includes(origin)
     }
-    
-    const connection = request.accept('echo-protocol', request.origin);
-    connection.on('close', function(reasonCode, description) {
-        console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
-        const index = connections.indexOf(connection)
-        connections.splice(index, 1)
-    });
+}
 
-    connections.push(connection)
-});
+/**
+ * @function log
+ * @description Logs a message
+ * @param {string} message
+ * @returns {void}
+ */
+function log(message) {
+    console.log(`${new Date()}: ${message}`)
+}
 
+/**
+ * @function sendToClient
+ * @description Sends a message to all clients
+ * @param {object} obj
+ * @returns {void}
+ */
 export function sendToClient(obj) {
     const message = JSON.stringify(obj)
     for (const connection of connections)
         connection.send(message)
 }
+
+/**
+ * @function connect
+ * @description Logs a connection
+ * @param {WebSocketConnection} connection
+ * @returns {void}
+ */
+function connect(connection) {
+    log(`Peer ${connection.remoteAddress} connected.`)
+}
+
+/**
+ * @function connect
+ * @description Logs a connection
+ * @param {WebSocketConnection} connection
+ * @returns {void}
+ */
+function close(connection) {
+    return (reasonCode, description) => {
+        log(`
+            Peer ${connection.remoteAddress} disconnected, 
+            reason: ${reasonCode}, 
+            description: ${description}
+        `)
+        const index = connections.indexOf(connection)
+        connections.splice(index, 1)
+    }
+}
+
+/**
+ * @function request
+ * @description Handles a request
+ * @param {WebSocketRequest} request
+ * @returns {void}
+ */
+function request(request) {
+    if (!originIsAllowed(request.origin)) {
+        request.reject();
+        return;
+    }
+
+    const connection = request.accept('echo-protocol', request.origin);
+    connection.on('close', close(connection));
+    connections.push(connection)
+}
+
+server = buildServer()
+
+server.listen(WS_PORT, function () {
+    log(`Server is listening on port ${WS_PORT}`)
+});
+
+wsServer = new WebSocketServer.server({
+    httpServer: server,
+    autoAcceptConnections: false
+});
+
+wsServer.on('connect', connect);
+wsServer.on('request', request);
