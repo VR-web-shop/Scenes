@@ -6,8 +6,8 @@ import https from 'https';
 
 const WS_PORT = process.env.WS_PORT
 const WS_ALLOWED_ORIGINS = process.env.WS_ALLOWED_ORIGINS
-const WS_CERTIFICATE_PATH = process.env.WS_CERTIFICATE
-const WS_PRIVATE_KEY_PATH = process.env.WS_PRIVATE_KEY
+const WS_CERTIFICATE_PATH = process.env.WS_CERTIFICATE_PATH
+const WS_PRIVATE_KEY_PATH = process.env.WS_PRIVATE_KEY_PATH
 
 let connections = []
 let server = null;
