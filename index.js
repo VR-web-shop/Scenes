@@ -9,8 +9,8 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import Controller from './src/controllers/api/v1/Controller.js'
 
-const port = process.env.SERVER_PORT
-const origin = process.env.CORS_ORIGINS.split(',')
+const port = process.env.SERVER_PORT;
+const origin = process.env.CORS_ORIGINS.split(',');
 
 (async () => {
     await Sagas.BrokerService.connect()
