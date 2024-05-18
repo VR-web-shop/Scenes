@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.Vector3dDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'vector3d_client_side_uuid',
+      });
     }
   }
   Vector3dDescription.init({

@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.SceneLightType.hasMany(models.SceneLightDescription, {
+        foreignKey: 'scene_light_type_name',
+      });
     }
   }
   SceneLightType.init({

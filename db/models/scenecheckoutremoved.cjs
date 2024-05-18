@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.SceneCheckoutRemoved.belongsTo(models.SceneCheckout, {
+        foreignKey: 'scene_checkout_client_side_uuid',
+      });
     }
   }
   SceneCheckoutRemoved.init({

@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.ProductDescription.belongsTo(models.Product, {
+        foreignKey: 'product_client_side_uuid',
+      });
     }
   }
   ProductRemoved.init({

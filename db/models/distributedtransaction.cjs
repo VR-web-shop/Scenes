@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   DistributedTransaction.init({
-    transactionUUID: {
+    transaction_uuid: {
       type: DataTypes.STRING,
       field: 'transaction_uuid',
       primaryKey: true

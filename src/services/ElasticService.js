@@ -51,7 +51,6 @@ const remove = async (index, id) => {
  * @returns {Promise} The promise.
  */
 const search = async (query) => {
-    console.log('search', query);
     return await client.search(query);
 }
 

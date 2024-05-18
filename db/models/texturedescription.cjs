@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.TextureDescription.belongsTo(models.Texture, {
+        foreignKey: 'texture_client_side_uuid',
+      });
+      models.TextureDescription.belongsTo(models.TextureType, {
+        foreignKey: 'texture_type_name',
+      });
     }
   }
   TextureDescription.init({

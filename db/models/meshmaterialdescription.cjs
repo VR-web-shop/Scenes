@@ -10,7 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.MeshMaterialDescription.belongsTo(models.MeshMaterial, {
+        foreignKey: 'mesh_material_client_side_uuid',
+      });
+      models.MeshMaterialDescription.belongsTo(models.Mesh, {
+        foreignKey: 'mesh_client_side_uuid',
+      });
+      models.MeshMaterialDescription.belongsTo(models.Material, {
+        foreignKey: 'material_client_side_uuid',
+      });
     }
   }
   MeshMaterialDescription.init({

@@ -10,7 +10,39 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.SceneCheckoutDescription.belongsTo(models.SceneCheckout, {
+        foreignKey: 'scene_checkout_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Scene, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'position_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'rotation_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'scale_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'surface_offset_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'surface_size_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'ui_offset_position_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'ui_offset_rotation_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'ui_scale_client_side_uuid',
+      });
+      models.SceneCheckoutDescription.belongsTo(models.Mesh, {
+        foreignKey: 'mesh_client_side_uuid',
+      });
     }
   }
   SceneCheckoutDescription.init({

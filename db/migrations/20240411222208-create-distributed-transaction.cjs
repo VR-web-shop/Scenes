@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('DistributedTransactions', {      
-      transactionUUID: {
+      transaction_uuid: {
         type: Sequelize.STRING,
         field: 'transaction_uuid',
         primaryKey: true

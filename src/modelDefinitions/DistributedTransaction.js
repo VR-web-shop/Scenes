@@ -11,7 +11,7 @@ export default {
      * The primary key is used to find the model in the database.
      * Required.
      */
-    pkName: 'client_side_uuid',
+    pkName: 'transaction_uuid',
     
     /**
      * The model name is used to find Sequelize models in the db/models directory.

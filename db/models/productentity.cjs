@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.ProductEntity.hasMany(models.ProductEntityDescription, {
+        foreignKey: 'product_entity_client_side_uuid',
+      });
+      models.ProductEntity.hasMany(models.ProductEntityRemoved, {
+        foreignKey: 'product_entity_client_side_uuid',
+      });   
     }
   }
   ProductEntity.init({

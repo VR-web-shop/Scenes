@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.SceneBasket.hasMany(models.SceneBasketDescription, {
+        foreignKey: 'scene_basket_client_side_uuid',
+      });
+      models.SceneBasket.hasMany(models.SceneBasketRemoved, {
+        foreignKey: 'scene_basket_client_side_uuid',
+      });
     }
   }
   SceneBasket.init({

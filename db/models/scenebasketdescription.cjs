@@ -10,7 +10,42 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.SceneBasketDescription.belongsTo(models.SceneBasket, {
+        foreignKey: 'scene_background_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Scene, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'position_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'rotation_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'scale_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'object_offset_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'insert_area_offset_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'insert_area_size_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Mesh, {
+        foreignKey: 'object_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Mesh, {
+        foreignKey: 'placeholder_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Mesh, {
+        foreignKey: 'pocket_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.SceneBasketState, {
+        foreignKey: 'basket_state_name',
+      });
     }
   }
   SceneBasketDescription.init({

@@ -10,7 +10,24 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.SceneFloorDescription.belongsTo(models.SceneFloor, {
+        foreignKey: 'scene_floor_client_side_uuid',
+      });
+      models.SceneFloorDescription.belongsTo(models.Scene, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.SceneFloorDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'position_client_side_uuid',
+      });
+      models.SceneFloorDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'rotation_client_side_uuid',
+      });
+      models.SceneFloorDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'scale_client_side_uuid',
+      });
+      models.SceneFloorDescription.belongsTo(models.Mesh, {
+        foreignKey: 'mesh_client_side_uuid',
+      });
     }
   }
   SceneFloorDescription.init({

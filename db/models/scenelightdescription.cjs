@@ -10,7 +10,21 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.SceneLightDescription.belongsTo(models.SceneLight, {
+        foreignKey: 'scene_light_client_side_uuid',
+      });
+      models.SceneLightDescription.belongsTo(models.Scene, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.SceneLightDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'position_client_side_uuid',
+      });
+      models.SceneLightDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'rotation_client_side_uuid',
+      });
+      models.SceneLightDescription.belongsTo(models.SceneLightType, {
+        foreignKey: 'scene_light_type_name',
+      });
     }
   }
   SceneLightDescription.init({

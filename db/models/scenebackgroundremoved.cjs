@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.SceneBackgroundDescription.belongsTo(models.SceneBackground, {
+        foreignKey: 'scene_background_client_side_uuid',
+      });
     }
   }
   SceneBackgroundRemoved.init({

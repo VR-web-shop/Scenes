@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.ProductEntityState.hasMany(models.ProductEntityDescription, {
+        foreignKey: 'product_entity_state_name',
+      });
     }
   }
   ProductEntityState.init({

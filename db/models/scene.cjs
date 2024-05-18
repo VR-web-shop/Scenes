@@ -10,7 +10,40 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.Scene.hasMany(models.SceneDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneRemoved, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+
+      models.Scene.hasMany(models.SceneBackgroundDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneCameraDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneCharacterDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneBasketDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneCheckoutDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneFloorDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneLightDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneProductDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
+      models.Scene.hasMany(models.SceneStaticObjectDescription, {
+        foreignKey: 'scene_client_side_uuid',
+      });
     }
   }
   Scene.init({

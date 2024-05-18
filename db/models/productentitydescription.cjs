@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.ProductEntityDescription.belongsTo(models.DistributedTransaction, {
+        foreignKey: 'distributed_transaction_transaction_uuid',
+      });
+      models.ProductEntityDescription.belongsTo(models.ProductEntity, {
+        foreignKey: 'product_entity_client_side_uuid',
+      });
     }
   }
   ProductEntityDescription.init({
