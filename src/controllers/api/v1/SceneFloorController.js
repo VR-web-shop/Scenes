@@ -5,8 +5,8 @@ import ModelCommandService from '../../../services/ModelCommandService.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/SceneFloor/PutCommand.js';
 import DeleteCommand from '../../../commands/SceneFloor/DeleteCommand.js';
-import ReadOneQuery from '../../../queries/SceneFloor/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/SceneFloor/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/SceneFloor/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/SceneFloor/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 

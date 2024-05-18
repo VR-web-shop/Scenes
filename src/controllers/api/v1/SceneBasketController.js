@@ -4,8 +4,8 @@ import APIActorError from '../errors/APIActorError.js';
 import ModelCommandService from '../../../services/ModelCommandService.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/SceneBasket/PutCommand.js';
-import ReadOneQuery from '../../../queries/SceneBasket/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/SceneBasket/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/SceneBasket/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/SceneBasket/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 

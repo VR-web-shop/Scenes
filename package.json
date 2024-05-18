@@ -19,7 +19,9 @@
     "migrate:generate": "sequelize-cli model:generate",
     "seed": "sequelize-cli db:seed:all",
     "seed:undo": "sequelize-cli db:seed:undo:all",
-    "seed:generate": "sequelize-cli seed:generate"
+    "seed:generate": "sequelize-cli seed:generate",
+    "elastic:seed": "node ./db/elastic/seed.js up",
+    "elastic:seed:undo": "node ./db/elastic/seed.js down"
   },
   "repository": {
     "type": "git",

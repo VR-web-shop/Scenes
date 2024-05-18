@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Client } from '@elastic/elasticsearch';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // just for testing
@@ -49,8 +50,13 @@ const remove = async (index, id) => {
  * @param {string} q The query.
  * @returns {Promise} The promise.
  */
-const search = async (index, q) => {
-    return await client.search({ index, q });
+const search = async (query) => {
+    console.log('search', query);
+    return await client.search(query);
+}
+
+const invoke = async (query) => {
+    return await query.execute(search);
 }
 
 export default {
@@ -58,5 +64,6 @@ export default {
     insert,
     put,
     remove,
-    search
+    search,
+    invoke
 };

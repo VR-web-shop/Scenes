@@ -82,7 +82,7 @@ export default class ReadCollectionQuery extends ModelQuery {
         const { dto, tableName, snapshot, tombstone, pkName } = modelDefinition;
         const mTable = tableName;
         const sTable = snapshot ? snapshot.tableName : null;
-        const tTable = tombstone ? tombstone.tableName : nullv
+        const tTable = tombstone ? tombstone.tableName : null;
         const fkName = snapshot?.fkName || tombstone?.fkName || null; 
         const where = options.where;
 

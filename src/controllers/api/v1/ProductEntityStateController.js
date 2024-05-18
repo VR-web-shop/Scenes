@@ -2,8 +2,8 @@ import LinkService from '../../../services/LinkService.js';
 import Middleware from "../../../jwt/MiddlewareJWT.js";
 import APIActorError from '../errors/APIActorError.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
-import ReadOneQuery from '../../../queries/ProductEntityState/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/ProductEntityState/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/ProductEntityState/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/ProductEntityState/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 

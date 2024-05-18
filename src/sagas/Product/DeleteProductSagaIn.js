@@ -1,9 +1,9 @@
 import Sagas from "@vr-web-shop/sagas";
 import CreateDTCommand from "../../commands/DistributedTransaction/CreateCommand.js";
 import PutCommand from "../../commands/Product/PutCommand.js";
-import DeleteProductCommand from "../../commands/Product/DeleteProductCommand.js";
+import DeleteProductCommand from "../../commands/Product/DeleteCommand.js";
 import ModelCommandService from "../../services/ModelCommandService.js";
-import db from "../../../db/models/index.js";
+import db from "../../../db/models/index.cjs";
 
 const eventName = "Delete_Products_Product";
 const nextEventName = "Delete_Scenes_Product";

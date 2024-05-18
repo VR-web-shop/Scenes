@@ -2,7 +2,7 @@ import Sagas from "@vr-web-shop/sagas";
 import CreateDTCommand from "../../commands/DistributedTransaction/CreateCommand.js";
 import PutCommand from "../../commands/ProductEntity/PutCommand.js";
 import ModelCommandService from "../../services/ModelCommandService.js";
-import db from "../../../db/models/index.js";
+import db from "../../../db/models/index.cjs";
 
 const eventName = "Put_Products_Product_Entity";
 const nextEventName = "Put_Scenes_Product_Entity";

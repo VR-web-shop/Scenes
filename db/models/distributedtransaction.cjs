@@ -14,22 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'distributed_transaction_state_name',
         targetKey: 'name'
       });
-      models.DistributedTransaction.hasMany(models.DeliverOptionDescription, {
-        foreignKey: 'distributed_transaction_transaction_uuid',
-      });
-      models.DistributedTransaction.hasMany(models.PaymentOptionDescription, {
-        foreignKey: 'distributed_transaction_transaction_uuid',
-      });
       models.DistributedTransaction.hasMany(models.ProductDescription, {
         foreignKey: 'distributed_transaction_transaction_uuid',
       });
       models.DistributedTransaction.hasMany(models.ProductEntityDescription, {
-        foreignKey: 'distributed_transaction_transaction_uuid',
-      });
-      models.DistributedTransaction.hasMany(models.ProductOrderDescription, {
-        foreignKey: 'distributed_transaction_transaction_uuid',
-      });
-      models.DistributedTransaction.hasMany(models.ProductOrderEntityDescription, {
         foreignKey: 'distributed_transaction_transaction_uuid',
       });
     }

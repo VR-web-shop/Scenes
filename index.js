@@ -18,7 +18,7 @@ import ProductEntityController from './src/controllers/api/v1/ProductEntityContr
 import ProductEntityStateController from './src/controllers/api/v1/ProductEntityStateController.js';
 import SceneBackgroundController from './src/controllers/api/v1/SceneBackgroundController.js';
 import SceneBasketController from './src/controllers/api/v1/SceneBasketController.js';
-import SceneBasketStatController from './src/controllers/api/v1/SceneBasketStatController.js';
+import SceneBasketStateController from './src/controllers/api/v1/SceneBasketStateController.js';
 import SceneCameraController from './src/controllers/api/v1/SceneCameraController.js';
 import SceneCharacterController from './src/controllers/api/v1/SceneCharacterController.js';
 import SceneCheckoutController from './src/controllers/api/v1/SceneCheckoutController.js';
@@ -58,7 +58,7 @@ import Vector3DController from './src/controllers/api/v1/Vector3DController.js';
     app.use(ProductEntityStateController);
     app.use(SceneBackgroundController);
     app.use(SceneBasketController);
-    app.use(SceneBasketStatController);
+    app.use(SceneBasketStateController);
     app.use(SceneCameraController);
     app.use(SceneCharacterController);
     app.use(SceneCheckoutController);
@@ -72,11 +72,7 @@ import Vector3DController from './src/controllers/api/v1/Vector3DController.js';
     app.use(TextureController);
     app.use(TextureTypeController);
     app.use(Vector3DController);
-
-    Object.values(Controller).forEach(controller => {
-        app.use(controller.router)
-    })
-
+    
     app.listen(port, () => {
         console.log(`Server running on port ${port}`)
     })

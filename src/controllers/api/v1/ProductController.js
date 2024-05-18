@@ -2,8 +2,8 @@ import LinkService from '../../../services/LinkService.js';
 import Middleware from "../../../jwt/MiddlewareJWT.js";
 import APIActorError from '../errors/APIActorError.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
-import ReadOneQuery from '../../../queries/Product/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/Product/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/Product/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/Product/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -18,8 +18,6 @@ router.route('/api/v1/products')
      *     tags:
      *       - Product Controller
      *     summary: Fetch all products
-     *     security:
-     *      - bearerAuth: []
      *     parameters:
      *      - in: query
      *        name: page
@@ -82,7 +80,7 @@ router.route('/api/v1/products')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("products:index"), async (req, res) => {
+    .get(async (req, res) => {
         try {
             const { limit, page } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
@@ -111,8 +109,6 @@ router.route('/api/v1/product/:client_side_uuid')
      *     tags:
      *       - Product Controller
      *     summary: Fetch a single product
-     *     security:
-     *      - bearerAuth: []
      *     parameters:
      *      - in: path
      *        name: client_side_uuid
@@ -157,7 +153,7 @@ router.route('/api/v1/product/:client_side_uuid')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("products:show"), async (req, res) => {
+    .get(async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))

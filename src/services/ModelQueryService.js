@@ -1,6 +1,9 @@
 import ModelQuery from "../queries/abstractions/ModelQuery.js";
 import _db from '../../db/models/index.cjs';
 
+import SearchElasticQuery from "../queries/abstractions/SearchElasticQuery.js";
+import ElasticService from "./ElasticService.js";
+
 export default function ModelQueryService(db=_db) {
     if (!db) throw new Error('db is required');
     if (typeof db !== 'object') 
@@ -11,6 +14,10 @@ export default function ModelQueryService(db=_db) {
         if (!(query instanceof ModelQuery))
             throw new Error('Query must be an instance of ModelQuery');
         
+        if (query instanceof SearchElasticQuery) {
+            return await ElasticService.invoke(query);
+        }        
+
         return await query.execute(db);
     }
 

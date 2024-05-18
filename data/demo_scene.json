@@ -1,7 +1,9 @@
 {
+    "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa00",
     "name": "Electronics Hub",
     "textures": [
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
             "name": "Black Fabric Basecolor",
             "source": "static/textures/black_fabric_basecolor.png",
             "texture_type_name": "Map"
@@ -9,327 +11,390 @@
     ],
     "materials": [
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1",
             "name": "Black Fabric",
             "material_type_name": "MeshStandardMaterial",
             "textures": [
                 {
-                    "name": "Black Fabric Basecolor"
+                    "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
                 }
             ]
         }
     ],
     "meshes": [
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2",
             "name": "Bench",
             "source": "static/meshes/Bench.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa3",
             "name": "Building signs",
             "source": "static/meshes/BuildingSigns.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa4",
             "name": "Bush 01",
             "source": "static/meshes/Bush_01.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa5",
             "name": "Bush 02",
             "source": "static/meshes/Bush_02.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa6",
             "name": "Basket",
             "source": "static/meshes/basket.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa7",
             "name": "Basket Products Placeholder",
             "source": "static/meshes/basket_placeholder.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa8",
             "name": "Checkout",
             "source": "static/meshes/Checkout.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa9",
             "name": "Coffee",
             "source": "static/meshes/Coffee.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa10",
             "name": "Construction",
             "source": "static/meshes/Construction.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa11",
             "name": "Display 1",
             "source": "static/meshes/Display1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa12",
             "name": "Display 2",
             "source": "static/meshes/Display2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa13",
             "name": "Display curved 1",
             "source": "static/meshes/DisplayCurved1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa14",
             "name": "Display curved 2",
             "source": "static/meshes/DisplayCurved2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa15",
             "name": "Door",
             "source": "static/meshes/Door.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa16",
             "name": "Ground",
             "source": "static/meshes/Ground.glb",
             "meshMaterials": [
                 {
                     "submesh_name": "Plane003",
-                    "material_name": "Black Fabric"
+                    "material_client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1"
                 }
             ]
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa17",
             "name": "Headset F5",
             "source": "static/meshes/HeadsetF5.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa18",
             "name": "Headset F10",
             "source": "static/meshes/HeadsetF10.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa19",
             "name": "Headset R1",
             "source": "static/meshes/HeadsetR1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa20",
             "name": "Headset Z1",
             "source": "static/meshes/HeadsetZ1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa21",
             "name": "Indoor sign",
             "source": "static/meshes/IndoorSign.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa22",
             "name": "Keyboard retro C2",
             "source": "static/meshes/KeyboardRetroC2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa23",
             "name": "Keyboard X1",
             "source": "static/meshes/KeyboardX1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa24",
             "name": "Keyboard X2",
             "source": "static/meshes/KeyboardX2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa25",
             "name": "Keyboard Z1",
             "source": "static/meshes/KeyboardZ1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa26",
             "name": "Laptop 1",
             "source": "static/meshes/Laptop1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa27",
             "name": "Laptop 2",
             "source": "static/meshes/Laptop2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa28",
             "name": "Loft lamp",
             "source": "static/meshes/LoftLamp.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa29",
             "name": "Malculator 1",
             "source": "static/meshes/Malculator1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa30",
             "name": "Malculator 2",
             "source": "static/meshes/Malculator2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa31",
             "name": "Mouse R1",
             "source": "static/meshes/MouseR1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa32",
             "name": "Mouse X1",
             "source": "static/meshes/MouseX1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa33",
             "name": "Mouse X2",
             "source": "static/meshes/MouseX2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa34",
             "name": "Mouse Z5",
             "source": "static/meshes/MouseZ5.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa35",
             "name": "Mousepad R2",
             "source": "static/meshes/MousepadR2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa36",
             "name": "Mousepad X2",
             "source": "static/meshes/MousepadX2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa37",
             "name": "Mousepad X3",
             "source": "static/meshes/MousepadX3.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa38",
             "name": "Mousepad Z2",
             "source": "static/meshes/MousepadZ2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa39",
             "name": "Office box",
             "source": "static/meshes/OfficeBox.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa40",
             "name": "Office trashcan",
             "source": "static/meshes/Trashcan.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa41",
             "name": "Open sign",
             "source": "static/meshes/OpenSign.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa42",
             "name": "Office chair",
             "source": "static/meshes/OfficeChair.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa43",
             "name": "Office chair 2",
             "source": "static/meshes/OfficeChair2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa44",
             "name": "Office chair 3",
             "source": "static/meshes/OfficeChair3.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa45",
             "name": "Office chair RGB",
             "source": "static/meshes/OfficeChairRGB.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa46",
             "name": "PC 1",
             "source": "static/meshes/Pc1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa47",
             "name": "PC 2",
             "source": "static/meshes/Pc2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa48",
             "name": "PC 3",
             "source": "static/meshes/Pc3.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa49",
             "name": "Printer 1",
             "source": "static/meshes/Printer1.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa50",
             "name": "Printer 2",
             "source": "static/meshes/Printer2.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa51",
             "name": "Shelf 1",
             "source": "static/meshes/Shelf01.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa52",
             "name": "Shelf 2",
             "source": "static/meshes/Shelf02.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa53",
             "name": "Shelf 3",
             "source": "static/meshes/Shelf03.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa54",
             "name": "Stop sign",
             "source": "static/meshes/StopSign.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa55",
             "name": "Street light",
             "source": "static/meshes/StreetLight.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa56",
             "name": "Traffic light",
             "source": "static/meshes/TrafficLight.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa57",
             "name": "Trashcan",
             "source": "static/meshes/Trashcan.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa58",
             "name": "Tv",
             "source": "static/meshes/Tv.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa59",
             "name": "Table",
             "source": "static/meshes/Table.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa60",
             "name": "USB 64GB",
             "source": "static/meshes/USB1-64gb.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa61",
             "name": "USB 128GB",
             "source": "static/meshes/USB1-128gb.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa62",
             "name": "USB 256GB",
             "source": "static/meshes/USB1-256gb.glb",
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa63",
             "name": "Vent",
             "source": "static/meshes/Vent.glb",
             "meshMaterials": []
@@ -2951,6 +3016,7 @@
     ],
     "basket": {
         "name": "Basket",
+        "basket_state_name": "ReadyForProducts",
         "basket_mesh_name": "Basket",
         "products_mesh_name": "Basket Products Placeholder",
         "pocket_mesh_name": "Basket Products Placeholder",

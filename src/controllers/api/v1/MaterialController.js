@@ -5,8 +5,8 @@ import ModelCommandService from '../../../services/ModelCommandService.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/Material/PutCommand.js';
 import DeleteCommand from '../../../commands/Material/DeleteCommand.js';
-import ReadOneQuery from '../../../queries/Material/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/Material/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/Material/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/Material/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -82,7 +82,7 @@ router.route('/api/v1/materials')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("materials:index"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('materials:index'), async (req, res) => {
         try {
             const { limit, page } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
@@ -201,8 +201,6 @@ router.route('/api/v1/material/:client_side_uuid')
      *     tags:
      *       - Material Controller
      *     summary: Fetch a material
-     *     security:
-     *      - bearerAuth: []
      *     parameters:
      *      - in: path
      *        name: client_side_uuid
@@ -257,7 +255,7 @@ router.route('/api/v1/material/:client_side_uuid')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("materials:show"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('materials:show'), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))

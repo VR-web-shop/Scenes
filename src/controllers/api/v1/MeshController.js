@@ -5,8 +5,8 @@ import ModelCommandService from '../../../services/ModelCommandService.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/Mesh/PutCommand.js';
 import DeleteCommand from '../../../commands/Mesh/DeleteCommand.js';
-import ReadOneQuery from '../../../queries/Mesh/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/Mesh/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/Mesh/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/Mesh/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 

@@ -29,7 +29,7 @@ export default {
      * The index name is used to find the model in the elasticsearch database.
      * Required.
      */
-    indexName: 'Material',
+    indexName: 'material',
 
     /*
      * The cas keys are used to determine if anything has changed in the material.
@@ -48,7 +48,8 @@ export default {
      * Not required.
      */
     snapshot: { 
-        modelName: 'MaterialDescriptions', 
+        modelName: 'MaterialDescription', 
+        tableName: 'MaterialDescriptions',
         fkName: 'material_client_side_uuid' 
     },
 
@@ -59,7 +60,8 @@ export default {
      * Not required.
      */
     tombstone: { 
-        modelName: 'MaterialRemoveds', 
+        modelName: 'MaterialRemoved', 
+        tableName: 'MaterialRemoveds',
         fkName: 'material_client_side_uuid' 
     },
 }

@@ -25,6 +25,12 @@ export default {
      */
     tableName: 'ProductEntityStates',
 
+    /**
+     * The index name is used to find the model in the elasticsearch database.
+     * Required.
+     */
+    indexName: 'productentitystate',
+
     /*
      * The cas keys are used to determine if anything has changed in the material.
      * If the keys have not changed, the material is not updated.

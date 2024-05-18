@@ -3,7 +3,7 @@ import CreateDTCommand from "../../commands/DistributedTransaction/CreateCommand
 import PutCommand from "../../commands/ProductEntity/PutCommand.js";
 import DeleteCommand from "../../commands/ProductEntity/DeleteCommand.js";
 import ModelCommandService from "../../services/ModelCommandService.js";
-import db from "../../../db/models/index.js";
+import db from "../../../db/models/index.cjs";
 
 const eventName = "Delete_Products_Product_Entity";
 const nextEventName = "Delete_Scenes_Product_Entity";

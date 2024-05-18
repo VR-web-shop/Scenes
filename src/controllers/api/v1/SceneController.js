@@ -5,8 +5,8 @@ import ModelCommandService from '../../../services/ModelCommandService.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/Scene/PutCommand.js';
 import DeleteCommand from '../../../commands/Scene/DeleteCommand.js';
-import ReadOneQuery from '../../../queries/Scene/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/Scene/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/Scene/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/Scene/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -197,7 +197,82 @@ router.route('/api/v1/scenes')
             return res.status(500).send({ message: 'Internal Server Error' })
         }
     });
+router.route('/api/v1/scene/active')
+    /**
+     * @openapi
+     * '/api/v1/scene/active':
+     *  get:
+     *     tags:
+     *       - Scene Controller
+     *     summary: Fetch the active scene
+     *     responses:
+     *      200:
+     *        description: OK
+     *        content:
+     *         application/json:
+     *           schema:
+     *             type: object
+     *             properties:
+     *               name:
+     *                 type: string
+     *               active:
+     *                 type: boolean
+     *               _links:
+     *                 type: object
+     *                 properties:
+     *                  self:
+     *                   type: object
+     *                   properties:
+     *                    href:
+     *                     type: string
+     *                    method:
+     *                     type: string
+     *                  update:
+     *                   type: object
+     *                   properties:
+     *                    href:
+     *                     type: string
+     *                    method:
+     *                     type: string
+     *                  delete:
+     *                   type: object
+     *                   properties:
+     *                    href:
+     *                     type: string
+     *                    method:
+     *                     type: string
+     * 
+     *      400:
+     *        description: Bad Request
+     *      404:
+     *        description: Not Found
+     *      401:
+     *        description: Unauthorized
+     *      500:
+     *        description: Internal Server Error
+     */
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
+        try {
+            const { client_side_uuid } = req.params
+            const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            res.send({
+                ...response,
+                ...LinkService.entityLinks(`api/v1/scene/${client_side_uuid}`, "GET", [
+                    { name: 'update', method: 'PATCH' },
+                    { name: 'delete', method: 'DELETE' }
+                ])
+            })
+        } catch (error) {
+            if (error instanceof APIActorError) {
+                rollbar.info('APIActorError', { code: error.statusCode, message: error.message })
+                return res.status(error.statusCode).send({ message: error.message })
+            }
 
+            rollbar.error(error)
+            console.error(error)
+            return res.status(500).send({ message: 'Internal Server Error' })
+        }
+    })
 router.route('/api/v1/scene/:client_side_uuid')
     /**
      * @openapi

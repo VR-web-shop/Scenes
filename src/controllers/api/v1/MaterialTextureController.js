@@ -5,8 +5,8 @@ import ModelCommandService from '../../../services/ModelCommandService.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import CreateCommand from '../../../commands/MaterialTexture/CreateCommand.js';
 import DeleteCommand from '../../../commands/MaterialTexture/DeleteCommand.js';
-import ReadOneQuery from '../../../queries/MaterialTexture/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/MaterialTexture/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/MaterialTexture/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/MaterialTexture/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 

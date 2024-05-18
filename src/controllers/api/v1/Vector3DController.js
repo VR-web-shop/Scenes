@@ -5,8 +5,8 @@ import ModelCommandService from '../../../services/ModelCommandService.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/Vector3D/PutCommand.js';
 import DeleteCommand from '../../../commands/Vector3D/DeleteCommand.js';
-import ReadOneQuery from '../../../queries/Vector3D/ReadOneQuery.js';
-import ReadCollectionQuery from '../../../queries/Vector3D/ReadCollectionQuery.js';
+import ReadOneQuery from '../../../queries/Vector3D/ReadOneElasticQuery.js';
+import ReadCollectionQuery from '../../../queries/Vector3D/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
