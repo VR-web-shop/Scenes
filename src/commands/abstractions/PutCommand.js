@@ -114,6 +114,9 @@ export default class PutCommand extends ModelCommand {
                         const currentString = casKeys.map(key => description[key]).join(", ");
                         const inputCAS = PutCommand.calculateCAS(inputString);
                         const currentCAS = PutCommand.calculateCAS(currentString);
+                        casKeys.forEach(key => {
+                            if (params[key] === undefined) params[key] = description[key];
+                        });
                         if (currentCAS === inputCAS) return; // No changes
                     }
                 }

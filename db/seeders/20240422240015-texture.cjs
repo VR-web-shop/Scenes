@@ -13,15 +13,15 @@ module.exports = {
      * }], {});
     */
     const demoScene = require('../../data/demo_scene.json');
-    const CDN_URL = process.env.CDN_URL;
-
+    const CDN_URL = process.env.S3_CDN_URL;
+  
     const textures = demoScene.textures.map((texture) => {
       return { client_side_uuid: texture.client_side_uuid }
     });
     const textureDescriptions = demoScene.textures.map((texture) => {
       return {
         name: texture.name,
-        source: CDN_URL + texture.source,
+        source: CDN_URL + '/' + texture.source,
         texture_type_name: texture.texture_type_name,
         texture_client_side_uuid: texture.client_side_uuid,
       }

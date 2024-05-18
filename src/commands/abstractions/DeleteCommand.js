@@ -30,6 +30,7 @@ export default class DeleteCommand extends ModelCommand {
         }
 
         this.modelDefinition = modelDefinition
+        this.pk = pk;
     }
 
     /**

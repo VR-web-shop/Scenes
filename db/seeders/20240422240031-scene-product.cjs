@@ -99,7 +99,7 @@ module.exports = {
       name: param.sceneProduct.Product.name,
       description: param.sceneProduct.Product.description,
       price: param.sceneProduct.Product.price,
-      thumbnail_source: CDN_URL + param.sceneProduct.Product.thumbnail_source,
+      thumbnail_source: CDN_URL + '/' + param.sceneProduct.Product.thumbnail_source,
     }));
 
     const sceneProducts = params.map(param => ({

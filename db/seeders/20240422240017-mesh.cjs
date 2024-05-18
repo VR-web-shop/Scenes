@@ -22,7 +22,7 @@ module.exports = {
     const meshDescriptions = demoScene.meshes.map((mesh) => {
       return {
         name: mesh.name,
-        source: CDN_URL + mesh.source,
+        source: CDN_URL + '/' + mesh.source,
         mesh_client_side_uuid: mesh.client_side_uuid,
       }
     });
