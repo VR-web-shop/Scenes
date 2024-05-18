@@ -74,3 +74,5 @@ const SDK = (serverURL= 'http://localhost:3003', options={}) => {
         Vector3D,
     };
 }
+
+export default SDK;
