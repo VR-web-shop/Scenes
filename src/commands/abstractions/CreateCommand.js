@@ -117,7 +117,7 @@ export default class CreateCommand extends ModelCommand {
                 await db.transaction(executeTransaction);
             }
 
-            ElasticService.put(indexName, pk, params);
+            ElasticService.put(indexName, pk, {...params, [pkName]: pk});
         } catch (error) {
             console.log(error)
             

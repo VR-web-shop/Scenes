@@ -166,13 +166,14 @@ router.route('/api/v1/scenes')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
+    .post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
         try {
             const { 
                 client_side_uuid, 
                 name,
                 active,
             } = req.body;
+            console.log(client_side_uuid, name, active)
             cmdService.invoke(new PutCommand(client_side_uuid, { 
                 name,
                 active,

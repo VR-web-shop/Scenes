@@ -29,6 +29,16 @@ const insert = async (datasource, _index, onDocument=(doc) => ({ index: { _index
  * @returns {Promise} The promise.
  */
 const put = async (index, id, doc) => {
+    for (const key in doc) {
+        if (typeof doc[key] === 'boolean' ||
+            doc[key] === 'true' ||
+            doc[key] === 'false'
+        ) {
+            const bool = Boolean(doc[key]);
+            doc[key] = bool ? 1 : 0;        
+        }
+    }
+
     return await client.index({ index, id, body: doc });
 }
 

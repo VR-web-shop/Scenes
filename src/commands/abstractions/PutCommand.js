@@ -147,7 +147,7 @@ export default class PutCommand extends ModelCommand {
                 await db.sequelize.transaction(executeTransaction);
             }
 
-            await ElasticService.put(indexName, pk, params);
+            await ElasticService.put(indexName, pk, {...params, [pkName]: pk});
         } catch (error) {
             console.log(error)
 
