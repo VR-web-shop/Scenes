@@ -1,3 +1,8 @@
+/**
+ * @module jwt/MiddlewareJWT
+ * @description Middleware functions for JSON Web Token
+ * @requires module:jsonwebtoken
+ */
 import Jwt from 'jsonwebtoken';
 
 /**
@@ -43,9 +48,9 @@ const AuthorizePermissionJWT = function(permissionName) {
 
         const { permissions } = user;
         let hasPermission = false;
-        
+  
         for (const permission of permissions) {
-            if (permission.name === permissionName) {
+            if (permission === permissionName) {
                 hasPermission = true;
                 break;
             }
