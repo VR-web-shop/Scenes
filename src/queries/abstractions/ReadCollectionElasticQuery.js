@@ -20,6 +20,13 @@ const query = (ModelDefinition, options) => {
     } else {
         limit = 10;
     }
+    console.log({
+        page,
+        limit,
+        index: ModelDefinition.indexName,
+        from: (page - 1) * limit,
+        size: limit,
+    });
     
     return {
         index: ModelDefinition.indexName,
