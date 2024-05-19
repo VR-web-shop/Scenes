@@ -17,6 +17,7 @@ export default class ReadOneElasticQuery extends _SearchElasticQuery {
 
     constructor(ModelDefinition, pk, options = {}) {
         super(
+            ModelDefinition,
             prepare(ModelDefinition, pk),
             options,
         );

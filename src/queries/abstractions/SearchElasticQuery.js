@@ -17,8 +17,8 @@ export default class SearchElasticQuery extends ModelQuery {
      * @constructor
      */
     constructor(
+        definition,
         query,
-        configIndex,
         options = {},
     ) {
         super();
@@ -27,6 +27,7 @@ export default class SearchElasticQuery extends ModelQuery {
             throw new Error("Options must be an object");
         }
 
+        this.definition = definition;
         this.query = query;
         this.options = options;
     }
@@ -47,7 +48,9 @@ export default class SearchElasticQuery extends ModelQuery {
         }
         
         const result = await searchMethod(this.query);
+        const rows = result.hits.hits.map(hit => this.definition.dto(hit._source));
+        const count = result.hits.total.value;
 
-        return result;
+        return { rows, count };
     }
 }

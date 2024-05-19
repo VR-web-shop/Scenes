@@ -7,6 +7,7 @@ import PutCommand from '../../../commands/Scene/PutCommand.js';
 import DeleteCommand from '../../../commands/Scene/DeleteCommand.js';
 import ReadOneQuery from '../../../queries/Scene/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Scene/ReadCollectionElasticQuery.js';
+import SearchElasticQuery from '../../../queries/Scene/SearchElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -254,14 +255,16 @@ router.route('/api/v1/scene/active')
      */
     .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
         try {
-            const { client_side_uuid } = req.params
-            const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const response = await queryService.invoke(new SearchElasticQuery({
+                index: 'scene',
+                query: { match: { active: 1 } }
+            }))
             res.send({
                 ...response,
-                ...LinkService.entityLinks(`api/v1/scene/${client_side_uuid}`, "GET", [
+                ...LinkService.entityLinks(`api/v1/scene/active`, "GET", [
                     { name: 'update', method: 'PATCH' },
                     { name: 'delete', method: 'DELETE' }
-                ])
+                ], `api/v1/scene/${response.client_side_uuid}`)
             })
         } catch (error) {
             if (error instanceof APIActorError) {

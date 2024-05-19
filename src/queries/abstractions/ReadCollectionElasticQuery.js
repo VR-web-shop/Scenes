@@ -35,6 +35,7 @@ export default class ReadCollectionElasticQuery extends _SearchElasticQuery {
 
     constructor(ModelDefinition, options = {}) {
         super(
+            ModelDefinition,
             query(ModelDefinition, options),
             options,
         );
@@ -43,9 +44,9 @@ export default class ReadCollectionElasticQuery extends _SearchElasticQuery {
 
     async execute(searchMethod) {
         const result = await super.execute(searchMethod);
-        const rows = result.hits.hits.map(hit => this.ModelDefinition.dto(hit._source));
-        const pages = Math.ceil(result.hits.total.value / this.options.limit);
-        const count = result.hits.total.value;
+        const rows = result.rows;
+        const count = result.count;
+        const pages = Math.ceil(count / this.options.limit);
 
         return {
             rows,
