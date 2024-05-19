@@ -15,6 +15,7 @@ export default function dto(entity) {
         scene_checkouts: entity.scene_checkouts,
         scene_lights: entity.scene_lights,
         scene_products: entity.scene_products,
+        scene_floors: entity.scene_floors,
         scene_static_objects: entity.scene_static_objects,
         created_at: entity.created_at,
         updated_at: entity.created_at

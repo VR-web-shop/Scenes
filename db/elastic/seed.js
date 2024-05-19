@@ -57,7 +57,7 @@ const up = async () => {
         console.log(`${startTime}: Reading and inserting ${definition.elastic?.indexName} page ${page}`);
         
         const { rows, pages } = await modelQueryService.invoke(
-            new command({ limit: 100, page })
+            new command({ limit: 1000, page })
         );
 
         const time = {
@@ -74,7 +74,7 @@ const up = async () => {
                 [pkName]: pk,...row, ...time,
             });
         }
-
+    
         if (page < pages) {
             await readAndInsert(definition, command, page + 1);
         }
