@@ -41,8 +41,7 @@ import Vector3DController from './src/controllers/api/v1/Vector3DController.js';
     const app = express()
 
     app.use(cors({
-        origin,
-        credentials: true
+        origin: '*'
     }));
 
     app.use(bodyParser.json())
