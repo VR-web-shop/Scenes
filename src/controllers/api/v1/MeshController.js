@@ -164,7 +164,7 @@ router.route('/api/v1/meshes')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('meshes:put'), async (req, res) => {
+    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
         try {
             const { client_side_uuid, name, source, } = req.body;
             cmdService.invoke(new PutCommand(client_side_uuid, { 
@@ -255,7 +255,7 @@ router.route('/api/v1/mesh/:client_side_uuid')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("meshes:show"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
@@ -353,7 +353,7 @@ router.route('/api/v1/mesh/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("meshes:put"), async (req, res) => {
+    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const { name, source } = req.body
@@ -406,7 +406,7 @@ router.route('/api/v1/mesh/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("meshes:delete"), async (req, res) => {
+    .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:delete"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             await cmdService.invoke(new DeleteCommand(client_side_uuid))

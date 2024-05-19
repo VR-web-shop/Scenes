@@ -82,7 +82,7 @@ router.route('/api/v1/scene_backgrounds')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-backgrounds:index"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:index"), async (req, res) => {
         try {
             const { limit, page } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
@@ -167,7 +167,7 @@ router.route('/api/v1/scene_background/:client_side_uuid')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-backgrounds:show"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
@@ -261,7 +261,7 @@ router.route('/api/v1/scene_background/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-backgrounds:put"), async (req, res) => {
+    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const { hex } = req.body

@@ -81,7 +81,7 @@ router.route('/api/v1/scene_cameras')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-cameras:index"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:index"), async (req, res) => {
         try {
             const { limit, page } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
@@ -168,7 +168,7 @@ router.route('/api/v1/scene_camera/:client_side_uuid')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-cameras:show"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
@@ -267,7 +267,7 @@ router.route('/api/v1/scene_camera/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-cameras:put"), async (req, res) => {
+    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const { 

@@ -82,7 +82,7 @@ router.route('/api/v1/material_textures')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("material-textures:index"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:index"), async (req, res) => {
         try {
             const { limit, page } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
@@ -159,7 +159,7 @@ router.route('/api/v1/material_textures')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('material-textures:put'), async (req, res) => {
+    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
         try {
             const { client_side_uuid, material_client_side_uuid, texture_client_side_uuid, } = req.body;
             cmdService.invoke(new CreateCommand(client_side_uuid, { 
@@ -242,7 +242,7 @@ router.route('/api/v1/material/:client_side_uuid')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("material-textures:show"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
@@ -290,7 +290,7 @@ router.route('/api/v1/material/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("material-textures:delete"), async (req, res) => {
+    .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:delete"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             await cmdService.invoke(new DeleteCommand(client_side_uuid))

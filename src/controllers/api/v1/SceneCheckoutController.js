@@ -100,7 +100,7 @@ router.route('/api/v1/scene_checkouts')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-checkouts:index"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:index"), async (req, res) => {
         try {
             const { limit, page } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
@@ -220,7 +220,7 @@ router.route('/api/v1/scene_checkouts')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scene-checkouts:put'), async (req, res) => {
+    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
         try {
             const { 
                 client_side_uuid, 
@@ -350,7 +350,7 @@ router.route('/api/v1/scene_checkout/:client_side_uuid')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-checkouts:show"), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
@@ -492,7 +492,7 @@ router.route('/api/v1/scene_checkout/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-checkouts:put"), async (req, res) => {
+    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const { 
@@ -568,7 +568,7 @@ router.route('/api/v1/scene_checkout/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scene-checkouts:delete"), async (req, res) => {
+    .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:delete"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             await cmdService.invoke(new DeleteCommand(client_side_uuid))

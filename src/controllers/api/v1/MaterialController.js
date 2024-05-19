@@ -164,7 +164,7 @@ router.route('/api/v1/materials')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('materials:put'), async (req, res) => {
+    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
         try {
             const { client_side_uuid, name, material_type_name, } = req.body;
             cmdService.invoke(new PutCommand(client_side_uuid, { 
@@ -253,7 +253,7 @@ router.route('/api/v1/material/:client_side_uuid')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('materials:show'), async (req, res) => {
+    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:show'), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
@@ -351,7 +351,7 @@ router.route('/api/v1/material/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("materials:put"), async (req, res) => {
+    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const { name, material_type_name } = req.body
@@ -404,7 +404,7 @@ router.route('/api/v1/material/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("materials:delete"), async (req, res) => {
+    .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:delete"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             await cmdService.invoke(new DeleteCommand(client_side_uuid))
