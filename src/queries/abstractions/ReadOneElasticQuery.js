@@ -26,12 +26,12 @@ export default class ReadOneElasticQuery extends _SearchElasticQuery {
     }
 
     async execute(searchMethod) {
-        const result = await super.execute(searchMethod);
+        const { rows, count } = await super.execute(searchMethod);
 
-        if (result.hits.total.value === 0) {
+        if (count === 0) {
             throw new APIActorError("Not Found", 404);
         }
 
-        return this.ModelDefinition.dto(result.hits.hits[0]._source);
+        return this.ModelDefinition.dto(rows[0]);
     }
 }
