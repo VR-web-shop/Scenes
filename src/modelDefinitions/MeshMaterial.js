@@ -26,10 +26,18 @@ export default {
     tableName: 'MeshMaterials',
 
     /**
-     * The index name is used to find the model in the elasticsearch database.
+     * The elastic options is used to find the model in the elasticsearch database.
      * Required.
      */
-    indexName: 'meshmaterial',
+    elastic: [
+        {
+            indexName: 'mesh',
+            idKey: 'mesh_client_side_uuid',
+            docKey: 'mesh_materials',
+            relation: 'many',
+            delete: 'child_only'
+        },
+    ],
 
     /*
      * The cas keys are used to determine if anything has changed in the material.
@@ -48,9 +56,9 @@ export default {
      * Not required.
      */
     snapshot: { 
-        modelName: 'MeshDescription', 
-        tableName: 'MeshDescriptions',
-        fkName: 'mesh_client_side_uuid' 
+        modelName: 'MeshMaterialDescription', 
+        tableName: 'MeshMaterialDescriptions',
+        fkName: 'mesh_material_client_side_uuid' 
     },
 
     /*
@@ -60,8 +68,8 @@ export default {
      * Not required.
      */
     tombstone: { 
-        modelName: 'MeshRemoved', 
-        tableName: 'MeshRemoveds',
-        fkName: 'mesh_client_side_uuid' 
+        modelName: 'MeshMaterialRemoved', 
+        tableName: 'MeshMaterialRemoveds',
+        fkName: 'mesh_material_client_side_uuid' 
     },
 }

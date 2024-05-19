@@ -26,10 +26,23 @@ export default {
     tableName: 'ProductEntities',
 
     /**
-     * The index name is used to find the model in the elasticsearch database.
+     * The elastic options is used to find the model in the elasticsearch database.
      * Required.
      */
-    indexName: 'productentity',
+    elastic: [
+        {
+            indexName: 'productentity',
+            idKey: 'client_side_uuid',
+            delete: 'default'
+        },
+        {
+            indexName: 'product',
+            idKey: 'product_client_side_uuid',
+            docKey: 'product_entities',
+            relation: 'many',
+            delete: 'child_only'
+        },
+    ],
 
     /*
      * The cas keys are used to determine if anything has changed in the material.

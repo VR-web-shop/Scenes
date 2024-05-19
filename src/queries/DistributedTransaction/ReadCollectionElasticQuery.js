@@ -6,6 +6,7 @@ export default class ReadCollectionElasticQuery extends _ReadCollectionElasticQu
     constructor(options = {}) {
         super(
             ModelDefinition,
+            "distributed_transaction",
             options,
         );
     }

@@ -26,10 +26,18 @@ export default {
     tableName: 'MaterialTextures',
 
     /**
-     * The index name is used to find the model in the elasticsearch database.
+     * The elastic options is used to find the model in the elasticsearch database.
      * Required.
      */
-    indexName: 'materialtexture',
+    elastic: [
+        {
+            indexName: 'material',
+            idKey: 'material_client_side_uuid',
+            docKey: 'material_textures',
+            relation: 'many',
+            delete: 'child_only'
+        },
+    ],
 
     /*
      * The cas keys are used to determine if anything has changed in the material.

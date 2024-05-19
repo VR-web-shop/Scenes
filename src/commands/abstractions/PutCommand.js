@@ -60,7 +60,7 @@ export default class PutCommand extends ModelCommand {
             throw new Error("options is required and must be an object");
         }
 
-        const { modelName, pkName, casKeys, snapshot, tombstone, indexName } = this.modelDefinition;
+        const { modelName, pkName, casKeys, snapshot, tombstone, elastic } = this.modelDefinition;
 
         const pk = this.pk;
         const params = this.params;
@@ -150,7 +150,9 @@ export default class PutCommand extends ModelCommand {
                 await db.sequelize.transaction(executeTransaction);
             }
 
-            await ElasticService.put(indexName, pk, {...params, [pkName]: pk});
+            await ElasticService.putFromConfig(elastic, pkName, pk, { 
+                [pkName]: pk, ...params, ...time,
+            });
         } catch (error) {
             console.log(error)
 

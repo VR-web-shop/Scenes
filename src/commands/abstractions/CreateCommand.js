@@ -63,7 +63,7 @@ export default class CreateCommand extends ModelCommand {
             throw new Error("db is required and must be an object");
         }
 
-        const { modelName, pkName, snapshot, tombstone, indexName } = this.modelDefinition;
+        const { modelName, pkName, snapshot, tombstone, elastic } = this.modelDefinition;
 
         const pk = this.pk;
         const params = this.params;
@@ -117,7 +117,9 @@ export default class CreateCommand extends ModelCommand {
                 await db.transaction(executeTransaction);
             }
 
-            ElasticService.put(indexName, pk, {...params, [pkName]: pk});
+            await ElasticService.putFromConfig(elastic, pkName, pk, { 
+                [pkName]: pk, ...params, ...time,
+            });
         } catch (error) {
             console.log(error)
             

@@ -3,9 +3,9 @@ import { Client } from '@elastic/elasticsearch';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // just for testing
 
-const client = new Client({ 
-    node: process.env.ELASTIC_NODE, 
-    auth: { apiKey: process.env.ELASTIC_API_KEY } 
+const client = new Client({
+    node: process.env.ELASTIC_NODE,
+    auth: { apiKey: process.env.ELASTIC_API_KEY }
 });
 
 /**
@@ -16,7 +16,7 @@ const client = new Client({
  * @param {function} onDocument The document function.
  * @returns {Promise} The promise.
  */
-const insert = async (datasource, _index, onDocument=(doc) => ({ index: { _index } })) => {
+const insert = async (datasource, _index, onDocument = (doc) => ({ index: { _index } })) => {
     return await client.helpers.bulk({ datasource, onDocument, });
 }
 
@@ -35,11 +35,74 @@ const put = async (index, id, doc) => {
             doc[key] === 'false'
         ) {
             const bool = Boolean(doc[key]);
-            doc[key] = bool ? 1 : 0;        
+            doc[key] = bool ? 1 : 0;
         }
     }
 
     return await client.index({ index, id, body: doc });
+}
+
+const putChild = async (index, id, relation, docKey, idKey, pkName, params) => {
+    await client.update({
+        index,
+        id,
+        body: {
+            script: {
+                source: `
+                    ${relation === "many"
+                        ? 
+                          `
+                            if (ctx._source.${docKey} == null) {
+                                ctx._source.${docKey} = [];
+                            }
+                          `
+                        : 
+                          `
+                            if (ctx._source.${docKey} == null) {
+                                ctx._source.${docKey} = null;
+                            }
+                          `
+                    }
+
+                    ${relation === "many"
+                        ? 
+                        `
+                            for (int i = 0; i < ctx._source.${docKey}.length; i++) {
+                                if (ctx._source.${docKey}[i].${pkName} == params.${pkName}) {
+                                    ctx._source.${docKey}[i] = params;
+                                    return;
+                                }
+                            }
+
+                            ctx._source.${docKey}.add(params)
+                        `
+                        : 
+                        `
+                            ctx._source.${docKey} = params
+                        `
+                    }
+                `,
+                lang: "painless",
+                params
+            }
+        }
+    });
+}
+
+const putFromConfig = async (config, pkName, pk, doc) => {
+    for (const conf of config) {
+        const index = conf.indexName;
+        
+        
+        if (conf.relation) {
+            doc._entity_type = index;
+            const id = { [pkName]: pk, ...doc }[conf.idKey];
+            await putChild(index, id, conf.relation, conf.docKey, conf.idKey, pkName, doc);
+        } else {
+            doc._entity_type = conf.docKey;
+            await put(index, doc[conf.idKey], doc);
+        }
+    }
 }
 
 /**
@@ -72,6 +135,8 @@ export default {
     client,
     insert,
     put,
+    putChild,
+    putFromConfig,
     remove,
     search,
     invoke

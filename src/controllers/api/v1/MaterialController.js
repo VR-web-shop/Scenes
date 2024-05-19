@@ -84,8 +84,8 @@ router.route('/api/v1/materials')
      */
     .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('materials:index'), async (req, res) => {
         try {
-            const { limit, page } = req.query
-            const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
+            const { limit, page, include } = req.query
+            const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page, include}))
             res.send({ 
                 rows, 
                 count, 

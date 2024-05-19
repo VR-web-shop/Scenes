@@ -18,6 +18,7 @@ export default class SearchElasticQuery extends ModelQuery {
      */
     constructor(
         query,
+        configIndex,
         options = {},
     ) {
         super();

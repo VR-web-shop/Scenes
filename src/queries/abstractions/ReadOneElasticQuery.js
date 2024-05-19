@@ -1,18 +1,23 @@
 import _SearchElasticQuery from "./SearchElasticQuery.js";
 import APIActorError from "../../controllers/api/errors/APIActorError.js";
 
+const prepare = (ModelDefinition, pk) => {
+    const index = ModelDefinition.elastic[0].indexName;
+    return {
+        index,
+        query: {
+            match: {
+                [ModelDefinition.pkName]: pk,
+            }
+        },
+    };
+};
+
 export default class ReadOneElasticQuery extends _SearchElasticQuery {
 
     constructor(ModelDefinition, pk, options = {}) {
         super(
-            {
-                index: ModelDefinition.indexName,
-                query: {
-                    match: {
-                        [ModelDefinition.pkName]: pk,
-                    }
-                },
-            },
+            prepare(ModelDefinition, pk),
             options,
         );
 

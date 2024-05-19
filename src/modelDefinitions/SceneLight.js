@@ -26,10 +26,23 @@ export default {
     tableName: 'SceneLights',
 
     /**
-     * The index name is used to find the model in the elasticsearch database.
+     * The elastic options is used to find the model in the elasticsearch database.
      * Required.
      */
-    indexName: 'scenelight',
+    elastic: [
+        {
+            indexName: 'scenelight',
+            idKey: 'client_side_uuid',
+            delete: 'default'
+        },
+        {
+            indexName: 'scene',
+            idKey: 'scene_client_side_uuid',
+            docKey: 'scene_lights',
+            relation: 'many',
+            delete: 'child_only'
+        },
+    ],
 
     /*
      * The cas keys are used to determine if anything has changed in the material.

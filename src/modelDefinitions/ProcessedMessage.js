@@ -26,10 +26,16 @@ export default {
     tableName: 'ProcessedMessages',
 
     /**
-     * The index name is used to find the model in the elasticsearch database.
+     * The elastic options is used to find the model in the elasticsearch database.
      * Required.
      */
-    indexName: 'processedmessage',
+    elastic: [
+        {
+            indexName: 'processedmessage',
+            idKey: 'subcriber_uuid',
+            delete: 'default'
+        },
+    ],
 
     /*
      * The cas keys are used to determine if anything has changed in the material.

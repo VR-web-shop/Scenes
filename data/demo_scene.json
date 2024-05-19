@@ -112,7 +112,7 @@
             "source": "static/meshes/Ground.glb",
             "meshMaterials": [
                 {
-                    "submesh_name": "Plane003",
+                    "submesh_name": "Plane0033",
                     "material_client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1"
                 }
             ]
@@ -121,7 +121,12 @@
             "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa17",
             "name": "Headset F5",
             "source": "static/meshes/HeadsetF5.glb",
-            "meshMaterials": []
+            "meshMaterials": [
+                {
+                    "submesh_name": "Plane0033",
+                    "material_client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1"
+                }
+            ]
         },
         {
             "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaa18",

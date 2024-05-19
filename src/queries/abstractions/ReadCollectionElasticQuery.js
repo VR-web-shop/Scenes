@@ -1,12 +1,13 @@
 import _SearchElasticQuery from "./SearchElasticQuery.js";
-
+import APIActorError from "../../controllers/api/errors/APIActorError.js";
 const query = (ModelDefinition, options) => {
     let { page, limit } = options;
+    const index = ModelDefinition.elastic[0].indexName
 
     if (page) {
         page = parseInt(page);
         if (page < 1) {
-            throw new Error("page must be a positive integer");
+            throw new APIActorError("page must be a positive integer", 400);
         }
     } else {
         page = 1;
@@ -15,24 +16,19 @@ const query = (ModelDefinition, options) => {
     if (limit) {
         limit = parseInt(limit);
         if (limit < 1) {
-            throw new Error("limit must be a positive integer");
+            throw new APIActorError("limit must be a positive integer", 400);
         }
     } else {
         limit = 10;
     }
-    console.log({
-        page,
-        limit,
-        index: ModelDefinition.indexName,
-        from: (page - 1) * limit,
-        size: limit,
-    });
     
-    return {
-        index: ModelDefinition.indexName,
+    const q = {
+        index: [index],
         from: (page - 1) * limit,
         size: limit,
     };
+
+    return q;
 };
 
 export default class ReadCollectionElasticQuery extends _SearchElasticQuery {
