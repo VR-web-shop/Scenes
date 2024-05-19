@@ -65,6 +65,10 @@ export default class ModelQuery {
                 const prefix = index > 0 ? "AND" : "";
                 const operator = ModelQuery.getSqlOperator(where.operator);
 
+                if (operator === "IN" || operator === "NOT IN") {
+                    return ` ${prefix} ${where.table} . ${where.column} ${operator} (${where.value})`
+                }
+
                 return ` ${prefix} ${where.table} . ${where.column} ${operator} :${where.key}`
             }).join(" ")
             : ""

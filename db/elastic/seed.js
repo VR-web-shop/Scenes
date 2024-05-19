@@ -69,7 +69,7 @@ const up = async () => {
 
         for (const row of rows) {
             const pk = row[pkName];
-
+            console.log(row)
             await ElasticService.putFromConfig(elastic, pkName, pk, { 
                 [pkName]: pk,...row, ...time,
             });

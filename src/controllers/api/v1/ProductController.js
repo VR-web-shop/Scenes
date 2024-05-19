@@ -1,9 +1,9 @@
 import LinkService from '../../../services/LinkService.js';
-import Middleware from "../../../jwt/MiddlewareJWT.js";
 import APIActorError from '../errors/APIActorError.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import ReadOneQuery from '../../../queries/Product/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Product/ReadCollectionElasticQuery.js';
+import ReadCollectionMysqlQuery from '../../../queries/Product/ReadCollectionQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -161,6 +161,63 @@ router.route('/api/v1/product/:client_side_uuid')
                 ...response,
                 ...LinkService.entityLinks(`api/v1/product/${client_side_uuid}`, "GET", [
                 ])
+            })
+        } catch (error) {
+            if (error instanceof APIActorError) {
+                rollbar.info('APIActorError', { code: error.statusCode, message: error.message })
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            rollbar.error(error)
+            console.error(error)
+            return res.status(500).send({ message: 'Internal Server Error' })
+        }
+    })
+router.route('/api/v1/products/batch')
+    /**
+     * @openapi
+     * '/api/v1/products/batch':
+     *  post:
+     *     tags:
+     *       - Vector3D Controller
+     *     summary: Fetch a batch of products by client_side_uuids
+     *     requestBody:
+     *      required: true
+     *      content:
+     *       application/json:
+     *        schema:
+     *         type: object
+     *         properties:
+     *          client_side_uuids:
+     *           type: array
+     *           items:
+     *            type: string
+     *     responses:
+     *      200:
+     *       description: OK
+     *      404:
+     *        description: Not Found
+     *      401:
+     *        description: Unauthorized
+     *      500:
+     *        description: Internal Server Error
+     */
+    .post(async (req, res) => {
+        try {
+            const { client_side_uuids } = req.body
+            const { rows, count } = await queryService.invoke(new ReadCollectionMysqlQuery({
+                where: [{
+                    table: 'products',
+                    column: 'client_side_uuid',
+                    operator: Op.in,
+                    keys: 'client_side_uuids',
+                    value: `${client_side_uuids.map(c=>`'${c}'`).join(',')}`
+                }]
+            }))
+            res.send({
+                rows,
+                count,
+                ...LinkService.entityLinks(`/api/v1/products/batch`, 'POST', []),
             })
         } catch (error) {
             if (error instanceof APIActorError) {

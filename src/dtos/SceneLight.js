@@ -11,7 +11,7 @@ export default function dto(entity) {
         rotation_client_side_uuid: entity.rotation_client_side_uuid,
         scene_light_type_name: entity.scene_light_type_name,
         intensity: entity.intensity,
-        hexColor: entity.hexColor,
+        hex_color: entity.hex_color,
         scene_client_side_uuid: entity.scene_client_side_uuid,
         created_at: entity.created_at,
         updated_at: entity.created_at

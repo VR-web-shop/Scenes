@@ -28,7 +28,7 @@ const insert = async (datasource, _index, onDocument = (doc) => ({ index: { _ind
  * @param {object} doc The document.
  * @returns {Promise} The promise.
  */
-const put = async (index, id, doc) => {
+const put = async (index, pkName, id, doc) => {
     for (const key in doc) {
         if (typeof doc[key] === 'boolean' ||
             doc[key] === 'true' ||
@@ -38,8 +38,44 @@ const put = async (index, id, doc) => {
             doc[key] = bool ? 1 : 0;
         }
     }
+    
+    // Check if index exist
+    const indexExists = await client.indices.exists({ index });
+    
+    // Check if document exist
+    let documentExists = false;
+    if (indexExists) {
+        documentExists = await client.exists({ index, id });
+    } else {
+        // Create the index
+        await client.indices.create({ index });
+    }
 
-    return await client.index({ index, id, body: doc });
+    if (!documentExists) {
+        // Create the document
+        await client.index({ index, id, body: doc });
+    } else {
+        // Find the document
+        const res = await client.get({ index, id });
+
+        // Find the changed fields
+        const changed = Object.keys(doc).filter(key => doc[key] !== res._source[key]);
+        if (changed.length === 0) return;
+
+        // Run a script only updating the changed fields
+        // to avoid losing data
+        const script = changed.map(key => `ctx._source.${key} = params.${key}`).join(';');
+        await client.update({
+            index,
+            id,
+            body: {
+                script: { source: script, lang: "painless", params: doc }
+            }
+        });
+    }
+    // get the document
+    const currentDoc = await client.get({ index, id });
+    return currentDoc;
 }
 
 const putChild = async (index, id, relation, docKey, pkName, params) => {
@@ -100,7 +136,7 @@ const putFromConfig = async (config, pkName, pk, doc) => {
             await putChild(index, id, conf.relation, conf.docKey, pkName, doc);
         } else {
             doc._entity_type = conf.docKey;
-            await put(index, doc[conf.idKey], doc);
+            await put(index, pkName, doc[conf.idKey], doc);
         }
     }
 }

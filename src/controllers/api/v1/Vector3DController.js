@@ -8,6 +8,8 @@ import DeleteCommand from '../../../commands/Vector3D/DeleteCommand.js';
 import ReadOneQuery from '../../../queries/Vector3D/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Vector3D/ReadCollectionElasticQuery.js';
 import SearchElasticQuery from '../../../queries/Vector3D/SearchElasticQuery.js';
+import ReadCollectionMysqlQuery from '../../../queries/Vector3D/ReadCollectionQuery.js';
+import { Op } from 'sequelize';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -508,13 +510,14 @@ router.route('/api/v1/vector3ds/batch')
     .post(async (req, res) => {
         try {
             const { client_side_uuids } = req.body
-            const { rows, count } = await queryService.invoke(new SearchElasticQuery({
-                index: 'vector3d',
-                query: {
-                    ids: {
-                        values: client_side_uuids
-                    }
-                }
+            const { rows, count } = await queryService.invoke(new ReadCollectionMysqlQuery({
+                where: [{
+                    table: 'vector3ds',
+                    column: 'client_side_uuid',
+                    operator: Op.in,
+                    keys: 'client_side_uuids',
+                    value: `${client_side_uuids.map(c=>`'${c}'`).join(',')}`
+                }]
             }))
             res.send({
                 rows,

@@ -32,7 +32,7 @@ export default {
     elastic: [
         {
             indexName: 'scenelighttype',
-            idKey: 'client_side_uuid',
+            idKey: 'name',
             delete: 'default'
         },
     ],

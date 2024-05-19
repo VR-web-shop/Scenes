@@ -5,8 +5,9 @@ import ModelCommandService from '../../../services/ModelCommandService.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/Scene/PutCommand.js';
 import DeleteCommand from '../../../commands/Scene/DeleteCommand.js';
-import ReadOneQuery from '../../../queries/Scene/ReadOneElasticQuery.js';
-import ReadCollectionQuery from '../../../queries/Scene/ReadCollectionElasticQuery.js';
+import ReadOneElasticQuery from '../../../queries/Scene/ReadOneElasticQuery.js';
+import ReadCollectionElasticQuery from '../../../queries/Scene/ReadCollectionElasticQuery.js';
+import ReadOneQuery from '../../../queries/Scene/ReadOneQuery.js';
 import SearchElasticQuery from '../../../queries/Scene/SearchElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
@@ -86,7 +87,7 @@ router.route('/api/v1/scenes')
     .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:index"), async (req, res) => {
         try {
             const { limit, page } = req.query
-            const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
+            const { rows, count, pages } = await queryService.invoke(new ReadCollectionElasticQuery({limit, page}))
             res.send({ 
                 rows, 
                 count, 
@@ -342,7 +343,7 @@ router.route('/api/v1/scene/:client_side_uuid')
     .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
-            const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const response = await queryService.invoke(new ReadOneElasticQuery(client_side_uuid))
             res.send({
                 ...response,
                 ...LinkService.entityLinks(`api/v1/scene/${client_side_uuid}`, "GET", [
