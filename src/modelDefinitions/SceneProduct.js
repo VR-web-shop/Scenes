@@ -60,6 +60,7 @@ export default {
         'product_client_side_uuid',
         'scene_product_state_name',
         'scene_client_side_uuid',
+        'scene_product_client_side_uuid'
     ],
 
     /*

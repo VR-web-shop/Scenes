@@ -69,6 +69,22 @@ module.exports = {
           key: 'client_side_uuid'
         },
       },
+      placeholder_offset_client_side_uuid: {
+        type: Sequelize.STRING,
+        field: 'placeholder_offset_client_side_uuid',
+        references: {
+          model: 'Vector3ds',
+          key: 'client_side_uuid'
+        },
+      },
+      pocket_offset_client_side_uuid: {
+        type: Sequelize.STRING,
+        field: 'pocket_offset_client_side_uuid',
+        references: {
+          model: 'Vector3ds',
+          key: 'client_side_uuid'
+        },
+      },      
       insert_area_offset_client_side_uuid: {
         type: Sequelize.STRING,
         field: 'insert_area_offset_client_side_uuid',

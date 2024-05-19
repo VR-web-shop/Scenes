@@ -6,6 +6,7 @@ import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/SceneBackground/PutCommand.js';
 import ReadOneQuery from '../../../queries/SceneBackground/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/SceneBackground/ReadCollectionElasticQuery.js';
+import ReadOneMySQLQuery from '../../../queries/Scene/ReadOneQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -267,7 +268,7 @@ router.route('/api/v1/scene_background/:client_side_uuid')
             await cmdService.invoke(new PutCommand(client_side_uuid, { 
                 hex 
             }))
-            const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const response = await queryService.invoke(new ReadOneMySQLQuery(client_side_uuid))
             res.send({
                 ...response,
                 ...LinkService.entityLinks(`api/v1/scene_background/${client_side_uuid}`, "PATCH", [

@@ -53,6 +53,7 @@ export default {
         'position_client_side_uuid', 
         'rotation_client_side_uuid',
         'scene_client_side_uuid',
+        'scene_camera_client_side_uuid'
     ],
 
     /*

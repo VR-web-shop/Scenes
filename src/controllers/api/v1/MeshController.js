@@ -22,8 +22,6 @@ router.route('/api/v1/meshes')
      *     tags:
      *       - Mesh Controller
      *     summary: Fetch all meshes
-     *     security:
-     *      - bearerAuth: []
      *     parameters:
      *      - in: query
      *        name: page
@@ -82,7 +80,7 @@ router.route('/api/v1/meshes')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("meshes:index"), async (req, res) => {
+    .get(async (req, res) => {
         try {
             const { limit, page } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))

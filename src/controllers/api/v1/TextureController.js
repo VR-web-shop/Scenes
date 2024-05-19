@@ -22,8 +22,6 @@ router.route('/api/v1/textures')
      *     tags:
      *       - Texture Controller
      *     summary: Fetch all textures
-     *     security:
-     *      - bearerAuth: []
      *     parameters:
      *      - in: query
      *        name: page
@@ -84,7 +82,7 @@ router.route('/api/v1/textures')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("textures:index"), async (req, res) => {
+    .get(async (req, res) => {
         try {
             const { limit, page } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))

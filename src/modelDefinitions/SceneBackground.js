@@ -51,6 +51,8 @@ export default {
      */
     casKeys: [
         'hex', 
+        'scene_client_side_uuid',
+        'scene_background_client_side_uuid',
     ],
 
     /*

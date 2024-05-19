@@ -35,6 +35,12 @@ module.exports = (sequelize, DataTypes) => {
       models.Vector3d.hasMany(models.SceneBasketDescription, {
         foreignKey: 'insert_area_size_client_side_uuid',
       });
+      models.Vector3d.belongsTo(models.SceneBasketDescription, {
+        foreignKey: 'placeholder_offset_client_side_uuid',
+      });
+      models.Vector3d.belongsTo(models.SceneBasketDescription, {
+        foreignKey: 'pocket_offset_client_side_uuid',
+      });
 
       models.Vector3d.hasMany(models.SceneCameraDescription, {
         foreignKey: 'position_client_side_uuid',

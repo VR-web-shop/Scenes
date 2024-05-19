@@ -61,6 +61,7 @@ export default {
         'ui_scale_client_side_uuid',
         'mesh_client_side_uuid',
         'scene_client_side_uuid',
+        'scene_checkout_client_side_uuid'
     ],
 
 

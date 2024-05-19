@@ -26,15 +26,15 @@ module.exports = {
     await queryInterface.bulkInsert('Vector3dDescriptions', [
       { 
         vector3d_client_side_uuid: position_client_side_uuid,
-        x: demoScene.character.position.x,
-        y: demoScene.character.position.y,
-        z: demoScene.character.position.z, 
+        x: demoScene.camera.position.x,
+        y: demoScene.camera.position.y,
+        z: demoScene.camera.position.z, 
       },
       { 
         vector3d_client_side_uuid: rotation_client_side_uuid,
-        x: demoScene.character.rotation.x,
-        y: demoScene.character.rotation.y,
-        z: demoScene.character.rotation.z, 
+        x: demoScene.camera.rotation.x,
+        y: demoScene.camera.rotation.y,
+        z: demoScene.camera.rotation.z, 
       },
     ], {});
     

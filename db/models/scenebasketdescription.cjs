@@ -34,6 +34,12 @@ module.exports = (sequelize, DataTypes) => {
       models.SceneBasketDescription.belongsTo(models.Vector3d, {
         foreignKey: 'insert_area_size_client_side_uuid',
       });
+      models.SceneBasketDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'placeholder_offset_client_side_uuid',
+      });
+      models.SceneBasketDescription.belongsTo(models.Vector3d, {
+        foreignKey: 'pocket_offset_client_side_uuid',
+      });
       models.SceneBasketDescription.belongsTo(models.Mesh, {
         foreignKey: 'object_client_side_uuid',
       });
@@ -88,6 +94,14 @@ module.exports = (sequelize, DataTypes) => {
     object_offset_client_side_uuid: {
       type: DataTypes.STRING,
       field: 'object_offset_client_side_uuid',
+    },
+    placeholder_offset_client_side_uuid: {
+      type: DataTypes.STRING,
+      field: 'placeholder_offset_client_side_uuid',
+    },
+    pocket_offset_client_side_uuid: {
+      type: DataTypes.STRING,
+      field: 'pocket_offset_client_side_uuid',
     },
     insert_area_offset_client_side_uuid: {
       type: DataTypes.STRING,

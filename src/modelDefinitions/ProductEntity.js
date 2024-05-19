@@ -52,7 +52,8 @@ export default {
     casKeys: [
         'product_client_side_uuid', 
         'product_entity_state_name', 
-        'distributed_transaction_transaction_uuid'
+        'distributed_transaction_transaction_uuid',
+        'product_entity_client_side_uuid',
     ],
 
     /*

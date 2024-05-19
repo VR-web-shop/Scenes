@@ -22,8 +22,6 @@ router.route('/api/v1/materials')
      *     tags:
      *       - Material Controller
      *     summary: Fetch all materials
-     *     security:
-     *      - bearerAuth: []
      *     parameters:
      *      - in: query
      *        name: page
@@ -82,7 +80,7 @@ router.route('/api/v1/materials')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('materials:index'), async (req, res) => {
+    .get(async (req, res) => {
         try {
             const { limit, page, include } = req.query
             const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page, include}))

@@ -4,6 +4,7 @@ import ModelQueryService from '../../../services/ModelQueryService.js';
 import ReadOneQuery from '../../../queries/Product/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Product/ReadCollectionElasticQuery.js';
 import ReadCollectionMysqlQuery from '../../../queries/Product/ReadCollectionQuery.js';
+import { Op } from 'sequelize';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 

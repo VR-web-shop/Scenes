@@ -57,6 +57,7 @@ export default {
         'intensity',
         'hexColor',
         'scene_client_side_uuid',
+        'scene_light_client_side_uuid'
     ],
 
     /*

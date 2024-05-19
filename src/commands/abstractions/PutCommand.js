@@ -142,6 +142,23 @@ export default class PutCommand extends ModelCommand {
                         await afterTransaction(transaction, entity, snapshot);
                     }
                 }
+
+                const doc = { 
+                    [pkName]: pk, ...params, ...time
+                }
+                // A bit of a mess, but the code is looking
+                // for the id key in either the identity or snapshot
+                // if it is not already in the doc
+                elastic.forEach(({ idKey }) => {
+                    if (doc[idKey]) return;
+                    const id = entity[`${snapshotName}s`] && entity[`${snapshotName}s`].length > 0
+                        ? entity[`${snapshotName}s`][0][idKey]
+                        : entity[idKey];
+
+                    doc[idKey] = id; 
+                });
+
+                await ElasticService.putFromConfig(elastic, pkName, pk, doc);
             };
 
             if (options.transaction) {
@@ -149,10 +166,7 @@ export default class PutCommand extends ModelCommand {
             } else {
                 await db.sequelize.transaction(executeTransaction);
             }
-
-            await ElasticService.putFromConfig(elastic, pkName, pk, { 
-                [pkName]: pk, ...params, ...time,
-            });
+            
         } catch (error) {
             console.log(error)
 

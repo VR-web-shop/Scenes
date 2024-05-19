@@ -63,6 +63,7 @@ export default {
         'pocket_client_side_uuid',
         'basket_state_name',
         'scene_client_side_uuid',
+        'scene_basket_client_side_uuid',
     ],
 
     /*

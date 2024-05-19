@@ -21,6 +21,8 @@ module.exports = {
     const object_offset_client_side_uuid = v4();
     const insert_area_offset_client_side_uuid = v4();
     const insert_area_size_client_side_uuid = v4();
+    const placeholder_offset_client_side_uuid = v4();
+    const pocket_offset_client_side_uuid = v4();
 
     const object_client_side_uuid = demoScene.meshes.find(mesh => {
       return mesh.name === demoScene.basket.basket_mesh_name
@@ -41,6 +43,8 @@ module.exports = {
       { client_side_uuid: object_offset_client_side_uuid },
       { client_side_uuid: insert_area_offset_client_side_uuid },
       { client_side_uuid: insert_area_size_client_side_uuid },
+      { client_side_uuid: placeholder_offset_client_side_uuid },
+      { client_side_uuid: pocket_offset_client_side_uuid },
     ], {});
 
     await queryInterface.bulkInsert('Vector3dDescriptions', [
@@ -80,6 +84,18 @@ module.exports = {
         y: demoScene.basket.insert_area_size.y,
         z: demoScene.basket.insert_area_size.z, 
       },
+      { 
+        vector3d_client_side_uuid: placeholder_offset_client_side_uuid,
+        x: demoScene.basket.placeholder_offset.x,
+        y: demoScene.basket.placeholder_offset.y,
+        z: demoScene.basket.placeholder_offset.z, 
+      },
+      { 
+        vector3d_client_side_uuid: pocket_offset_client_side_uuid,
+        x: demoScene.basket.pocket_offset.x,
+        y: demoScene.basket.pocket_offset.y,
+        z: demoScene.basket.pocket_offset.z, 
+      },
     ], {});
     
     await queryInterface.bulkInsert('SceneBaskets', [{
@@ -98,6 +114,8 @@ module.exports = {
       insert_area_size_client_side_uuid,
       object_client_side_uuid,
       placeholder_client_side_uuid,
+      placeholder_offset_client_side_uuid,
+      pocket_offset_client_side_uuid,
       pocket_client_side_uuid,
     }], {});
   },

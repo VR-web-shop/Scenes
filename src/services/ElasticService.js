@@ -79,6 +79,7 @@ const put = async (index, pkName, id, doc) => {
 }
 
 const putChild = async (index, id, relation, docKey, pkName, params) => {
+    console.log(index, id, relation, docKey, pkName, params);
     await client.update({
         index,
         id,
@@ -132,6 +133,7 @@ const putFromConfig = async (config, pkName, pk, doc) => {
         
         if (conf.relation) {
             doc._entity_type = index;
+            console.log(conf.idKey, { [pkName]: pk, ...doc });
             const id = { [pkName]: pk, ...doc }[conf.idKey];
             await putChild(index, id, conf.relation, conf.docKey, pkName, doc);
         } else {
