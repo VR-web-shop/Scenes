@@ -512,7 +512,7 @@ router.route('/api/v1/vector3ds/batch')
             const { client_side_uuids } = req.body
             const { rows, count } = await queryService.invoke(new ReadCollectionMysqlQuery({
                 where: [{
-                    table: 'vector3ds',
+                    table: 'Vector3ds',
                     column: 'client_side_uuid',
                     operator: Op.in,
                     keys: 'client_side_uuids',

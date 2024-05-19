@@ -5,6 +5,10 @@ WORKDIR /app
 COPY package*.json ./
 COPY .env* ./
 COPY .npmrc* ./
+COPY fullchain.pem ./
+COPY privkey.pem ./
+
+RUN chmod 644 fullchain.pem privkey.pem
 
 RUN npm install
 
