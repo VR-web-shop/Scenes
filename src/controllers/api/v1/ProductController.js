@@ -208,7 +208,7 @@ router.route('/api/v1/products/batch')
             const { client_side_uuids } = req.body
             const { rows, count } = await queryService.invoke(new ReadCollectionMysqlQuery({
                 where: [{
-                    table: 'products',
+                    table: 'Products',
                     column: 'client_side_uuid',
                     operator: Op.in,
                     keys: 'client_side_uuids',

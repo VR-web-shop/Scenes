@@ -23,7 +23,7 @@ export default {
      * The table name is used to find the table in the database.
      * Required.
      */
-    tableName: 'Vector3Ds',
+    tableName: 'Vector3ds',
 
     /**
      * The elastic options is used to find the model in the elasticsearch database.
@@ -56,7 +56,7 @@ export default {
      */
     snapshot: { 
         modelName: 'Vector3DDescription', 
-        tableName: 'Vector3DDescriptions',
+        tableName: 'Vector3dDescriptions',
         fkName: 'vector3d_client_side_uuid' 
     },
 
@@ -68,7 +68,7 @@ export default {
      */
     tombstone: { 
         modelName: 'Vector3DRemoved', 
-        tableName: 'Vector3DRemoveds',
+        tableName: 'Vector3dRemoveds',
         fkName: 'vector3d_client_side_uuid' 
     },
 }

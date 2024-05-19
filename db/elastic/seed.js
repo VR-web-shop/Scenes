@@ -23,7 +23,7 @@ import SceneProductState from '../../src/modelDefinitions/SceneProductState.js';
 import SceneStaticObject from '../../src/modelDefinitions/SceneStaticObject.js';
 import Texture from '../../src/modelDefinitions/Texture.js';
 import TextureType from '../../src/modelDefinitions/TextureType.js';
-import Vector3d from '../../src/modelDefinitions/Vector3d.js';
+import Vector3d from '../../src/modelDefinitions/Vector3D.js';
 
 import MaterialReadCollectionQuery from '../../src/queries/Material/ReadCollectionQuery.js';
 import MaterialTextureReadCollectionQuery from '../../src/queries/MaterialTexture/ReadCollectionQuery.js';
@@ -47,7 +47,7 @@ import SceneProductStateReadCollectionQuery from '../../src/queries/SceneProduct
 import SceneStaticObjectReadCollectionQuery from '../../src/queries/SceneStaticObject/ReadCollectionQuery.js';
 import TextureReadCollectionQuery from '../../src/queries/Texture/ReadCollectionQuery.js';
 import TextureTypeReadCollectionQuery from '../../src/queries/TextureType/ReadCollectionQuery.js';
-import Vector3dReadCollectionQuery from '../../src/queries/Vector3d/ReadCollectionQuery.js';
+import Vector3dReadCollectionQuery from '../../src/queries/Vector3D/ReadCollectionQuery.js';
 
 const up = async () => {
     const modelQueryService = new ModelQueryService();
