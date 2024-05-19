@@ -38,8 +38,8 @@ export default {
         {
             indexName: 'scene',
             idKey: 'scene_client_side_uuid',
-            docKey: 'scene_checkout',
-            relation: 'one',
+            docKey: 'scene_checkouts',
+            relation: 'many',
             delete: 'child_only'
         },
     ],

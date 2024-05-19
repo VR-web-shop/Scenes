@@ -253,7 +253,7 @@ router.route('/api/v1/scene/active')
      *      500:
      *        description: Internal Server Error
      */
-    .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:show"), async (req, res) => {
+    .get(async (req, res) => {
         try {
             const response = await queryService.invoke(new SearchElasticQuery({
                 index: 'scene',

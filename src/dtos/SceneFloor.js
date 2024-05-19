@@ -6,6 +6,7 @@ export default function dto(entity) {
 
     return {
         client_side_uuid: entity.client_side_uuid,
+        name: entity.name,
         position_client_side_uuid: entity.position_client_side_uuid,
         rotation_client_side_uuid: entity.rotation_client_side_uuid,
         scale_client_side_uuid: entity.scale_client_side_uuid,

@@ -7,6 +7,7 @@ import PutCommand from '../../../commands/Vector3D/PutCommand.js';
 import DeleteCommand from '../../../commands/Vector3D/DeleteCommand.js';
 import ReadOneQuery from '../../../queries/Vector3D/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Vector3D/ReadCollectionElasticQuery.js';
+import SearchElasticQuery from '../../../queries/Vector3D/SearchElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -87,10 +88,10 @@ router.route('/api/v1/vector3ds')
     .get(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("vector3ds:index"), async (req, res) => {
         try {
             const { limit, page } = req.query
-            const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
-            res.send({ 
-                rows, 
-                count, 
+            const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({ limit, page }))
+            res.send({
+                rows,
+                count,
                 pages,
                 ...LinkService.paginateLinks(`api/v1/vector3ds`, parseInt(page), pages),
             })
@@ -105,106 +106,106 @@ router.route('/api/v1/vector3ds')
             return res.status(500).send({ message: 'Internal Server Error' })
         }
     })
-    /**
-     * @openapi
-     * '/api/v1/vector3ds':
-     * post:
-     *  tags:
-     *   - Vector3D Controller
-     * summary: Create a vector3d
-     * requestBody:
-     *  required: true
-     *  content:
-     *   application/json:
-     *    schema:
-     *     type: object
-     *     properties:
-     *      client_side_uuid:
-     *       type: string
-     *      x:
-     *       type: number
-     *      y:
-     *       type: number
-     *      z:
-     *       type: number
-     * responses:
-     *  200:
-     *   description: OK
-     *   content:
-     *    application/json:
-     *     schema:
-     *      type: object
-     *      properties:
-     *       client_side_uuid:
-     *        type: string
-     *       x:
-     *        type: number
-     *       y:
-     *        type: number
-     *       z:
-     *        type: number
-     *       _links:
-     *        type: object
-     *        properties:
-     *         get:
-     *          type: object
-     *          properties:
-     *           href:
-     *            type: string
-     *           method:
-     *            type: string
-     *         update:
-     *          type: object
-     *          properties:
-     *           href:
-     *            type: string
-     *           method:
-     *            type: string
-     *         delete:
-     *          type: object
-     *          properties:
-     *           href:
-     *            type: string
-     *           method:
-     *            type: string
-     *  400:
-     *   description: Bad Request
-     *  500:
-     *  description: Internal Server Error
-     */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('vector3ds:put'), async (req, res) => {
-        try {
-            const { 
-                client_side_uuid, 
-                x,
-                y,
-                z,
-            } = req.body;
-            cmdService.invoke(new PutCommand(client_side_uuid, { 
-                x,
-                y,
-                z,
-            }));
-            const response = queryService.invoke(new ReadOneQuery(client_side_uuid));
-            res.send({ 
-                ...response,
-                ...LinkService.entityLinks(`api/v1/vector3ds`, 'POST', [
-                    { name: 'get', method: 'GET' },
-                    { name: 'update', method: 'PATCH' },
-                    { name: 'delete', method: 'DELETE' },
-                ], `api/v1/vector3d/${client_side_uuid}`) 
-            });
-        } catch (error) {
-            if (error instanceof RequestError) {
-                rollbar.info('RequestError', { code: error.code, message: error.message })
-                return res.status(error.code).send({ message: error.message })
-            }
-
-            rollbar.error(error)
-            console.error(error)
-            return res.status(500).send({ message: 'Internal Server Error' })
+/**
+ * @openapi
+ * '/api/v1/vector3ds':
+ * post:
+ *  tags:
+ *   - Vector3D Controller
+ * summary: Create a vector3d
+ * requestBody:
+ *  required: true
+ *  content:
+ *   application/json:
+ *    schema:
+ *     type: object
+ *     properties:
+ *      client_side_uuid:
+ *       type: string
+ *      x:
+ *       type: number
+ *      y:
+ *       type: number
+ *      z:
+ *       type: number
+ * responses:
+ *  200:
+ *   description: OK
+ *   content:
+ *    application/json:
+ *     schema:
+ *      type: object
+ *      properties:
+ *       client_side_uuid:
+ *        type: string
+ *       x:
+ *        type: number
+ *       y:
+ *        type: number
+ *       z:
+ *        type: number
+ *       _links:
+ *        type: object
+ *        properties:
+ *         get:
+ *          type: object
+ *          properties:
+ *           href:
+ *            type: string
+ *           method:
+ *            type: string
+ *         update:
+ *          type: object
+ *          properties:
+ *           href:
+ *            type: string
+ *           method:
+ *            type: string
+ *         delete:
+ *          type: object
+ *          properties:
+ *           href:
+ *            type: string
+ *           method:
+ *            type: string
+ *  400:
+ *   description: Bad Request
+ *  500:
+ *  description: Internal Server Error
+ */
+router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('vector3ds:put'), async (req, res) => {
+    try {
+        const {
+            client_side_uuid,
+            x,
+            y,
+            z,
+        } = req.body;
+        cmdService.invoke(new PutCommand(client_side_uuid, {
+            x,
+            y,
+            z,
+        }));
+        const response = queryService.invoke(new ReadOneQuery(client_side_uuid));
+        res.send({
+            ...response,
+            ...LinkService.entityLinks(`api/v1/vector3ds`, 'POST', [
+                { name: 'get', method: 'GET' },
+                { name: 'update', method: 'PATCH' },
+                { name: 'delete', method: 'DELETE' },
+            ], `api/v1/vector3d/${client_side_uuid}`)
+        });
+    } catch (error) {
+        if (error instanceof RequestError) {
+            rollbar.info('RequestError', { code: error.code, message: error.message })
+            return res.status(error.code).send({ message: error.message })
         }
-    });
+
+        rollbar.error(error)
+        console.error(error)
+        return res.status(500).send({ message: 'Internal Server Error' })
+    }
+});
 
 router.route('/api/v1/vector3d/:client_side_uuid')
     /**
@@ -378,12 +379,12 @@ router.route('/api/v1/vector3d/:client_side_uuid')
     .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("vector3ds:put"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
-            const { 
+            const {
                 x,
                 y,
                 z,
             } = req.body
-            await cmdService.invoke(new PutCommand(client_side_uuid, { 
+            await cmdService.invoke(new PutCommand(client_side_uuid, {
                 x,
                 y,
                 z,
@@ -439,6 +440,87 @@ router.route('/api/v1/vector3d/:client_side_uuid')
             const { client_side_uuid } = req.params
             await cmdService.invoke(new DeleteCommand(client_side_uuid))
             res.sendStatus(204)
+        } catch (error) {
+            if (error instanceof APIActorError) {
+                rollbar.info('APIActorError', { code: error.statusCode, message: error.message })
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            rollbar.error(error)
+            console.error(error)
+            return res.status(500).send({ message: 'Internal Server Error' })
+        }
+    })
+router.route('/api/v1/vector3ds/batch')
+    /**
+     * @openapi
+     * '/api/v1/vector3ds/batch':
+     *  post:
+     *     tags:
+     *       - Vector3D Controller
+     *     summary: Fetch a batch of vector3ds by client_side_uuids
+     *     requestBody:
+     *      required: true
+     *      content:
+     *       application/json:
+     *        schema:
+     *         type: object
+     *         properties:
+     *          client_side_uuids:
+     *           type: array
+     *           items:
+     *            type: string
+     *     responses:
+     *      200:
+     *        description: OK
+     *        content:
+     *         application/json:
+     *           schema:
+     *             type: array
+     *             items:
+     *              type: object
+     *              properties:
+     *               client_side_uuid:
+     *                type: string
+     *               x:
+     *                type: number
+     *               y:
+     *                type: number
+     *               z:
+     *                type: number
+     *               _links:
+     *                type: object
+     *                properties:
+     *                 self:
+     *                  type: object
+     *                  properties:
+     *                   href:
+     *                    type: string
+     *                   method:
+     *                    type: string
+     *      404:
+     *        description: Not Found
+     *      401:
+     *        description: Unauthorized
+     *      500:
+     *        description: Internal Server Error
+     */
+    .post(async (req, res) => {
+        try {
+            const { client_side_uuids } = req.body
+            const { rows, count } = await queryService.invoke(new SearchElasticQuery({
+                index: 'vector3d',
+                query: {
+                    ids: {
+                        values: client_side_uuids
+                    }
+                }
+            }))
+            res.send({
+                rows,
+                count,
+                ...LinkService.entityLinks(`/api/v1/vector3ds/batch`, 'POST', []),
+            })
         } catch (error) {
             if (error instanceof APIActorError) {
                 rollbar.info('APIActorError', { code: error.statusCode, message: error.message })
