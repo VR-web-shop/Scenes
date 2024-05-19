@@ -3,10 +3,11 @@ import { Client } from '@elastic/elasticsearch';
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; // just for testing
 
-const client = new Client({
-    node: process.env.ELASTIC_NODE,
-    auth: { apiKey: process.env.ELASTIC_API_KEY }
-});
+const clientOptions = process.env.NODE_ENV === 'production' 
+    ? { node: process.env.ELASTIC_NODE }
+    : { node: process.env.ELASTIC_NODE, auth: { apiKey: process.env.ELASTIC_API_KEY } };
+
+const client = new Client(clientOptions);
 
 /**
  * @function insert
