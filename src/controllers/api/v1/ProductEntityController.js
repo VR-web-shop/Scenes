@@ -4,6 +4,7 @@ import APIActorError from '../errors/APIActorError.js';
 import ModelQueryService from '../../../services/ModelQueryService.js';
 import ReadOneQuery from '../../../queries/ProductEntity/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/ProductEntity/ReadCollectionElasticQuery.js';
+import ReadCollectionMysqlQuery from '../../../queries/ProductEntity/ReadCollectionQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -79,7 +80,7 @@ router.route('/api/v1/product_entities')
     .get(async (req, res) => {
         try {
             const { limit, page } = req.query
-            const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
+            const { rows, count, pages } = await queryService.invoke(new ReadCollectionMysqlQuery({limit, page}))
             res.send({ 
                 rows, 
                 count, 

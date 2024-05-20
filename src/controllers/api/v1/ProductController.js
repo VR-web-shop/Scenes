@@ -4,6 +4,7 @@ import ModelQueryService from '../../../services/ModelQueryService.js';
 import ReadOneQuery from '../../../queries/Product/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Product/ReadCollectionElasticQuery.js';
 import ReadCollectionMysqlQuery from '../../../queries/Product/ReadCollectionQuery.js';
+import PEReadCollectionMysqlQuery from '../../../queries/ProductEntity/ReadCollectionQuery.js';
 import { Op } from 'sequelize';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
@@ -84,7 +85,25 @@ router.route('/api/v1/products')
     .get(async (req, res) => {
         try {
             const { limit, page } = req.query
-            const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page}))
+            const { rows, count, pages } = await queryService.invoke(new ReadCollectionMysqlQuery({limit, page,
+                include: [{
+                    table: 'ProductEntities',
+
+                }]
+            }))
+            const { rows: entities } = await queryService.invoke(new PEReadCollectionMysqlQuery({
+                limit: 1000,
+                where: [{
+                    table: 'ProductEntityDescriptions',
+                    column: 'product_client_side_uuid',
+                    operator: Op.in,
+                    keys: 'client_side_uuids',
+                    value: `${rows.map(r=>`'${r.client_side_uuid}'`).join(',')}`
+                }]
+            }))
+            rows.forEach(row => {
+                row.product_entities = entities.filter(e => e.product_client_side_uuid === row.client_side_uuid)
+            })
             res.send({ 
                 rows, 
                 count, 
