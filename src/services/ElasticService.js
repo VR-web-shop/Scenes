@@ -80,7 +80,6 @@ const put = async (index, pkName, id, doc) => {
 }
 
 const putChild = async (index, id, relation, docKey, pkName, params) => {
-    console.log(index, id, relation, docKey, pkName, params);
     await client.update({
         index,
         id,

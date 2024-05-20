@@ -50,6 +50,7 @@ function buildServer() {
  * @returns {boolean}
  */
 function originIsAllowed(origin) {
+    return true
     if (process.env.NODE_ENV === 'development') return true
     else if (process.env.NODE_ENV === 'test') return true
     else {
