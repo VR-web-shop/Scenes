@@ -53,9 +53,6 @@ const up = async () => {
     const modelQueryService = new ModelQueryService();
     const readAndInsert = async (definition, command, page=1) => {
         if (!definition.elastic) return;
-        const startTime = new Date().getTime();
-        console.log(`${startTime}: Reading and inserting ${definition.elastic?.indexName} page ${page}`);
-        
         const { rows, pages } = await modelQueryService.invoke(
             new command({ limit: 1000, page })
         );
@@ -77,12 +74,10 @@ const up = async () => {
         if (page < pages) {
             await readAndInsert(definition, command, page + 1);
         }
-
-        const endTime = new Date().getTime();
-        const seconds = (endTime - startTime) / 1000;
-        console.log(`${endTime}: Finished reading and inserting ${definition.elastic?.indexName} page ${page} in ${seconds} seconds`);
     };
 
+    const startTime = new Date().getTime();
+    console.log(`${startTime}: Starting reading and inserting`);
     await readAndInsert(Material, MaterialReadCollectionQuery);
     await readAndInsert(MaterialTexture, MaterialTextureReadCollectionQuery);
     await readAndInsert(Mesh, MeshReadCollectionQuery);
@@ -106,54 +101,46 @@ const up = async () => {
     await readAndInsert(Texture, TextureReadCollectionQuery);
     await readAndInsert(TextureType, TextureTypeReadCollectionQuery);
     await readAndInsert(Vector3d, Vector3dReadCollectionQuery);
+    const endTime = new Date().getTime();
+    const seconds = (endTime - startTime) / 1000;
+    console.log(`${endTime}: Finished reading and inserting in ${seconds} seconds`);
 };
 
 const down = async () => {
-    const modelQueryService = new ModelQueryService();
-    const readAndRemove = async (index, command, page=1) => {
-        const startTime = new Date().getTime();
-        console.log(`${startTime}: Reading and inserting ${index} page ${page}`);
-        
-        const { rows, pages } = await modelQueryService.invoke(
-            new command({ limit: 100, page })
-        );
-
-        for (const row of rows) {
-            await ElasticService.remove(index, row.client_side_uuid);
+    const removeIndex = async (index,) => {
+        if (await ElasticService.indiciesExist(index)) {
+            await ElasticService.deleteIndex(index);
         }
-
-        if (page < pages) {
-            await readAndInsert(index, command, page + 1);
-        }
-
-        const endTime = new Date().getTime();
-        const seconds = (endTime - startTime) / 1000;
-        console.log(`${endTime}: Finished reading and inserting ${index} page ${page} in ${seconds} seconds`);
     };
 
-    await readAndRemove('material', MaterialReadCollectionQuery);
-    await readAndRemove('materialtexture', MaterialTextureReadCollectionQuery);
-    await readAndRemove('mesh', MeshReadCollectionQuery);
-    await readAndRemove('meshmaterial', MeshMaterialReadCollectionQuery);
-    await readAndRemove('product', ProductReadCollectionQuery);
-    await readAndRemove('productentity', ProductEntityReadCollectionQuery);
-    await readAndRemove('productentitystate', ProductEntityStateReadCollectionQuery);
-    await readAndRemove('scene', SceneReadCollectionQuery);
-    await readAndRemove('scenebackground', SceneBackgroundReadCollectionQuery);
-    await readAndRemove('scenebasket', SceneBasketReadCollectionQuery);
-    await readAndRemove('scenebasketstate', SceneBasketStateReadCollectionQuery);
-    await readAndRemove('scenecamera', SceneCameraReadCollectionQuery);
-    await readAndRemove('scenecharacter', SceneCharacterReadCollectionQuery);
-    await readAndRemove('scenecheckout', SceneCheckoutReadCollectionQuery);
-    await readAndRemove('scenefloor', SceneFloorReadCollectionQuery);
-    await readAndRemove('scenelight', SceneLightReadCollectionQuery);
-    await readAndRemove('scenelighttype', SceneLightTypeReadCollectionQuery);
-    await readAndRemove('sceneproduct', SceneProductReadCollectionQuery);
-    await readAndRemove('sceneproductstate', SceneProductStateReadCollectionQuery);
-    await readAndRemove('scenestaticobject', SceneStaticObjectReadCollectionQuery);
-    await readAndRemove('texture', TextureReadCollectionQuery);
-    await readAndRemove('texturetype', TextureTypeReadCollectionQuery);
-    await readAndRemove('vector3d', Vector3dReadCollectionQuery);
+    const startTime = new Date().getTime();
+    console.log(`${startTime}: Start removing`);
+    await removeIndex('material');
+    await removeIndex('materialtexture');
+    await removeIndex('mesh');
+    await removeIndex('meshmaterial');
+    await removeIndex('product');
+    await removeIndex('productentity');
+    await removeIndex('productentitystate');
+    await removeIndex('scene');
+    await removeIndex('scenebackground');
+    await removeIndex('scenebasket');
+    await removeIndex('scenebasketstate');
+    await removeIndex('scenecamera');
+    await removeIndex('scenecharacter');
+    await removeIndex('scenecheckout');
+    await removeIndex('scenefloor');
+    await removeIndex('scenelight');
+    await removeIndex('scenelighttype');
+    await removeIndex('sceneproduct');
+    await removeIndex('sceneproductstate');
+    await removeIndex('scenestaticobject');
+    await removeIndex('texture');
+    await removeIndex('texturetype');
+    await removeIndex('vector3d');
+    const endTime = new Date().getTime();
+    const seconds = (endTime - startTime) / 1000;
+    console.log(`${endTime}: Finished removing in ${seconds} seconds`);
 }
 
 if (process.argv[2] === 'up') {

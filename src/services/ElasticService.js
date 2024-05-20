@@ -154,6 +154,14 @@ const remove = async (index, id) => {
     return await client.delete({ index, id });
 }
 
+const deleteIndex = async (index) => {
+    return await client.indices.delete({ index });
+}
+
+const indiciesExist = async (indices) => {
+    return await client.indices.exists({ index: indices });
+}
+
 /**
  * @function search
  * @description Search for data in the index.
@@ -177,5 +185,7 @@ export default {
     putFromConfig,
     remove,
     search,
+    deleteIndex,
+    indiciesExist,
     invoke
 };
