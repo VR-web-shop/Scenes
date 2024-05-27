@@ -7,12 +7,20 @@ import PutCommand from '../../../commands/Mesh/PutCommand.js';
 import DeleteCommand from '../../../commands/Mesh/DeleteCommand.js';
 import ReadOneQuery from '../../../queries/Mesh/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Mesh/ReadCollectionElasticQuery.js';
+import ReadOneMysqlQuery from '../../../queries/Mesh/ReadOneQuery.js';
+import MeshMaterialReadCollectionQuery from '../../../queries/MeshMaterial/ReadCollectionQuery.js';
+import MaterialReadCollectionQuery from '../../../queries/Material/ReadCollectionQuery.js';
+import StorageService from '../../../services/StorageService.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
+import multer from 'multer';
+import { Op, where } from 'sequelize';
 
 const router = express.Router();
+const upload = multer({ storage: multer.memoryStorage() });
 const cmdService = new ModelCommandService();
 const queryService = new ModelQueryService();
+const storage = new StorageService('meshes');
 
 router.route('/api/v1/meshes')
     /**
@@ -164,13 +172,16 @@ router.route('/api/v1/meshes')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
+    .post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), upload.single('source'), async (req, res) => {
         try {
-            const { client_side_uuid, name, source, } = req.body;
-            cmdService.invoke(new PutCommand(client_side_uuid, { 
+            const { client_side_uuid, name } = req.body;
+            const source = await storage.put(req.file, client_side_uuid);
+            
+            await cmdService.invoke(new PutCommand(client_side_uuid, { 
                 name, source 
             }));
-            const response = queryService.invoke(new ReadOneQuery(client_side_uuid));
+            console.log('here')
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid));
             res.send({ 
                 ...response,
                 ...LinkService.entityLinks(`api/v1/meshes`, 'POST', [
@@ -353,14 +364,16 @@ router.route('/api/v1/mesh/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), async (req, res) => {
+    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), upload.single('source'), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
-            const { name, source } = req.body
+            const { name } = req.body
+            const entity = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const source = await storage.put(req.file, client_side_uuid, entity.source)
             await cmdService.invoke(new PutCommand(client_side_uuid, { 
                 name, source 
             }))
-            const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid))
             res.send({
                 ...response,
                 ...LinkService.entityLinks(`api/v1/mesh/${client_side_uuid}`, "PATCH", [
@@ -411,6 +424,57 @@ router.route('/api/v1/mesh/:client_side_uuid')
             const { client_side_uuid } = req.params
             await cmdService.invoke(new DeleteCommand(client_side_uuid))
             res.sendStatus(204)
+        } catch (error) {
+            if (error instanceof APIActorError) {
+                rollbar.info('APIActorError', { code: error.statusCode, message: error.message })
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            rollbar.error(error)
+            console.error(error)
+            return res.status(500).send({ message: 'Internal Server Error' })
+        }
+    })
+
+router.route('/api/v1/mesh/:client_side_uuid/mesh_materials')
+      .get(async (req, res) => {
+        try {
+            const { client_side_uuid } = req.params
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid))
+            const { rows: meshMaterials } = await queryService.invoke(new MeshMaterialReadCollectionQuery({
+                where: [{
+                    table: 'MeshMaterialDescriptions',
+                    column: 'mesh_client_side_uuid',
+                    operator: Op.eq,
+                    keys: 'client_side_uuid',
+                    value: client_side_uuid
+                }]
+            }))
+            
+            const meshMaterialsIds = meshMaterials.map(m => m.material_client_side_uuid)
+            if (meshMaterialsIds.length > 0) {
+                const { rows: materials } = await queryService.invoke(new MaterialReadCollectionQuery({
+                    where: [{
+                        table: 'MaterialDescriptions',
+                        column: 'material_client_side_uuid',
+                        operator: Op.in,
+                        keys: 'meshMaterialsIds',
+                        value: `${meshMaterialsIds.map(c=>`'${c}'`).join(',')}`
+                    }]
+                }))
+                meshMaterials.forEach(mm => {
+                    mm.material = materials.find(m => m.client_side_uuid === mm.material_client_side_uuid)
+                })
+            }
+            
+            res.send({
+                ...response,
+                meshMaterials,
+                ...LinkService.entityLinks(`api/v1/mesh/${client_side_uuid}`, "GET", [
+                    { name: 'update', method: 'PATCH' },
+                    { name: 'delete', method: 'DELETE' }
+                ])
+            })
         } catch (error) {
             if (error instanceof APIActorError) {
                 rollbar.info('APIActorError', { code: error.statusCode, message: error.message })

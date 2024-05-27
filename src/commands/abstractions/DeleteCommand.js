@@ -54,7 +54,7 @@ export default class DeleteCommand extends ModelCommand {
             throw new Error("db is required and must be an object");
         }
 
-        const { modelName, pkName, snapshot, tombstone, indexName } = this.modelDefinition;
+        const { modelName, pkName, snapshot, tombstone, elastic } = this.modelDefinition;
 
         const pk = this.pk;
         const fkName = snapshot?.fkName || tombstone?.fkName || null;
@@ -67,10 +67,11 @@ export default class DeleteCommand extends ModelCommand {
 
         try {
             const executeTransaction = async (transaction) => {
+                const include = tombstoneName ? [{ model: db[tombstoneName], limit: 1 }] : [];
                 const entity = await db[modelName].findOne(
                     { 
                         where: { [pkName]: pk },
-                        include: [{ model: db[tombstoneName], limit: 1 }]
+                        include
                     },
                     { transaction }
                 );
@@ -105,7 +106,9 @@ export default class DeleteCommand extends ModelCommand {
                 await db.sequelize.transaction(executeTransaction);
             }
 
-            await ElasticService.remove(indexName, pk);
+            for (const conf of elastic) {
+                await ElasticService.remove(conf.indexName, pk);
+            }
         } catch (error) {
             console.log(error)
             

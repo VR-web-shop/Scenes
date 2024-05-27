@@ -7,12 +7,16 @@ import PutCommand from '../../../commands/Texture/PutCommand.js';
 import DeleteCommand from '../../../commands/Texture/DeleteCommand.js';
 import ReadOneQuery from '../../../queries/Texture/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Texture/ReadCollectionElasticQuery.js';
+import StorageService from '../../../services/StorageService.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
+import multer from 'multer';
 
 const router = express.Router();
+const upload = multer({ storage: multer.memoryStorage() });
 const cmdService = new ModelCommandService();
 const queryService = new ModelQueryService();
+const storage = new StorageService('textures');
 
 router.route('/api/v1/textures')
     /**
@@ -170,14 +174,14 @@ router.route('/api/v1/textures')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
+    .post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), upload.single('source'), async (req, res) => {
         try {
             const { 
                 client_side_uuid, 
                 name,
-                source,
                 texture_type_name,
             } = req.body;
+            const source = await storage.put(req.file, client_side_uuid);
             cmdService.invoke(new PutCommand(client_side_uuid, { 
                 name,
                 source,
@@ -373,14 +377,15 @@ router.route('/api/v1/texture/:client_side_uuid')
     *      500:
     *        description: Internal Server Error
     */
-    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), async (req, res) => {
+    .patch(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:put"), upload.single('source'), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
             const { 
                 name,
-                source,
                 texture_type_name,
             } = req.body
+            const entity = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const source = await storage.put(req.file, client_side_uuid, entity.source);
             await cmdService.invoke(new PutCommand(client_side_uuid, { 
                 name,
                 source,

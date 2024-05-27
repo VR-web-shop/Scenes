@@ -6,6 +6,7 @@ import ModelQueryService from '../../../services/ModelQueryService.js';
 import PutCommand from '../../../commands/Scene/PutCommand.js';
 import DeleteCommand from '../../../commands/Scene/DeleteCommand.js';
 import ReadOneElasticQuery from '../../../queries/Scene/ReadOneElasticQuery.js';
+import ReadOneMysqlQuery from '../../../queries/Scene/ReadOneQuery.js';
 import ReadCollectionElasticQuery from '../../../queries/Scene/ReadCollectionElasticQuery.js';
 import ReadOneQuery from '../../../queries/Scene/ReadOneQuery.js';
 import SearchElasticQuery from '../../../queries/Scene/SearchElasticQuery.js';
@@ -180,7 +181,7 @@ router.route('/api/v1/scenes')
                 name,
                 active,
             }));
-            const response = queryService.invoke(new ReadOneQuery(client_side_uuid));
+            const response = queryService.invoke(new ReadOneMysqlQuery(client_side_uuid));
             res.send({ 
                 ...response,
                 ...LinkService.entityLinks(`api/v1/scenes`, 'POST', [
@@ -449,7 +450,7 @@ router.route('/api/v1/scene/:client_side_uuid')
                 name,
                 active,
             }))
-            const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid))
             res.send({
                 ...response,
                 ...LinkService.entityLinks(`api/v1/scene/${client_side_uuid}`, "PATCH", [

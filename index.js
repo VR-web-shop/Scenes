@@ -10,6 +10,7 @@ import bodyParser from 'body-parser'
 
 import SwaggerController from './src/controllers/SwaggerController.js';
 import MaterialController from './src/controllers/api/v1/MaterialController.js';
+import MaterialTextureController from './src/controllers/api/v1/MaterialTextureController.js';
 import MaterialTypeController from './src/controllers/api/v1/MaterialTypeController.js';
 import MeshController from './src/controllers/api/v1/MeshController.js';
 import MeshMaterialController from './src/controllers/api/v1/MeshMaterialController.js';
@@ -49,6 +50,7 @@ import Vector3DController from './src/controllers/api/v1/Vector3DController.js';
 
     app.use(SwaggerController);
     app.use(MaterialController);
+    app.use(MaterialTextureController);
     app.use(MaterialTypeController);
     app.use(MeshController);
     app.use(MeshMaterialController);

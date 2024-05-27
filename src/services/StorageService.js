@@ -1,5 +1,5 @@
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
-
+import APIActorError from "../controllers/api/errors/APIActorError.js";
 const _options = {
     cdnURL: process.env.S3_CDN_URL,
     bucketName: process.env.S3_BUCKET_NAME,
@@ -78,6 +78,26 @@ export default class StorageService {
             console.error("Error deleting file from S3:", error);
             throw error;
         }
+    }
+
+    async put(file, id, oldURL) {
+        if (!file) throw new APIActorError(400, 'No file provided'); 
+        if (!id) throw new APIActorError(400, 'No file_id provided');
+        if (!this.prefix) throw new APIActorError(400, 'No prefix provided');
+        
+        const version = new Date().getTime().toString();
+        const ending = file.originalname.split('.').pop();
+        const key = `${id}_${version}.${ending}`;
+        const url = await this.uploadFile(file.buffer, key)
+
+        // Delete old version if it exists and provided
+        // And if the new version is uploaded successfully
+        if (url && oldURL) {
+            const oldKey = this.parseKey(oldURL);
+            await this.deleteFile(oldKey);
+        }
+
+        return url;
     }
 
     /**

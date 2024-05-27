@@ -7,6 +7,7 @@ import PutCommand from '../../../commands/MeshMaterial/PutCommand.js';
 import DeleteCommand from '../../../commands/MeshMaterial/DeleteCommand.js';
 import ReadOneQuery from '../../../queries/MeshMaterial/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/MeshMaterial/ReadCollectionElasticQuery.js';
+import ReadOneMysqlQuery from '../../../queries/MeshMaterial/ReadOneQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -159,13 +160,14 @@ router.route('/api/v1/mesh_materials')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
+    .post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
         try {
-            const { client_side_uuid, material_client_side_uuid, submesh_name, } = req.body;
-            cmdService.invoke(new PutCommand(client_side_uuid, { 
-                material_client_side_uuid, submesh_name 
+            const { client_side_uuid, material_client_side_uuid, mesh_client_side_uuid, submesh_name, } = req.body;
+            await cmdService.invoke(new PutCommand(client_side_uuid, { 
+                material_client_side_uuid, submesh_name, mesh_client_side_uuid
             }));
-            const response = queryService.invoke(new ReadOneQuery(client_side_uuid));
+
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid));
             res.send({ 
                 ...response,
                 ...LinkService.entityLinks(`api/v1/mesh_materials`, 'POST', [
@@ -348,7 +350,7 @@ router.route('/api/v1/mesh_material/:client_side_uuid')
             await cmdService.invoke(new PutCommand(client_side_uuid, { 
                 material_client_side_uuid, submesh_name
             }))
-            const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid))
             res.send({
                 ...response,
                 ...LinkService.entityLinks(`api/v1/mesh_material/${client_side_uuid}`, "PATCH", [
@@ -397,6 +399,7 @@ router.route('/api/v1/mesh_material/:client_side_uuid')
     .delete(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT("scenes:delete"), async (req, res) => {
         try {
             const { client_side_uuid } = req.params
+
             await cmdService.invoke(new DeleteCommand(client_side_uuid))
             res.sendStatus(204)
         } catch (error) {

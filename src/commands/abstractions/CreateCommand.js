@@ -114,7 +114,7 @@ export default class CreateCommand extends ModelCommand {
             if (options.transaction) {
                 await executeTransaction(options.transaction);
             } else {
-                await db.transaction(executeTransaction);
+                await db.sequelize.transaction(executeTransaction);
             }
 
             await ElasticService.putFromConfig(elastic, pkName, pk, { 

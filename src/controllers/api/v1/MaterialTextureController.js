@@ -6,6 +6,7 @@ import ModelQueryService from '../../../services/ModelQueryService.js';
 import CreateCommand from '../../../commands/MaterialTexture/CreateCommand.js';
 import DeleteCommand from '../../../commands/MaterialTexture/DeleteCommand.js';
 import ReadOneQuery from '../../../queries/MaterialTexture/ReadOneElasticQuery.js';
+import ReadOneMysqlQuery from '../../../queries/MaterialTexture/ReadOneQuery.js';
 import ReadCollectionQuery from '../../../queries/MaterialTexture/ReadCollectionElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
@@ -159,13 +160,13 @@ router.route('/api/v1/material_textures')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
+    .post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
         try {
             const { client_side_uuid, material_client_side_uuid, texture_client_side_uuid, } = req.body;
-            cmdService.invoke(new CreateCommand(client_side_uuid, { 
+            await cmdService.invoke(new CreateCommand(client_side_uuid, { 
                 material_client_side_uuid, texture_client_side_uuid 
             }));
-            const response = queryService.invoke(new ReadOneQuery(client_side_uuid));
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid));
             res.send({ 
                 ...response,
                 ...LinkService.entityLinks(`api/v1/material_textures`, 'POST', [
@@ -185,14 +186,14 @@ router.route('/api/v1/material_textures')
         }
     });
 
-router.route('/api/v1/material/:client_side_uuid')
+router.route('/api/v1/material_texture/:client_side_uuid')
     /**
      * @openapi
-     * '/api/v1/material/{client_side_uuid}':
+     * '/api/v1/material_texture/{client_side_uuid}':
      *  get:
      *     tags:
-     *       - Material Controller
-     *     summary: Fetch a material
+     *       - Material Texture Controller
+     *     summary: Fetch a material texture
      *     security:
      *      - bearerAuth: []
      *     parameters:

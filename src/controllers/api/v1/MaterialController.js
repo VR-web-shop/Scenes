@@ -7,6 +7,10 @@ import PutCommand from '../../../commands/Material/PutCommand.js';
 import DeleteCommand from '../../../commands/Material/DeleteCommand.js';
 import ReadOneQuery from '../../../queries/Material/ReadOneElasticQuery.js';
 import ReadCollectionQuery from '../../../queries/Material/ReadCollectionElasticQuery.js';
+import ReadOneMysqlQuery from '../../../queries/Material/ReadOneQuery.js';
+import MaterialTextureReadCollectionQuery from '../../../queries/MaterialTexture/ReadCollectionQuery.js';
+import MaterialReadCollectionQuery from '../../../queries/Material/ReadCollectionQuery.js';
+import { Op } from 'sequelize';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
 
@@ -164,13 +168,13 @@ router.route('/api/v1/materials')
      *  500:
      *  description: Internal Server Error
      */
-    router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
+    .post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
         try {
             const { client_side_uuid, name, material_type_name, } = req.body;
-            cmdService.invoke(new PutCommand(client_side_uuid, { 
+            await cmdService.invoke(new PutCommand(client_side_uuid, { 
                 name, material_type_name 
             }));
-            const response = queryService.invoke(new ReadOneQuery(client_side_uuid));
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid));
             res.send({ 
                 ...response,
                 ...LinkService.entityLinks(`api/v1/materials`, 'POST', [
@@ -358,7 +362,7 @@ router.route('/api/v1/material/:client_side_uuid')
             await cmdService.invoke(new PutCommand(client_side_uuid, { 
                 name, material_type_name 
             }))
-            const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid))
             res.send({
                 ...response,
                 ...LinkService.entityLinks(`api/v1/material/${client_side_uuid}`, "PATCH", [
@@ -409,6 +413,57 @@ router.route('/api/v1/material/:client_side_uuid')
             const { client_side_uuid } = req.params
             await cmdService.invoke(new DeleteCommand(client_side_uuid))
             res.sendStatus(204)
+        } catch (error) {
+            if (error instanceof APIActorError) {
+                rollbar.info('APIActorError', { code: error.statusCode, message: error.message })
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+
+            rollbar.error(error)
+            console.error(error)
+            return res.status(500).send({ message: 'Internal Server Error' })
+        }
+    })
+
+router.route('/api/v1/material/:client_side_uuid/material_textures')
+      .get(async (req, res) => {
+        try {
+            const { client_side_uuid } = req.params
+            const response = await queryService.invoke(new ReadOneMysqlQuery(client_side_uuid))
+            const { rows: materialTextures } = await queryService.invoke(new MaterialTextureReadCollectionQuery({
+                where: [{
+                    table: 'MaterialTextures',
+                    column: 'material_client_side_uuid',
+                    operator: Op.eq,
+                    keys: 'client_side_uuid',
+                    value: client_side_uuid
+                }]
+            }))
+            
+            const materialTexturesIds = materialTextures.map(m => m.material_client_side_uuid)
+            if (materialTexturesIds.length > 0) {
+                const { rows: materials } = await queryService.invoke(new MaterialReadCollectionQuery({
+                    where: [{
+                        table: 'MaterialDescriptions',
+                        column: 'material_client_side_uuid',
+                        operator: Op.in,
+                        keys: 'meshMaterialsIds',
+                        value: `${materialTexturesIds.map(c=>`'${c}'`).join(',')}`
+                    }]
+                }))
+                materialTextures.forEach(mm => {
+                    mm.material = materials.find(m => m.client_side_uuid === mm.material_client_side_uuid)
+                })
+            }
+            
+            res.send({
+                ...response,
+                materialTextures,
+                ...LinkService.entityLinks(`api/v1/mesh/${client_side_uuid}`, "GET", [
+                    { name: 'update', method: 'PATCH' },
+                    { name: 'delete', method: 'DELETE' }
+                ])
+            })
         } catch (error) {
             if (error instanceof APIActorError) {
                 rollbar.info('APIActorError', { code: error.statusCode, message: error.message })

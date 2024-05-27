@@ -2,6 +2,7 @@ import ElasticService from '../../src/services/ElasticService.js';
 import ModelQueryService from '../../src/services/ModelQueryService.js';
 
 import Material from '../../src/modelDefinitions/Material.js';
+import MaterialType from '../../src/modelDefinitions/MaterialType.js';
 import MaterialTexture from '../../src/modelDefinitions/MaterialTexture.js';
 import Mesh from '../../src/modelDefinitions/Mesh.js';
 import MeshMaterial from '../../src/modelDefinitions/MeshMaterial.js';
@@ -25,6 +26,7 @@ import Texture from '../../src/modelDefinitions/Texture.js';
 import TextureType from '../../src/modelDefinitions/TextureType.js';
 import Vector3d from '../../src/modelDefinitions/Vector3D.js';
 
+import MaterialTypeReadCollectionQuery from '../../src/queries/MaterialType/ReadCollectionQuery.js';
 import MaterialReadCollectionQuery from '../../src/queries/Material/ReadCollectionQuery.js';
 import MaterialTextureReadCollectionQuery from '../../src/queries/MaterialTexture/ReadCollectionQuery.js';
 import MeshReadCollectionQuery from '../../src/queries/Mesh/ReadCollectionQuery.js';
@@ -79,6 +81,7 @@ const up = async () => {
     const startTime = new Date().getTime();
     console.log(`${startTime}: Starting reading and inserting`);
     await readAndInsert(Material, MaterialReadCollectionQuery);
+    await readAndInsert(MaterialType, MaterialTypeReadCollectionQuery);
     await readAndInsert(MaterialTexture, MaterialTextureReadCollectionQuery);
     await readAndInsert(Mesh, MeshReadCollectionQuery);
     await readAndInsert(MeshMaterial, MeshMaterialReadCollectionQuery);
@@ -116,6 +119,7 @@ const down = async () => {
     const startTime = new Date().getTime();
     console.log(`${startTime}: Start removing`);
     await removeIndex('material');
+    await removeIndex('materialtype');
     await removeIndex('materialtexture');
     await removeIndex('mesh');
     await removeIndex('meshmaterial');

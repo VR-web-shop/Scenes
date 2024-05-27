@@ -151,6 +151,9 @@ const putFromConfig = async (config, pkName, pk, doc) => {
  * @returns {Promise} The promise.
  */
 const remove = async (index, id) => {
+    if (!await indiciesExist(index)) return;
+    if (!await client.exists({ index, id })) return;
+
     return await client.delete({ index, id });
 }
 

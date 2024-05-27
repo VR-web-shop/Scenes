@@ -175,7 +175,7 @@ router.route('/api/v1/vector3ds')
  *  500:
  *  description: Internal Server Error
  */
-router.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
+.post(Middleware.AuthorizeJWT, Middleware.AuthorizePermissionJWT('scenes:put'), async (req, res) => {
     try {
         const {
             client_side_uuid,
