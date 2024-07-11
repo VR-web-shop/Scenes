@@ -35,8 +35,8 @@ function buildServer() {
     switch (ENV) {
         case 'production':
             return https.createServer({
-                key: fs.readFileSync(WS_PRIVATE_KEY_PATH),
-                cert: fs.readFileSync(WS_CERTIFICATE_PATH)
+                //key: fs.readFileSync(WS_PRIVATE_KEY_PATH),
+                //cert: fs.readFileSync(WS_CERTIFICATE_PATH)
             }, requestListeners)
         default:
             return http.createServer(requestListeners)
