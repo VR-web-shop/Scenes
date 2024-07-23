@@ -5,6 +5,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY .env* ./
 COPY .npmrc* ./
+COPY privkey.key ./
+COPY cert.crt ./
 
 RUN npm install
 
