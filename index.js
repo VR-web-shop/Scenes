@@ -33,18 +33,15 @@ import SceneStaticObjectController from './src/controllers/api/v1/SceneStaticObj
 import TextureController from './src/controllers/api/v1/TextureController.js';
 import TextureTypeController from './src/controllers/api/v1/TextureTypeController.js';
 import Vector3DController from './src/controllers/api/v1/Vector3DController.js';
+import HealthController from './src/controllers/api/v1/HealthController.js';
 
 (async () => {
     const port = process.env.SERVER_PORT;
-    const origin = process.env.CORS_ORIGINS.split(',');
 
     await Sagas.BrokerService.connect()
     const app = express()
 
-    app.use(cors({
-        origin: '*'
-    }));
-
+    app.use(cors({ origin: '*' }));
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -73,8 +70,26 @@ import Vector3DController from './src/controllers/api/v1/Vector3DController.js';
     app.use(TextureController);
     app.use(TextureTypeController);
     app.use(Vector3DController);
+    app.use(HealthController);
     
     app.listen(port, () => {
-        console.log(`Server running on port ${port}`)
-    })
+        console.log(`
+            === Scenes Service ===
+            Server: Express
+            Port: ${port}
+            
+            === Swagger Docs ===
+            URL: http://localhost:${port}/api/v1/documentation
+
+            === Message Broker ===
+            URL: ${process.env.MESSAGE_BROKER_URL}
+            Connected: ${Sagas.BrokerService.isConnected()}
+
+            === Rollbar ===
+            Enabled: false
+
+            === ElasticSearch ===
+            URL: ${process.env.ELASTIC_NODE}
+        `);
+    });
 })()
