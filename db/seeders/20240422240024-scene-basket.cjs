@@ -105,7 +105,7 @@ module.exports = {
     await queryInterface.bulkInsert('SceneBasketDescriptions', [{
       scene_basket_client_side_uuid: demoScene.client_side_uuid,
       scene_client_side_uuid: demoScene.client_side_uuid,
-      basket_state_name: demoScene.basket.basket_state_name,
+      scene_basket_state_name: demoScene.basket.scene_basket_state_name,
       position_client_side_uuid,
       rotation_client_side_uuid,
       scale_client_side_uuid,

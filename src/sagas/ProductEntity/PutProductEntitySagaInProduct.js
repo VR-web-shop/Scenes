@@ -3,6 +3,7 @@ import CreateDTCommand from "../../commands/DistributedTransaction/CreateCommand
 import PutCommand from "../../commands/ProductEntity/PutCommand.js";
 import ModelCommandService from "../../services/ModelCommandService.js";
 import db from "../../../db/models/index.cjs";
+import WebsocketService from "../../services/WebsocketService.js";
 
 const eventName = "Put_Products_Product_Entity";
 const nextEventName = "Put_Scenes_Product_Entity";
@@ -63,7 +64,7 @@ handler.onCompleteEvent(async (
             console.log(`${eventName}, message_uuid already processed: `, message_uuid);
             return;
         }
-
+        
         await cmdService.invoke(
             new CreateDTCommand(distributed_transaction_transaction_uuid, { 
                 distributed_transaction_state_name,
@@ -82,6 +83,8 @@ handler.onCompleteEvent(async (
             }),
             { transaction }
         );
+
+        WebsocketService.updateProductEntity(params);
     });
 
     return response.params;

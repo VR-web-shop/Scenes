@@ -3,6 +3,7 @@ import CreateDTCommand from "../../commands/DistributedTransaction/CreateCommand
 import PutCommand from "../../commands/ProductEntity/PutCommand.js";
 import ModelCommandService from "../../services/ModelCommandService.js";
 import db from "../../../db/models/index.cjs";
+import WebsocketService from "../../services/WebsocketService.js";
 
 const eventName = "Put_Shopping_Cart_Product_Entity";
 const nextEventName = "Put_Scenes_Shopping_Cart_Product_Entity";
@@ -82,6 +83,8 @@ handler.onCompleteEvent(async (
             }),
             { transaction }
         );
+
+        WebsocketService.updateProductEntity(params);
     });
 
     return response.params;

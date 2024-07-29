@@ -4,6 +4,7 @@ import PutCommand from "../../commands/ProductEntity/PutCommand.js";
 import DeleteCommand from "../../commands/ProductEntity/DeleteCommand.js";
 import ModelCommandService from "../../services/ModelCommandService.js";
 import db from "../../../db/models/index.cjs";
+import WebsocketService from "../../services/WebsocketService.js";
 
 const eventName = "Delete_Products_Product_Entity";
 const nextEventName = "Delete_Scenes_Product_Entity";
@@ -88,6 +89,8 @@ handler.onCompleteEvent(async (
             new DeleteCommand(params.client_side_uuid),
             { transaction }
         );
+
+        WebsocketService.deleteProductEntity(params);
     });
 
     return response.params;

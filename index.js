@@ -39,6 +39,7 @@ import HealthController from './src/controllers/api/v1/HealthController.js';
     const port = process.env.SERVER_PORT;
 
     await Sagas.BrokerService.connect()
+    
     const app = express()
 
     app.use(cors({ origin: '*' }));

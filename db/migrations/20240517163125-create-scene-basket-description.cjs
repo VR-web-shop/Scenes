@@ -125,7 +125,7 @@ module.exports = {
           key: 'client_side_uuid'
         },
       },
-      basket_state_name: {
+      scene_basket_state_name: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {

@@ -61,7 +61,7 @@ export default class PutCommand extends ModelCommand {
         }
 
         const { modelName, pkName, casKeys, snapshot, tombstone, elastic } = this.modelDefinition;
-
+        
         const pk = this.pk;
         const params = this.params;
         const fkName = snapshot?.fkName || tombstone?.fkName || null;
@@ -73,6 +73,7 @@ export default class PutCommand extends ModelCommand {
         }
 
         try {
+            
             const executeTransaction = async (transaction) => {
                 let entity = await db[modelName].findOne(
                     { 
@@ -92,7 +93,7 @@ export default class PutCommand extends ModelCommand {
                     },
                     { transaction }
                 );
-
+                
                 if (!entity) {
                     entity = await db[modelName].create(
                         { [pkName]: pk }, 

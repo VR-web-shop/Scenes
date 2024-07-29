@@ -112,6 +112,11 @@ export default class ReadCollectionQuery extends ModelQuery {
         };
 
         if (options.where) {
+            // Add replacements for where clause
+            // Example:
+            // replacements[table] = table;
+            // replacements[column] = column;
+            // replacements[key] = value;
             options.where.forEach(w => {
                 replacements[w.table] = w.table;
                 replacements[w.column] = w.column;

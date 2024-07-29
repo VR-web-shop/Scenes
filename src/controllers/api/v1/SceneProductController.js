@@ -340,6 +340,7 @@ router.route('/api/v1/scene_product/:client_side_uuid')
                 ui_offset_rotation_client_side_uuid,
                 ui_scale_client_side_uuid,
                 mesh_client_side_uuid,
+                scene_product_state_name
             } = req.body
 
             await cmdService.invoke(new PutCommand(client_side_uuid, {
@@ -350,6 +351,7 @@ router.route('/api/v1/scene_product/:client_side_uuid')
                 ui_offset_rotation_client_side_uuid,
                 ui_scale_client_side_uuid,
                 mesh_client_side_uuid,
+                scene_product_state_name
             }))
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
             res.send({

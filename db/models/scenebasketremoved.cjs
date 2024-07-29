@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.SceneBasketRemoved.belongsTo(models.SceneBackground, {
-        foreignKey: 'scene_background_client_side_uuid',
+      models.SceneBasketRemoved.belongsTo(models.SceneBasket, {
+        foreignKey: 'scene_basket_client_side_uuid',
       });
     }
   }

@@ -17,7 +17,7 @@ export default {
      * The model name is used to find Sequelize models in the db/models directory.
      * Required.
      */
-    modelName: 'Vector3D',
+    modelName: 'Vector3d',
 
     /*
      * The table name is used to find the table in the database.
@@ -55,7 +55,7 @@ export default {
      * Not required.
      */
     snapshot: { 
-        modelName: 'Vector3DDescription', 
+        modelName: 'Vector3dDescription', 
         tableName: 'Vector3dDescriptions',
         fkName: 'vector3d_client_side_uuid' 
     },
@@ -67,7 +67,7 @@ export default {
      * Not required.
      */
     tombstone: { 
-        modelName: 'Vector3DRemoved', 
+        modelName: 'Vector3dRemoved', 
         tableName: 'Vector3dRemoveds',
         fkName: 'vector3d_client_side_uuid' 
     },

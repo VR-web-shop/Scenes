@@ -77,6 +77,7 @@ function log(message) {
  */
 export function sendToClient(obj) {
     const message = JSON.stringify(obj)
+    log(`Sending message to ${connections.length} clients: ${message}`)
     for (const connection of connections)
         connection.send(message)
 }

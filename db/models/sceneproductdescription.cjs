@@ -95,6 +95,7 @@ module.exports = (sequelize, DataTypes) => {
       field: 'ui_scale_client_side_uuid',
     },
     mesh_client_side_uuid: {
+      allowNull: true,
       type: DataTypes.STRING,
       field: 'mesh_client_side_uuid',
     },

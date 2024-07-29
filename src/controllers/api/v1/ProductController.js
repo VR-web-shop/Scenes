@@ -85,12 +85,12 @@ router.route('/api/v1/products')
     .get(async (req, res) => {
         try {
             const { limit, page } = req.query
-            const { rows, count, pages } = await queryService.invoke(new ReadCollectionMysqlQuery({limit, page,
+            const { rows, count, pages } = await queryService.invoke(new ReadCollectionQuery({limit, page,
                 include: [{
                     table: 'ProductEntities',
 
                 }]
-            }))
+            }))/*
             const { rows: entities } = await queryService.invoke(new PEReadCollectionMysqlQuery({
                 limit: 1000,
                 where: [{
@@ -103,7 +103,7 @@ router.route('/api/v1/products')
             }))
             rows.forEach(row => {
                 row.product_entities = entities.filter(e => e.product_client_side_uuid === row.client_side_uuid)
-            })
+            })*/
             res.send({ 
                 rows, 
                 count, 

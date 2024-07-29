@@ -1,8 +1,15 @@
-import Product from "../models/Product.js";
-import ProductEntity from "../models/ProductEntity.js";
-import Vector3D from "../models/Vector3D.js";
-import Mesh from "../models/Mesh.js";
+
+import ProductModel from '../../db/models/product.cjs';
+import ProductEntityModel from '../../db/models/productentity.cjs';
+import MeshModel from '../../db/models/mesh.cjs';
+import Vector3DModel from '../../db/models/vector3d.cjs';
+import _db from '../../db/models/index.cjs';
 import { sendToClient } from "../config/WebsocketConfig.js";
+
+const Product = ProductModel(_db.sequelize, _db.Sequelize.DataTypes);
+const ProductEntity = ProductEntityModel(_db.sequelize, _db.Sequelize.DataTypes);
+const Mesh = MeshModel(_db.sequelize, _db.Sequelize.DataTypes);
+const Vector3D = Vector3DModel(_db.sequelize, _db.Sequelize.DataTypes);
 
 const TYPES = {
     SCENES_NEW_SCENE_PRODUCT: 'scenes_new_scene_product',
@@ -48,12 +55,6 @@ async function newSceneProduct(sceneProduct) {
  * @returns {Promise<void>}
  */
 async function updateSceneProduct(sceneProduct) {
-    const product_uuid = sceneProduct.product_uuid;
-    const product = await Product.findOne({ where: { uuid: product_uuid } });
-    const mesh = await Mesh.findOne({ where: { uuid: sceneProduct.mesh_uuid } });
-    if (mesh) sceneProduct.Mesh = mesh.dataValues;
-    sceneProduct.Product = product.dataValues;
-
     sendToClient({type: TYPES.SCENES_UPDATE_SCENE_PRODUCT, payload: sceneProduct});
 }
 

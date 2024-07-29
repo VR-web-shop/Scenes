@@ -59,6 +59,12 @@
             "meshMaterials": []
         },
         {
+            "client_side_uuid": "aaaaaa-aaeb-aaaa-aaaa-aaaaaaaaaaa7",
+            "name": "Basket Pocket",
+            "source": "static/meshes/pocket.glb",
+            "meshMaterials": []
+        },
+        {
             "client_side_uuid": "aaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa8",
             "name": "Checkout",
             "source": "static/meshes/Checkout.glb",
@@ -3021,10 +3027,10 @@
     ],
     "basket": {
         "name": "Basket",
-        "basket_state_name": "ReadyForProducts",
+        "scene_basket_state_name": "ReadyForProducts",
         "basket_mesh_name": "Basket",
         "products_mesh_name": "Basket Products Placeholder",
-        "pocket_mesh_name": "Basket Products Placeholder",
+        "pocket_mesh_name": "Basket Pocket",
         "position": {
             "x": 0,
             "y": 0,
@@ -3042,7 +3048,7 @@
         },
         "object_offset": {
             "x": 0,
-            "y": 0.14,
+            "y": -0.24,
             "z": 0
         },
         "placeholder_offset": {
@@ -3061,9 +3067,9 @@
             "z": 0
         },
         "insert_area_size": {
-            "x": 0.2,
+            "x": 0.3,
             "y": 0.2,
-            "z": 0.2
+            "z": 0.3
         }
     },
     "camera": {

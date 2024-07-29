@@ -88,6 +88,7 @@ module.exports = {
       mesh_client_side_uuid: {
         type: Sequelize.STRING,
         field: 'mesh_client_side_uuid',
+        allowNull: true,
         references: {
           model: 'Meshes',
           key: 'client_side_uuid'

@@ -12,6 +12,7 @@ import ReadOneQuery from '../../../queries/Scene/ReadOneQuery.js';
 import SearchElasticQuery from '../../../queries/Scene/SearchElasticQuery.js';
 import rollbar from '../../../../rollbar.js';
 import express from 'express';
+import sceneCreatorService from '../../../services/SceneCreatorService.js';
 
 const router = express.Router();
 const cmdService = new ModelCommandService();
@@ -181,6 +182,7 @@ router.route('/api/v1/scenes')
                 name,
                 active,
             }));
+            sceneCreatorService(client_side_uuid);
             const response = queryService.invoke(new ReadOneMysqlQuery(client_side_uuid));
             res.send({ 
                 ...response,

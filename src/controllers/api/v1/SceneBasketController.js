@@ -367,7 +367,7 @@ router.route('/api/v1/scene_basket/:client_side_uuid')
                 object_client_side_uuid,
                 placeholder_client_side_uuid,
                 pocket_client_side_uuid,
-                basket_state_name,
+                scene_basket_state_name,
             } = req.body
 
             await cmdService.invoke(new PutCommand(client_side_uuid, { 
@@ -382,7 +382,7 @@ router.route('/api/v1/scene_basket/:client_side_uuid')
                 object_client_side_uuid,
                 placeholder_client_side_uuid,
                 pocket_client_side_uuid,
-                basket_state_name, 
+                scene_basket_state_name, 
             }))
             const response = await queryService.invoke(new ReadOneQuery(client_side_uuid))
             res.send({

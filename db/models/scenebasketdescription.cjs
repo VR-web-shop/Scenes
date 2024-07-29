@@ -11,8 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.SceneBasketDescription.belongsTo(models.SceneBasket, {
-        foreignKey: 'scene_background_client_side_uuid',
+        foreignKey: 'scene_basket_client_side_uuid',
       });
+
       models.SceneBasketDescription.belongsTo(models.Scene, {
         foreignKey: 'scene_client_side_uuid',
       });
@@ -50,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'pocket_client_side_uuid',
       });
       models.SceneBasketDescription.belongsTo(models.SceneBasketState, {
-        foreignKey: 'basket_state_name',
+        foreignKey: 'scene_basket_state_name',
       });
     }
   }
@@ -123,7 +124,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       field: 'pocket_client_side_uuid',
     },
-    basket_state_name: {
+    scene_basket_state_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },

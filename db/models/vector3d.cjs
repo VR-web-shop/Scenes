@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'vector3d_client_side_uuid',
       });
 
+      /*
       models.Vector3d.hasMany(models.SceneBasketDescription, {
         foreignKey: 'position_client_side_uuid',
       });
@@ -119,6 +120,7 @@ module.exports = (sequelize, DataTypes) => {
       models.Vector3d.hasMany(models.SceneStaticObjectDescription, {
         foreignKey: 'scale_client_side_uuid',
       });
+      */
     }
   }
   Vector3D.init({

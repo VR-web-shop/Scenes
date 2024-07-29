@@ -124,13 +124,18 @@ const putChild = async (index, id, relation, docKey, pkName, params) => {
             }
         }
     });
+    // get the document
+    const currentDoc = await client.get({ index, id });
+    console.log(currentDoc);
 }
 
 const putFromConfig = async (config, pkName, pk, doc) => {
+    console.log(config, doc);
     for (const conf of config) {
         const index = conf.indexName;
-        
-        
+        // if the config has a relation, it means it a child object
+        // of another object, so in this case put the child object.
+        // Otherwise, put the object in the index.
         if (conf.relation) {
             doc._entity_type = index;
             console.log(conf.idKey, { [pkName]: pk, ...doc });
@@ -173,7 +178,14 @@ const indiciesExist = async (indices) => {
  * @returns {Promise} The promise.
  */
 const search = async (query) => {
-    return await client.search(query);
+    // include children
+    query.body = {
+        query: {
+            match_all: {}
+        }
+    };
+    const result = await client.search(query);
+    return result;
 }
 
 const invoke = async (query) => {
